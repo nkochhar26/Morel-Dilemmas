@@ -9,7 +9,6 @@ public class WorkStation : MonoBehaviour
 
     float timer;
     Transform player;
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

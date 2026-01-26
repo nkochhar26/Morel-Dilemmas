@@ -17,6 +17,12 @@ public class EzyMeshSlicer : MonoBehaviour
     private GameObject sliceParticleInstance;
     private bool allowCut;
 
+    void Start()
+    {
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = true;
+    }
+
     public void OnMouseDown()
     {
         if(sliceTimer > 0) return;

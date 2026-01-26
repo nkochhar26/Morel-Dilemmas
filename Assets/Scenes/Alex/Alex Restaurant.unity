@@ -1191,7 +1191,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 947491304}
@@ -2272,8 +2272,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1232378581}
   - component: {fileID: 1232378580}
-  - component: {fileID: 1232378583}
   - component: {fileID: 1232378582}
+  - component: {fileID: 1232378583}
   m_Layer: 0
   m_Name: CuttingBoard
   m_TagString: Untagged
@@ -2367,8 +2367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionTime: 0.5
   touching: 0
---- !u!61 &1232378583
-BoxCollider2D:
+--- !u!68 &1232378583
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2401,18 +2401,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.005684316, y: -0.32116532}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.5566214, y: 0.64188623}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.58389103, y: -0.29393673}
+  - {x: -0.58530784, y: -0.29519844}
+  - {x: -0.5810921, y: -0.8707876}
+  - {x: 0.57223266, y: -0.87554693}
+  - {x: 0.58083254, y: -0.29761028}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1310078018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +2808,7 @@ Transform:
   m_GameObject: {fileID: 1640335947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0.45, z: 0}
+  m_LocalPosition: {x: -0.02, y: 0.45, z: -2}
   m_LocalScale: {x: 0.2509, y: 0.2362, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
