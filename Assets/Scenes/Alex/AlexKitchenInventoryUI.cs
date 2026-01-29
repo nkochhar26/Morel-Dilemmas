@@ -2,10 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class AlexKitchenInventoryUI : MonoBehaviour
 {
-    public GameObject itemUI;
+    public GameObject foodItemUI;
     public Vector2 originalPosition, originalSize;
     public static AlexKitchenInventoryUI Instance;
     public InventoryItem draggedItem;
@@ -41,10 +42,11 @@ public class AlexKitchenInventoryUI : MonoBehaviour
             Destroy(child.gameObject);
         }
         Debug.Log("Loading Items");
-        Dictionary<Item, int> items = GameManager.Instance.inventoryManager.GetItems();
-        foreach (Item item in items.Keys)
+        Dictionary<FoodItem, int> items = GameManager.Instance.inventoryManager.GetFoodItems();
+        foreach (FoodItem item in items.Keys)
         {
-            Instantiate(itemUI, this.gameObject.transform);
+            GameObject gamefoodItemUIIns = Instantiate(foodItemUI, this.gameObject.transform);
+            gamefoodItemUIIns.GetComponent<InventoryItem>().SetItem(item);
         }
     }
 

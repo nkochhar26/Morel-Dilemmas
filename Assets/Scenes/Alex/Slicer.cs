@@ -2,6 +2,8 @@ using UnityEngine;
 using EzySlice;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using System.Linq;
 public class EzyMeshSlicer : MonoBehaviour
 {
     Vector3 p1World, p2World;
@@ -13,18 +15,21 @@ public class EzyMeshSlicer : MonoBehaviour
     public AnimationCurve sliceMoveCurve;
     public LineRenderer sliceLineRenderer;
     public LineRenderer effectLineRenderer;
+    public LineRenderer outlineLineRenderer;
     private float sliceTimer;
-    private GameObject sliceParticleInstance;
     private bool allowCut;
+    private List<Vector3> outlinePoints = new List<Vector3>();
+    private float outlineDistance;
 
     void Start()
     {
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Collider>().enabled = true;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = true;
     }
 
     public void OnMouseDown()
     {
+
         if(sliceTimer > 0) return;
         sliceLineRenderer.enabled = true;
         p1World = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
@@ -33,15 +38,57 @@ public class EzyMeshSlicer : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if(sliceTimer > 0) return;
 
+        if(sliceTimer > 0) return;
         p2World = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
         sliceLineRenderer.SetPosition(1, p2World);
         sliceTimer = 1;
     }
 
+
     void Update()
     {
+        
+        if (Input.GetMouseButton(1))
+        {
+            Vector3 currentPoint = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
+            
+            if (outlinePoints.Count == 0)
+            {
+                outlinePoints.Add(currentPoint);
+            }
+            else
+            {
+                outlineDistance += Vector2.Distance(currentPoint, outlinePoints[outlinePoints.Count - 1]);
+                if (outlineDistance >= 0.1f)
+                {
+                    outlinePoints.Add(currentPoint);
+                    outlineDistance = 0f;
+                }
+            }
+            
+            outlineLineRenderer.positionCount = outlinePoints.Count;
+            for (int i = 0; i < outlinePoints.Count; i++)
+            {
+                outlineLineRenderer.SetPosition(i, outlinePoints[i]);
+            }
+        }
+        else
+        {
+            if(outlineLineRenderer.positionCount > 0)
+            {
+                var selectedMeshes = GetTransformsInsideOutline(
+                    new List<Transform>(GetComponentsInChildren<MeshFilter>().Select(mf => mf.transform)),
+                    outlinePoints
+                );
+                foreach(var mesh in selectedMeshes){
+                    mesh.gameObject.SetActive(false);
+                }
+                outlinePoints.Clear();
+                outlineLineRenderer.positionCount = 0;
+            }
+        }
+
         if (sliceTimer > 0f)
         {
             allowCut = true;
@@ -96,9 +143,10 @@ public class EzyMeshSlicer : MonoBehaviour
     void SliceAllChildren()
     {
         List<Transform> children = new List<Transform>();
-        foreach (Transform child in transform) 
+        foreach (MeshFilter child in transform.GetComponentsInChildren<MeshFilter>()) 
         {
-            if(CutHitsMesh(child, p1World, p2World)) children.Add(child);
+            if(child.gameObject.activeInHierarchy == false) continue;
+            if(CutHitsMesh(child.transform, p1World, p2World)) children.Add(child.transform);
         }
 
         Transform[] childrenArray = children.ToArray();
@@ -128,8 +176,8 @@ public class EzyMeshSlicer : MonoBehaviour
             GameObject upper = hull.CreateUpperHull(child.gameObject, meshRenderer.sharedMaterial);
             GameObject lower = hull.CreateLowerHull(child.gameObject, meshRenderer.sharedMaterial);
 
-            upper.transform.SetParent(transform, false);
-            lower.transform.SetParent(transform, false);
+            upper.transform.SetParent(child.transform.parent, false);
+            lower.transform.SetParent(child.transform.parent, false);
 
             //do the moving animation
             StartCoroutine(MoveSlice(upper.transform, planeNormal, sliceMoveTime, sliceMoveDistance));
@@ -210,5 +258,48 @@ public class EzyMeshSlicer : MonoBehaviour
             sliceTransform.position = Vector3.Lerp(originalposition, targetPosition, sliceMoveCurve.Evaluate(t/duration));
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public List<Transform> GetTransformsInsideOutline(List<Transform> meshTransforms, List<Vector3> outlinePoints) // get all transforms in outline
+    {
+        List<Transform> insideTransforms = new List<Transform>();
+        
+        if (outlinePoints.Count < 3) return insideTransforms; // atleast 3
+        
+        foreach (Transform t in meshTransforms)
+        {
+            Vector2 point2D = new Vector2(t.position.x, t.position.y);
+            if (IsPointInPolygon(point2D, outlinePoints))
+            {
+                insideTransforms.Add(t);
+            }
+        }
+        
+        return insideTransforms;
+    }
+
+    private bool IsPointInPolygon(Vector2 point, List<Vector3> polygon) // if point in polygon return true
+    {
+        int intersections = 0;
+        int count = polygon.Count;
+        
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 a = new Vector2(polygon[i].x, polygon[i].y);
+            Vector2 b = new Vector2(polygon[(i + 1) % count].x, polygon[(i + 1) % count].y);
+            
+            // check if ray intersects edge
+            if ((a.y > point.y) != (b.y > point.y))
+            {
+                float xIntersect = (b.x - a.x) * (point.y - a.y) / (b.y - a.y) + a.x;
+                if (point.x < xIntersect)
+                {
+                    intersections++;
+                }
+            }
+        }
+        
+        // odd = inside, even = outside
+        return (intersections % 2) == 1;
     }
 }

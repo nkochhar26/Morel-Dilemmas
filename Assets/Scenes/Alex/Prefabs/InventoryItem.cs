@@ -6,22 +6,30 @@ using System.Collections.Generic;
 public class InventoryItem : MonoBehaviour
 {
     Vector3 originalSize;
+    Vector3 originalSizeWorld;
     public bool followmouse = false;
     public LayerMask targetLayer;
+    public MeshRenderer meshRenderer;
+    public Image image;
+    public FoodItem foodItem;
     
     void Start()
     {
         originalSize = transform.localScale;
+        originalSizeWorld = transform.lossyScale;
     }
     
     public void Grow()
     {
-        transform.DOScale(originalSize * 1.5f, 0.2f);
+        if(transform.parent.GetComponent<DragFoodInto>() == null) return;
+        //transform.DOScale(originalSize * 1.5f, 0.2f);
     }
 
     public void Shrink()
     {
-        transform.DOScale(originalSize * 1f, 0.2f);
+        StopFollowMouse();
+        if(transform.parent.GetComponent<DragFoodInto>() == null) return;
+        //transform.DOScale(originalSize * 1f, 0.2f);
     }
 
     public void FollowMouse()
@@ -33,16 +41,21 @@ public class InventoryItem : MonoBehaviour
     public void StopFollowMouse()
     {
         followmouse = false;
-        if (AlexKitchenInventoryUI.Instance != null)
-            LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, targetLayer);
         if (hit.collider != null)
         {
-            transform.SetParent(hit.transform);
             hit.transform.GetComponent<DragFoodInto>().AddItem(this);
+        }else{
+            if (AlexKitchenInventoryUI.Instance != null) LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
         }
+    }
+
+    public void SetItem(FoodItem item){
+        foodItem = item;
+        meshRenderer.material.mainTexture = item.defaultSprite.texture;
+        image.sprite = item.defaultSprite;
     }
 
     void Update()
