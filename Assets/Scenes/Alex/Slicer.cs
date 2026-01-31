@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Linq;
+using DG.Tweening;
 public class EzyMeshSlicer : MonoBehaviour
 {
     Vector3 p1World, p2World;
@@ -82,7 +83,13 @@ public class EzyMeshSlicer : MonoBehaviour
                     outlinePoints
                 );
                 foreach(var mesh in selectedMeshes){
-                    mesh.gameObject.SetActive(false);
+                    mesh.transform.DOMove(mesh.transform.position + (mesh.transform.position-mesh.transform.parent.position)*3, .25f).OnComplete(()=>
+                    {
+                        mesh.transform.DOMove(transform.position -transform.up, 0.5f).OnComplete(()=>
+                        {
+                            mesh.gameObject.SetActive(false);
+                        });
+                    });
                 }
                 outlinePoints.Clear();
                 outlineLineRenderer.positionCount = 0;
