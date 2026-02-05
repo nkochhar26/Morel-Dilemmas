@@ -30,7 +30,10 @@ public class InventoryManager : MonoBehaviour
         foodobject.starQuality = quality;
 
         foodItems.Add(foodobject);
-        AlexKitchenInventoryUI.Instance.UpdateItems();
+        if (AlexKitchenInventoryUI.Instance != null)
+        {
+            AlexKitchenInventoryUI.Instance.UpdateItems();
+        }
     }
 
     public void AddFoodObject(FoodItemObject item)

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
+  m_Name: Creamy Chantarelle Soup
+  m_EditorClassIdentifier: 
+  itemName: Creamy Chantarelle Soup
+  itemDescription: A hearty soup perfect for a chilly autumn evening.
+  defaultSprite: {fileID: -5113782417114046191, guid: 1e7e09660c725aa44b7357507cc9c25c, type: 3}
+  SingleIngredientRecipes: []
+  recipe:
+    foodList:
+    - tag: 01000000
+      foodItem: {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
+    - tag: 
+      foodItem: {fileID: 11400000, guid: 26b3fa4b5a161b641b2167c08edde5bc, type: 2}
+    step: 4

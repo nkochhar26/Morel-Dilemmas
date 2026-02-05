@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7273dede54295b34285cc7f95c4518cf, type: 3}
-  m_Name: Cremini
+  m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
+  m_Name: Tomato
   m_EditorClassIdentifier: 
-  itemName: Cremini
+  itemName: Tomato
+  itemDescription: A fruit or a vegetable?
+  defaultSprite: {fileID: 0}
+  SingleIngredientRecipes: []
+  recipe:
+    foodList: []
+    step: 0

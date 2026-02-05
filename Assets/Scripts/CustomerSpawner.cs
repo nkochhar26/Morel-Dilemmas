@@ -30,7 +30,6 @@ public class CustomerSpawner : MonoBehaviour
         List<int> openTables = GameManager.Instance.customerManager.GetFreeTables();
         if (openTables.Count == 0)
         {
-            Debug.Log("Tables full");
             return;
         }
         int tableIndex = Random.Range(0, openTables.Count);
