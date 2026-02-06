@@ -28,3 +28,4 @@ MonoBehaviour:
     - tag: 02000000
       foodItem: {fileID: 11400000, guid: cc0291dffb54e4f42b21eeafc9d75d71, type: 2}
     step: 6
+  isPoisonous: 0

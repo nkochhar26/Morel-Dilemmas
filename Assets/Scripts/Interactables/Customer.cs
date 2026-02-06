@@ -2,24 +2,35 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour, IInteractable
 {
-    [SerializeField] private int tableNum;
+    private int tableNum;
 
     //TODO: change recipe based on day, remove serialized field
-    [SerializeField] private Recipe recipe;
+    private FoodItem orderedDish;
     [SerializeField] private CustomerType customerType;
+
+    public void Start()
+    {
+        orderedDish = GameManager.Instance.orderManager.SelectRandomDish();
+    }
 
     public void OnInteract()
     {
-        Debug.Log("Interacted with! " + this.gameObject.name);
+        Debug.Log("Interacted with! " + tableNum);
         if (GameManager.Instance.customerManager.GetTakenOrder(tableNum))
         {
-            Debug.Log("You've taken my order");
-            //TODO: check held dish matching here - reputation and money calculation
-            Destroy(this.gameObject);
+            if (GameManager.Instance.orderManager.OrderDelivery(tableNum))
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Debug.Log("This isn't the correct order or you have no currently held dishes");
+            }
         }
         else
         {
-            GameManager.Instance.orderManager.AddOrder(tableNum, recipe);      
+            GameManager.Instance.orderManager.AddOrder(tableNum, orderedDish);  
+            Debug.Log("Ordered: " + orderedDish.name + " at table " + tableNum);    
             SetTakenOrder(true);
         }
     }

@@ -37,3 +37,4 @@ MonoBehaviour:
     - tag: 03000000
       foodItem: {fileID: 11400000}
     step: 6
+  isPoisonous: 0
