@@ -292,6 +292,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &6485005421776729404
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
