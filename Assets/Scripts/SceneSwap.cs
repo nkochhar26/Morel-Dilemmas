@@ -17,6 +17,13 @@ public class SceneSwap : MonoBehaviour
 
     public void SwapScene()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SaveForagingProgress();
+        }
+
         SceneManager.LoadScene(nextScene);
+        Time.timeScale = 1f;
+        PauseMenu.GameIsPaused = false;
     }   
 }

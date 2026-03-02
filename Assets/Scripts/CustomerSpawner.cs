@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public List<GameObject> possibleCustomers = new List<GameObject>();
+    // public List<GameObject> possibleCustomers = new List<GameObject>();
     public GameObject[] tables = new GameObject[5]; // also hardcoded as 5 atm 
     public GameObject[] spawnedCustomers = new GameObject[5]; //hardcoded as 5 atm
     public float timeInBetween;  // in second
@@ -30,10 +30,10 @@ public class CustomerSpawner : MonoBehaviour
         List<int> openTables = GameManager.Instance.customerManager.GetFreeTables();
         if (openTables.Count == 0)
         {
-            Debug.Log("Tables full");
             return;
         }
         int tableIndex = Random.Range(0, openTables.Count);
+        List<GameObject> possibleCustomers = GameManager.Instance.customerManager.GetPossibleCustomers();
         int customerIndex = Random.Range(0, possibleCustomers.Count);
 
         SpawnCustomer(possibleCustomers[customerIndex].GetComponent<Customer>().GetCustomerType(), openTables[tableIndex], false);
@@ -43,7 +43,7 @@ public class CustomerSpawner : MonoBehaviour
     public void SpawnCustomer(CustomerType customerType, int tableNum, bool takenOrder)
     {
         GameObject toSpawnCustomer = GameManager.Instance.customerManager.GetGameObjectFromCustomerType(customerType);
-        GameObject spawnedCustomer = Instantiate(toSpawnCustomer, tables[tableNum].transform.position, Quaternion.identity);
+        GameObject spawnedCustomer = Instantiate(toSpawnCustomer, tables[tableNum].transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
         spawnedCustomer.GetComponent<Customer>().SetTableNum(tableNum);
         spawnedCustomers[tableNum] = spawnedCustomer;
         GameManager.Instance.customerManager.AddCustomer(customerType, tableNum, takenOrder);
@@ -65,5 +65,10 @@ public class CustomerSpawner : MonoBehaviour
                 SpawnCustomer(customerInfo.customerType, customerInfo.tableNum, customerInfo.takenOrder);
             }
         }
+    }
+
+    public GameObject[] GetTables()
+    {
+        return tables;
     }
 }

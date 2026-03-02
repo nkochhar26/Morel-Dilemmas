@@ -12,7 +12,7 @@ public class AlexTopDownMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     public SpriteRenderer spriteRenderer;
-    private Vector3 dir;
+    public Vector3 dir;
     public Vector3 currDirection;
     private Vector3 tempDirection;
     private bool canMove = true;

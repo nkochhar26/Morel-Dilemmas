@@ -3,19 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-
+    public GameObject foragingPopup;
+    public string menuSceneName = "Main Menu";
 
     // Update is called once per frame
     void Update()
     {
+        if (foragingPopup != null && foragingPopup.activeSelf)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (GameIsPaused) {
+            if (GameIsPaused)
+            {
                 Resume();
-            } else {
+            }
+            else
+            {
                 Pause();
             }
         }
@@ -35,10 +42,18 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
+    public void NoMenuPause()
+    {
+        // used for foraging confirmation
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        //SceneManager.LoadScene(menu);
+        GameIsPaused = false;
+        SceneManager.LoadScene(menuSceneName);
     }
 
     public void QuitGame()

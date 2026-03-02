@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public InventoryManager inventoryManager;
     public CustomerManager customerManager;
     public ReviewManager reviewManager;
+    public StarManager starManager;
 
     private void Awake()
     {
@@ -20,5 +21,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void SaveForagingProgress()
+    {
+        if (inventoryManager != null)
+        {
+            Debug.Log("GameManager: Inventory sync complete. Moving to next scene with " + InventoryManager.foodItems.Count + " items.");
+        }
     }
 }

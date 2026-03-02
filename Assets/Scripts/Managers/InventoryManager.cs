@@ -8,6 +8,8 @@ public class SliceOperation
     public Vector3 planeNormal;
     public SliceOperation upperHullSlice;
     public SliceOperation lowerHullSlice;
+    public bool upperDestroyed = false;
+    public bool lowerDestroyed = false;
 }
 
 public class FoodItemObject
@@ -30,7 +32,10 @@ public class InventoryManager : MonoBehaviour
         foodobject.starQuality = quality;
 
         foodItems.Add(foodobject);
-        AlexKitchenInventoryUI.Instance.UpdateItems();
+        if (AlexKitchenInventoryUI.Instance != null)
+        {
+            AlexKitchenInventoryUI.Instance.UpdateItems();
+        }
     }
 
     public void AddFoodObject(FoodItemObject item)
