@@ -25,18 +25,6 @@ public class CustomerManager : MonoBehaviour
     public CustomerInfo[] activeCustomers =  new CustomerInfo[5];
     public List<GameObject> possibleCustomers = new List<GameObject>();  // could be stored in customer spawner as well but i didnt wanna keep reloading the info
     public Dictionary<CustomerType, GameObject> customerTypeToGameObject = new Dictionary<CustomerType, GameObject>();
-
-    [ContextMenu("test customer remove 0")]
-    void RemoveCustomer0()
-    {
-        RemoveCustomer(0);
-    }
-
-    [ContextMenu("test customer remove 1")]
-    void RemoveCustomer1()
-    {
-        RemoveCustomer(1);
-    }
     
     public void Awake()
     {
