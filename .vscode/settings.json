@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Morel-Dilemmas.slnx"
+    "dotnet.defaultSolution": "On-Shrooms.slnx"
 }
