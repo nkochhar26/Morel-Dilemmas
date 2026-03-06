@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public CustomerManager customerManager;
     public ReviewManager reviewManager;
     public StarManager starManager;
+    public CurrencyManager currencyManager;
 
     private void Awake()
     {
