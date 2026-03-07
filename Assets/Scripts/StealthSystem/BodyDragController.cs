@@ -92,6 +92,7 @@ public class BodyDragController : MonoBehaviour
         }
 
         // Notify vision cone system that player is now suspicious
+        MusicManager.instance.SceneMusic(3);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(true);
     }
 
@@ -106,6 +107,7 @@ public class BodyDragController : MonoBehaviour
         }
 
         // Notify vision cone system
+        MusicManager.instance.SceneMusic(2);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(false);
 
         currentBody = null;
