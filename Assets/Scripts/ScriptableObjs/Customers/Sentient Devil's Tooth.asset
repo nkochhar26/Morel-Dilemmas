@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6abea54c31a1c1f439c98c0e430e2441, type: 3}
-  m_Name: Cremini
+  m_Name: Sentient Devil's Tooth
   m_EditorClassIdentifier: 
   starsGiven: 1
+  mushroom: {fileID: 11400000, guid: ef43348c14e359c4ab737baf252c6031, type: 2}

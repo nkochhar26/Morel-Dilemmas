@@ -51,11 +51,16 @@ public class ReviewTicker : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (currReview != null && (currReview.GetWidth != 0) && (currReview.GetXPosition <= -currReview.GetWidth) && reviews != null && reviews.Count > 0)
-        {
-            rightIndex = (rightIndex + 1) % reviews.Count;
-            AddToTicker(reviews[rightIndex]);
-        }
+        // if (currReview != null && (currReview.GetWidth != 0) && (currReview.GetXPosition <= -currReview.GetWidth) && reviews != null && reviews.Count > 0)
+        // {
+        //     rightIndex = (rightIndex + 1) % reviews.Count;
+        //     AddToTicker(reviews[rightIndex]);
+        // }
+        // if (currReview != null && currReview.GetXPosition <= -currReview.GetWidth)
+        // {
+        //     reviews.Remove(0);
+        //     AddToTicker(reviews[0]);
+        // }
     }
 
     /// <summary>
@@ -101,7 +106,8 @@ public class ReviewTicker : MonoBehaviour
             reviews.Add(review);
         }
 
-        if (currReview == null && reviews.Count > 0)
+        if (reviews.Count > 0)
+        //if (currReview == null && reviews.Count > 0)
         {
             rightIndex = reviews.Count - 1;
             AddToTicker(reviews[rightIndex]);

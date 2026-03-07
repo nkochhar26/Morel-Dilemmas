@@ -4716,24 +4716,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7680188667008449685, guid: 0be119a9031d337448bcc9955b1b445d, type: 3}
   m_PrefabInstance: {fileID: 1169825300}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1819603712 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 64593716309421285, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-  m_PrefabInstance: {fileID: 575958421115274269}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1819603719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819603712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da5f6381b53240f9a2f3cf6d207ca30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrencyUIText: {fileID: 1932890683}
 --- !u!1 &1831411903
 GameObject:
   m_ObjectHideFlags: 0
@@ -9981,10 +9963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8467284489720476528, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-      propertyPath: currencyManager
+    - target: {fileID: 322557177492980354, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
+      propertyPath: CurrencyUIText
       value: 
-      objectReference: {fileID: 1819603719}
+      objectReference: {fileID: 1932890683}
     - target: {fileID: 9036760247063195212, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.537727
@@ -10028,10 +10010,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 64593716309421285, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1819603719}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
 --- !u!1001 &1721809931181142288
 PrefabInstance:

@@ -25,9 +25,9 @@ public class StarManager : MonoBehaviour
     public void DecreaseStarValue(float value)
     {
         starValue -= value;
-        if (starValue < 0)
+        if (starValue < 1)
         {
-            starValue = 0;
+            starValue = 1;
         }
         OnStarValueChanged?.Invoke();
     }

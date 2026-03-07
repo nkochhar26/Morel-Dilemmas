@@ -49,17 +49,10 @@ MonoBehaviour:
   musicSource1: {fileID: 468519286387819165}
   musicSource2: {fileID: 772638972865279801}
   sceneMusic:
-  - {fileID: 8300000, guid: c92a220a5646a0e4e84a4cd1a32fc97b, type: 3}
-  - {fileID: 8300000, guid: 7de2d47665eac144ebb8779448af4606, type: 3}
-  - {fileID: 8300000, guid: 51f2a547e1a1ec24f9bac7c5bbf6644a, type: 3}
-  - {fileID: 8300000, guid: 51f2a547e1a1ec24f9bac7c5bbf6644a, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: c92a220a5646a0e4e84a4cd1a32fc97b, type: 3}
-  - {fileID: 8300000, guid: 7de2d47665eac144ebb8779448af4606, type: 3}
-  - {fileID: 8300000, guid: 51f2a547e1a1ec24f9bac7c5bbf6644a, type: 3}
+  - {fileID: 8300000, guid: 1b925155beab1454b9fca7816e9451e1, type: 3}
+  - {fileID: 8300000, guid: 69e923057ba57ab449f8bad0e05a17cc, type: 3}
+  - {fileID: 8300000, guid: 4bb0f7a243483b6448d614680e782d7a, type: 3}
+  - {fileID: 8300000, guid: 7ee9ec2fe8f1d134eb6c5157171393a6, type: 3}
 --- !u!82 &468519286387819165
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6abea54c31a1c1f439c98c0e430e2441, type: 3}
-  m_Name: Sentient Cremini
+  m_Name: Sentient Chantarelle
   m_EditorClassIdentifier: 
   starsGiven: 1
-  mushroom: {fileID: 11400000, guid: 4785494cf105bca4d9fa62b52a5b8d50, type: 2}
+  mushroom: {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}

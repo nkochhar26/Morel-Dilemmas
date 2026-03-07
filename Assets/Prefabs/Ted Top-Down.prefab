@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 7336168105118143426}
   - component: {fileID: 2443040398768430999}
   - component: {fileID: 1468230531480138101}
-  m_Layer: 0
+  - component: {fileID: 7684786659963772672}
+  - component: {fileID: 9103544672305001102}
+  m_Layer: 7
   m_Name: Ted Top-Down
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -224,6 +226,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6212114601502855824}
+--- !u!114 &7684786659963772672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798307731040782583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba43a35f4b449924fbf630d1c42a946b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6212114601502855824}
+--- !u!114 &9103544672305001102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798307731040782583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcd0269aedd248aa9bdbaef00131b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragKey: 304
+  dragDistance: 1
+  dragSpeed: 0.8
+  pickupRadius: 1.4
+  player: {fileID: 7272506582100777846}
 --- !u!1 &1992163767312127697
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3392504850783867554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FeetPosition
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -265,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5828881211638613544}
   - component: {fileID: 7708066513424171884}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928999785689267440}
   - component: {fileID: 3198348563017119968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dish
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6abea54c31a1c1f439c98c0e430e2441, type: 3}
-  m_Name: Devil's Tooth
+  m_Name: Sentient Shiitake
   m_EditorClassIdentifier: 
   starsGiven: 1
+  mushroom: {fileID: 11400000, guid: 7a5025deefa74fa439157f51ecadd9cf, type: 2}

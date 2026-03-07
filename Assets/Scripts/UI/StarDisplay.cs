@@ -20,6 +20,10 @@ public class StarDisplay : MonoBehaviour
     //TODO: Probably unncessary later on when stars are day based but temporary testing
     private void LoadStars(float starValue)
     {
+        foreach (Slider star in stars)
+        {
+            star.value = 0;
+        }
         int index = 0;
         while (starValue > 0)
         {

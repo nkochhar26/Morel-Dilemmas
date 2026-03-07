@@ -80,6 +80,8 @@ public class CustomerManager : MonoBehaviour
     public void RemoveCustomer(int tableIndex)
     {
         var customer = activeCustomers[tableIndex];
+
+        //TODO: Fix review manager
         if (customer != null)
         {
             ReviewManager.Instance.HandleCustomerRemoved();
