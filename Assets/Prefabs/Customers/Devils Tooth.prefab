@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 337016912799434384}
   - component: {fileID: 2257909991041497045}
   - component: {fileID: 7534172003580336899}
+  - component: {fileID: -5479468442624669924}
   m_Layer: 8
   m_Name: Devils Tooth
   m_TagString: Untagged
@@ -269,7 +270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7d0d01462e9e48be5570ec3c3857a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7534172003580336899}
+  spriteRenderer: {fileID: 7820845498765377739}
+  boxCollider: {fileID: 337016912799434384}
   customerType: {fileID: 11400000, guid: 32c7c05d6eb0c8d49a653e02b0ce7f7a, type: 2}
+  visionCone: {fileID: 8205151841369257290}
 --- !u!95 &7534172003580336899
 Animator:
   serializedVersion: 7
@@ -292,6 +297,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-5479468442624669924
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816804799055457130}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &6485005421776729404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,3 +386,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4367773798599568194, guid: 6f688dac4cba943538179cb5c4aaa91d, type: 3}
   m_PrefabInstance: {fileID: 6485005421776729404}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8205151841369257290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2891821353001746550, guid: 6f688dac4cba943538179cb5c4aaa91d, type: 3}
+  m_PrefabInstance: {fileID: 6485005421776729404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b459823ef5c149fca653bed1f6a6403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,14 +11,20 @@ public class ReceiptUI : MonoBehaviour
     {
         GameManager.Instance.orderManager.OnOrdersChanged += LoadReceipts;
         tables = FindFirstObjectByType<CustomerSpawner>().GetTables();
+        DestroyReceipts();
     }
 
-    public void LoadReceipts()
+    private void DestroyReceipts()
     {
         foreach (GameObject receipt in receipts)
         {
             Destroy(receipt);
         }
+    }
+
+    public void LoadReceipts()
+    {
+        DestroyReceipts();
         FoodItem[] currentOrders = GameManager.Instance.orderManager.GetCurrentOrders();
         for (int i = 0; i < currentOrders.Length; i++)
         {

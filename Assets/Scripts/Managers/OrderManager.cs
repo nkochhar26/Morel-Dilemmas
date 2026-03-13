@@ -2,6 +2,13 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum OrderResult
+{
+    Success,
+    Poisoned,
+    Invalid
+}
+
 public class OrderManager : MonoBehaviour
 {
     public List<FoodItem> dailyDishes;
@@ -10,6 +17,7 @@ public class OrderManager : MonoBehaviour
     public event Action OnHeldOrderChanged;
     public event Action OnOrdersChanged;
     private int heldOrderIndex;
+    public bool isPoisonous;
 
     public void Start()
     {
@@ -61,11 +69,12 @@ public class OrderManager : MonoBehaviour
         return currentOrders;
     }
 
-    public bool OrderDelivery(int tableNum)
+    //returns if the customer dies
+    public OrderResult OrderDelivery(int tableNum)
     {
         if (heldOrderIndex == -1 || currentOrders[tableNum] == null || currentOrders[heldOrderIndex] == null)
         {
-            return false;
+            return OrderResult.Invalid;
         }
         if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
         {
@@ -77,11 +86,19 @@ public class OrderManager : MonoBehaviour
 
             // TODO: Implement forumla
             GameManager.Instance.starManager.IncreaseStarValue(0.5f);
-            return true;
+            if (isPoisonous == false)
+            {
+                return OrderResult.Success;
+            }
+            else
+            {
+                isPoisonous = false;
+                return OrderResult.Poisoned;
+            }
         }
         else
         {
-            return false;
+            return OrderResult.Invalid;
         }
     }
 

@@ -9,7 +9,7 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 input;
     private Rigidbody2D rb;
 
-    private Vector3 dir;
+    public Vector3 dir;
     public Vector3 currDirection;
     private bool canMove = true;
 

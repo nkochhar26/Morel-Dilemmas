@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 3030546511793105329}
   - component: {fileID: 3515330208588723149}
   - component: {fileID: 4665562701956589193}
+  - component: {fileID: -4632935898872773581}
   m_Layer: 8
   m_Name: Chantarelle
   m_TagString: Untagged
@@ -269,7 +270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7d0d01462e9e48be5570ec3c3857a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4665562701956589193}
+  spriteRenderer: {fileID: 3250883288300737954}
+  boxCollider: {fileID: 3030546511793105329}
   customerType: {fileID: 11400000, guid: aca5cf05c0940204dafc2a1346b59e3f, type: 2}
+  visionCone: {fileID: 9131952934229490091}
 --- !u!95 &4665562701956589193
 Animator:
   serializedVersion: 7
@@ -292,6 +297,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-4632935898872773581
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011956530343009066}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8426937419418080845
 GameObject:
   m_ObjectHideFlags: 0

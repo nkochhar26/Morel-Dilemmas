@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8093107851392590816}
   - component: {fileID: 4390229965333831294}
   - component: {fileID: 8411825028889139655}
+  - component: {fileID: 7915640986772451743}
   m_Layer: 8
   m_Name: Cremini
   m_TagString: Untagged
@@ -151,7 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7d0d01462e9e48be5570ec3c3857a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8411825028889139655}
+  spriteRenderer: {fileID: 2402040598421289095}
+  boxCollider: {fileID: 8093107851392590816}
   customerType: {fileID: 11400000, guid: 14f472d68811bec4aaecc3347380c4ba, type: 2}
+  visionCone: {fileID: 323041093457207719}
 --- !u!95 &8411825028889139655
 Animator:
   serializedVersion: 7
@@ -174,6 +179,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &7915640986772451743
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437730016611834111}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5092230202288761171
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +381,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f688dac4cba943538179cb5c4aaa91d, type: 3}
+--- !u!114 &323041093457207719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2891821353001746550, guid: 6f688dac4cba943538179cb5c4aaa91d, type: 3}
+  m_PrefabInstance: {fileID: 3196003342133354961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b459823ef5c149fca653bed1f6a6403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1208951773601516179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4367773798599568194, guid: 6f688dac4cba943538179cb5c4aaa91d, type: 3}

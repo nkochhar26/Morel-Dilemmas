@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: 3Star
   m_EditorClassIdentifier: 
   starsGiven: 3
-  hasWritten: 0
-  writtenReview: Hello, I like going to visit islands!
+  writtenReview: Mid food.

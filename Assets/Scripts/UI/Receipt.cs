@@ -37,4 +37,9 @@ public class Receipt : MonoBehaviour
         table.SetOutline(false);
     }
 
+    private void OnDestroy()
+    {
+        table.SetOutline(false);
+    }
+
 }
