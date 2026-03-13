@@ -4,12 +4,20 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
+public enum SpawnType
+{
+    Ground,
+    Wood,
+    Both
+}
+
 [CreateAssetMenu(fileName = "MushroomItem", menuName = "MushroomItem", order = 0)]
 public class MushroomItem : FoodItem
 {
     [HideInInspector] public Sprite lookalikeSprite;  // lookalikes will be interchangeable but poisonous!
     [HideInInspector] public string lookalikeName; 
     [HideInInspector] public string lookalikeDescription;
+    [HideInInspector] public SpawnType spawnType;
 }
 
 [CustomEditor(typeof(MushroomItem))]
@@ -116,6 +124,7 @@ public class MushroomDataEditor : Editor
         
         var itemName = serializedObject.FindProperty("itemName");
         var itemDescription = serializedObject.FindProperty("itemDescription");
+        var spawnType = serializedObject.FindProperty("spawnType");
 
         // Food Item Section
         EditorGUILayout.Space(10);
@@ -123,6 +132,7 @@ public class MushroomDataEditor : Editor
         EditorGUILayout.BeginVertical("helpBox");
         EditorGUILayout.PropertyField(itemName, new GUIContent("Name"));
         EditorGUILayout.PropertyField(itemDescription, new GUIContent("Description"));
+        EditorGUILayout.PropertyField(spawnType, new GUIContent("Spawn Type"));
         script.defaultSprite = (Sprite)EditorGUILayout.ObjectField("Default Sprite", script.defaultSprite, typeof(Sprite), false);
         EditorGUILayout.EndVertical();
 

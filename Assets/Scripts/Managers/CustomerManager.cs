@@ -25,7 +25,10 @@ public class CustomerManager : MonoBehaviour
     public CustomerInfo[] activeCustomers =  new CustomerInfo[5];
     public List<GameObject> possibleCustomers = new List<GameObject>();  // could be stored in customer spawner as well but i didnt wanna keep reloading the info
     public Dictionary<CustomerType, GameObject> customerTypeToGameObject = new Dictionary<CustomerType, GameObject>();
-
+    public int numDayCustomers;
+    public int currDayCustomers;
+    public int completedDayCustomers;
+    
     public void Awake()
     {
         SetupDictionary();
@@ -70,8 +73,22 @@ public class CustomerManager : MonoBehaviour
         activeCustomers[tableIndex] = new CustomerInfo(customerType, tableIndex, takenOrder);
     }
 
+    /// <summary>
+    /// The RemoveCustomer function removes a customer by taking them out from a certain table.
+    /// Before removing the customer, it checks to see if there is a customer at the table.
+    /// If there is, then the HandleCustomerRemoved() function will be called from the ReviewManager.
+    /// Will calculate a rating for the dish once that has been implemented
+    /// </summary>
+    /// <param name="tableIndex"></param>
     public void RemoveCustomer(int tableIndex)
     {
+        var customer = activeCustomers[tableIndex];
+
+        //TODO: Fix review manager
+        if (customer != null)
+        {
+            ReviewManager.Instance.HandleCustomerRemoved();
+        }
         activeCustomers[tableIndex] = null;
     }
 
@@ -106,5 +123,38 @@ public class CustomerManager : MonoBehaviour
     public List<GameObject> GetPossibleCustomers()
     {
         return possibleCustomers;
+    }
+
+    public void NewDay()
+    {
+        numDayCustomers = numDayCustomers = GameManager.Instance.dayManager.GetDay() * 5;  //TODO: adjust based on design documents
+        currDayCustomers = 0;
+    }
+
+    public bool IsMaxDayCustomer()
+    {
+        if (currDayCustomers >= numDayCustomers)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void IncrementDayCustomer()
+    {
+        currDayCustomers += 1;
+    }
+
+    public void OnDespawnCustomer()
+    {
+        completedDayCustomers += 1;
+        if (numDayCustomers == completedDayCustomers)
+        {
+            Debug.Log("Show panel!!");
+            numDayCustomers = 0;
+            currDayCustomers = 0;
+            completedDayCustomers = 0;
+            GameObject.FindFirstObjectByType<FinishPanel>().ShowPanel();
+        }
     }
 }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour, IInteractable
 {
-    [SerializeField] private FoodItem pickupItem;
+    [SerializeField] protected FoodItem pickupItem;
     [SerializeField] private InventoryItem foodItemUI;
     public void OnInteract()
     {
-        //DialogueSystem.TriggerDialogue();
-        Debug.Log("Interacted with! " + this.gameObject.name);
+        GameManager.Instance.inventoryManager.AddFoodItem(pickupItem);
+        Destroy(this.gameObject);
     }
 
 
@@ -16,13 +16,11 @@ public class ItemPickup : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            //add to inventory
-            GameManager.Instance.inventoryManager.AddFoodItem(pickupItem);
-            Destroy(this.gameObject);
+            OnInteract();
         }
     }
 
-    void OnEnable()
+    void Start()
     {
         GetComponent<SpriteRenderer>().sprite = pickupItem.defaultSprite;
     }

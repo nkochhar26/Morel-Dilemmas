@@ -20,7 +20,10 @@ public class StarDisplay : MonoBehaviour
     //TODO: Probably unncessary later on when stars are day based but temporary testing
     private void LoadStars(float starValue)
     {
-        Debug.Log("LOADING STARRS: " + starValue);
+        foreach (Slider star in stars)
+        {
+            star.value = 0;
+        }
         int index = 0;
         while (starValue > 0)
         {
@@ -28,11 +31,9 @@ public class StarDisplay : MonoBehaviour
             {
                 starValue -= 1;
                 stars[index].value = 1;
-                Debug.Log("add star");
             }
             else
             {
-                Debug.Log("add decimal");
                 stars[index].value = starValue;
                 starValue = 0;
             }

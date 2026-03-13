@@ -1,0 +1,1261 @@
+fileFormatVersion: 2
+guid: 1e69107303d2227439255ce9db188265
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4705881847378730582
+    second: stump_0
+  - first:
+      213: -2639766939665922046
+    second: stump_1
+  - first:
+      213: 5036914302329050889
+    second: stump_2
+  - first:
+      213: -8922864190246912912
+    second: stump_3
+  - first:
+      213: 5336680381522201064
+    second: stump_4
+  - first:
+      213: 536609928095327016
+    second: stump_5
+  - first:
+      213: -528086219506944469
+    second: stump_6
+  - first:
+      213: -6837866568472592659
+    second: stump_7
+  - first:
+      213: 717468878162718767
+    second: stump_8
+  - first:
+      213: 5116323044382883075
+    second: stump_9
+  - first:
+      213: 8159634639035368633
+    second: stump_10
+  - first:
+      213: -5209642980289801826
+    second: stump_11
+  - first:
+      213: 8391498241569680547
+    second: stump_12
+  - first:
+      213: -5475474108187308357
+    second: stump_13
+  - first:
+      213: 9060584129977222548
+    second: stump_14
+  - first:
+      213: 6470197264130175450
+    second: stump_15
+  - first:
+      213: -5421134402516640109
+    second: stump_16
+  - first:
+      213: 8459803869204439427
+    second: stump_17
+  - first:
+      213: -3103256920722961152
+    second: stump_18
+  - first:
+      213: 5950855075941513122
+    second: stump_19
+  - first:
+      213: -2075244459218820310
+    second: stump_20
+  - first:
+      213: -5696538064535827709
+    second: stump_21
+  - first:
+      213: 214850661579866947
+    second: stump_22
+  - first:
+      213: 5054116018817500259
+    second: stump_23
+  - first:
+      213: -9102343552981793842
+    second: stump_24
+  - first:
+      213: 7344208629588527671
+    second: stump_25
+  - first:
+      213: 3099756844028828488
+    second: stump_26
+  - first:
+      213: 1798393008221522859
+    second: stump_27
+  - first:
+      213: 5804750208421624484
+    second: stump_28
+  - first:
+      213: 8104425756657510453
+    second: stump_29
+  - first:
+      213: 9144049289169829163
+    second: stump_30
+  - first:
+      213: 8418536895943292390
+    second: stump_31
+  - first:
+      213: -2156737483742044006
+    second: stump_32
+  - first:
+      213: 4542587110273569681
+    second: stump_33
+  - first:
+      213: -8726783895255291019
+    second: stump_34
+  - first:
+      213: 3730962735809011232
+    second: stump_35
+  - first:
+      213: -2573881883388715782
+    second: stump_36
+  - first:
+      213: -4059898374922900338
+    second: stump_37
+  - first:
+      213: -3325849476021920710
+    second: stump_38
+  - first:
+      213: -1873621583922973177
+    second: stump_39
+  - first:
+      213: 4948458843317287292
+    second: stump_40
+  - first:
+      213: 5842249306802940379
+    second: stump_41
+  - first:
+      213: 2678843675208468414
+    second: stump_42
+  - first:
+      213: 6218667983323168465
+    second: stump_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: stump_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 1453
+        width: 45
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ed7fb7b96ae4140800000000000000
+      internalID: 4705881847378730582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1462
+        width: 56
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 208846754f9ad5bd0800000000000000
+      internalID: -2639766939665922046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_2
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1468
+        width: 48
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 907586a0fd6b6e540800000000000000
+      internalID: 5036914302329050889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 1470
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c77495b4e9b2480800000000000000
+      internalID: -8922864190246912912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_4
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1494
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e94d643882bf0a40800000000000000
+      internalID: 5336680381522201064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_5
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1453
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 823e113f2eb627700800000000000000
+      internalID: 536609928095327016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_6
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 1462
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26728b916cdba8f0800000000000000
+      internalID: -528086219506944469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_7
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1471
+        width: 29
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deefba4a5940b11a0800000000000000
+      internalID: -6837866568472592659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_8
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1463
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f207944b426f4f900800000000000000
+      internalID: 717468878162718767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_9
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1456
+        width: 40
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d369093b4d00740800000000000000
+      internalID: 5116323044382883075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_10
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1479
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b40dacf878dc3170800000000000000
+      internalID: 8159634639035368633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_11
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1438
+        width: 32
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e911831bf41a3b7b0800000000000000
+      internalID: -5209642980289801826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_12
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1459
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ac631ec037947470800000000000000
+      internalID: 8391498241569680547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_13
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1360
+        width: 46
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe85a41f453304b0800000000000000
+      internalID: -5475474108187308357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_14
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1364
+        width: 10
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49585dcd249adbd70800000000000000
+      internalID: 9060584129977222548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_15
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1366
+        width: 21
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1fe239122cac950800000000000000
+      internalID: 6470197264130175450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_16
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1368
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e985abbf244c4b0800000000000000
+      internalID: -5421134402516640109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_17
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1369
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 381e76d0cc2476570800000000000000
+      internalID: 8459803869204439427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_18
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1371
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d0989b5440fe4d0800000000000000
+      internalID: -3103256920722961152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_19
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1371
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a7f25f992fa59250800000000000000
+      internalID: 5950855075941513122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_20
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1366
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a232a22d8204333e0800000000000000
+      internalID: -2075244459218820310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_21
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 1382
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30bc9d5dfc4d1f0b0800000000000000
+      internalID: -5696538064535827709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_22
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1365
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 343c933d98d4bf200800000000000000
+      internalID: 214850661579866947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_23
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1362
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3648a33cdb3d32640800000000000000
+      internalID: 5054116018817500259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_24
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 1347
+        width: 11
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec304fcc3cafda180800000000000000
+      internalID: -9102343552981793842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_25
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1350
+        width: 14
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a8bfa56dedbe560800000000000000
+      internalID: 7344208629588527671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_26
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1367
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84b9c6a2d6c840b20800000000000000
+      internalID: 3099756844028828488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_27
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1371
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab0795a9ec25f810800000000000000
+      internalID: 1798393008221522859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_28
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1375
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa78d64f8d9e8050800000000000000
+      internalID: 5804750208421624484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_29
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1371
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538e81e5944b87070800000000000000
+      internalID: 8104425756657510453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_30
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1270
+        width: 33
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d71a9916036ee70800000000000000
+      internalID: 9144049289169829163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_31
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1276
+        width: 29
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e5383b14b6a4d470800000000000000
+      internalID: 8418536895943292390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_32
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 1285
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9029c77faab112e0800000000000000
+      internalID: -2156737483742044006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_33
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1284
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193df1db8e28a0f30800000000000000
+      internalID: 4542587110273569681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_34
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1283
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b65b3a84c34e680800000000000000
+      internalID: -8726783895255291019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_35
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 1254
+        width: 35
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e9d1a37da07c330800000000000000
+      internalID: 3730962735809011232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_36
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 1311
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc5dc6601cb74cd0800000000000000
+      internalID: -2573881883388715782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_37
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 1247
+        width: 175
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ce88230f758a7c0800000000000000
+      internalID: -4059898374922900338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_38
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 982
+        width: 639
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c5b4dc58538d1d0800000000000000
+      internalID: -3325849476021920710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_39
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 1295
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70634c6a81f8ff5e0800000000000000
+      internalID: -1873621583922973177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_40
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 774
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c79319599157ca440800000000000000
+      internalID: 4948458843317287292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_41
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 782
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd9e24d7ac6d31150800000000000000
+      internalID: 5842249306802940379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_42
+      rect:
+        serializedVersion: 2
+        x: 1741
+        y: 787
+        width: 79
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb74a95212a2d2520800000000000000
+      internalID: 2678843675208468414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump_43
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 382
+        width: 452
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de721a35952d4650800000000000000
+      internalID: 6218667983323168465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      stump_0: 4705881847378730582
+      stump_1: -2639766939665922046
+      stump_10: 8159634639035368633
+      stump_11: -5209642980289801826
+      stump_12: 8391498241569680547
+      stump_13: -5475474108187308357
+      stump_14: 9060584129977222548
+      stump_15: 6470197264130175450
+      stump_16: -5421134402516640109
+      stump_17: 8459803869204439427
+      stump_18: -3103256920722961152
+      stump_19: 5950855075941513122
+      stump_2: 5036914302329050889
+      stump_20: -2075244459218820310
+      stump_21: -5696538064535827709
+      stump_22: 214850661579866947
+      stump_23: 5054116018817500259
+      stump_24: -9102343552981793842
+      stump_25: 7344208629588527671
+      stump_26: 3099756844028828488
+      stump_27: 1798393008221522859
+      stump_28: 5804750208421624484
+      stump_29: 8104425756657510453
+      stump_3: -8922864190246912912
+      stump_30: 9144049289169829163
+      stump_31: 8418536895943292390
+      stump_32: -2156737483742044006
+      stump_33: 4542587110273569681
+      stump_34: -8726783895255291019
+      stump_35: 3730962735809011232
+      stump_36: -2573881883388715782
+      stump_37: -4059898374922900338
+      stump_38: -3325849476021920710
+      stump_39: -1873621583922973177
+      stump_4: 5336680381522201064
+      stump_40: 4948458843317287292
+      stump_41: 5842249306802940379
+      stump_42: 2678843675208468414
+      stump_43: 6218667983323168465
+      stump_5: 536609928095327016
+      stump_6: -528086219506944469
+      stump_7: -6837866568472592659
+      stump_8: 717468878162718767
+      stump_9: 5116323044382883075
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

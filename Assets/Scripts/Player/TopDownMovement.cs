@@ -9,7 +9,7 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 input;
     private Rigidbody2D rb;
 
-    private Vector3 dir;
+    public Vector3 dir;
     public Vector3 currDirection;
     private bool canMove = true;
 
@@ -71,6 +71,10 @@ public class TopDownMovement : MonoBehaviour
     {
         if (GameManager.Instance.orderManager.GetHeldOrderIndex() >= 0)
         {
+            if (GameManager.Instance.orderManager.GetHeldOrder() == null)
+            {
+                Debug.Log("Weird thing happenning, index not -1 but no held order");
+            }
             dish.sprite = GameManager.Instance.orderManager.GetHeldOrder().defaultSprite;
         }
         else
@@ -81,6 +85,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void Interacting(GameObject interactedObj)
     {
+        Debug.Log("Interacting");
         interactedObj.GetComponent<IInteractable>().OnInteract();
     }
 
@@ -125,5 +130,10 @@ public class TopDownMovement : MonoBehaviour
     public Vector3 GetCurrDirection()
     {
         return currDirection;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.orderManager.OnHeldOrderChanged -= UpdateDish;
     }
 }

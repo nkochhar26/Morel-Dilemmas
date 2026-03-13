@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 8555777464289860506}
   - component: {fileID: 8864420851491180810}
   - component: {fileID: 2372981988764308445}
+  - component: {fileID: 322557177492980354}
+  - component: {fileID: 7118533387306255682}
+  - component: {fileID: 8744838985020244286}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,7 +54,10 @@ MonoBehaviour:
   orderManager: {fileID: 578260495059733337}
   inventoryManager: {fileID: 8555777464289860506}
   customerManager: {fileID: 8864420851491180810}
+  reviewManager: {fileID: 7118533387306255682}
   starManager: {fileID: 2372981988764308445}
+  currencyManager: {fileID: 322557177492980354}
+  dayManager: {fileID: 8744838985020244286}
 --- !u!114 &578260495059733337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleCustomers:
+  - {fileID: 8011956530343009066, guid: c613306c0746f534696f3974aee239a1, type: 3}
   - {fileID: 3437730016611834111, guid: 463ca7d2dd2d5904184196af9f70bff3, type: 3}
   - {fileID: 7816804799055457130, guid: 8a2aa3f97b318d4429c29edcf729e471, type: 3}
+  - {fileID: 5568258312532987616, guid: e15b6345fa665024cbcbb9a088632d1c, type: 3}
+  numDayCustomers: 0
+  currDayCustomers: 0
+  completedDayCustomers: 0
 --- !u!114 &2372981988764308445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +125,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starValue: 1
+--- !u!114 &322557177492980354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64593716309421285}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da5f6381b53240f9a2f3cf6d207ca30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrencyUIText: {fileID: 0}
+--- !u!114 &7118533387306255682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64593716309421285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe5f753c952e41129c32d2a2244f9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allReviews: []
+  currentReviews: []
+  dayNumber: 0
+--- !u!114 &8744838985020244286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64593716309421285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfea5b0b78eeae4da6409e59ee848bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  day: 0

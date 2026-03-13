@@ -25,3 +25,4 @@ MonoBehaviour:
   lookalikeSprite: {fileID: 0}
   lookalikeName: 
   lookalikeDescription: 
+  spawnType: 0

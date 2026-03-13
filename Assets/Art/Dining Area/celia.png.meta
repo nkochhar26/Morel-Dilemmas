@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: b689f1e1a0fb9cf4da18e286a2ad9def
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7925040550263503622
+    second: celia_0
+  - first:
+      213: -8082410094775024430
+    second: celia_1
+  - first:
+      213: 4308126392831321581
+    second: celia_2
+  - first:
+      213: -7734771161191031335
+    second: celia_3
+  - first:
+      213: -2035960876070231627
+    second: celia_4
+  - first:
+      213: 6247855956276301360
+    second: celia_5
+  - first:
+      213: -2423015042232562017
+    second: celia_6
+  - first:
+      213: -2453306894171236048
+    second: celia_7
+  - first:
+      213: -5336320381306700909
+    second: celia_8
+  - first:
+      213: -4332332959252851975
+    second: celia_9
+  - first:
+      213: -2548962345035079932
+    second: celia_10
+  - first:
+      213: 983412822244081853
+    second: celia_11
+  - first:
+      213: -1234473535831617396
+    second: celia_12
+  - first:
+      213: 5741206126914710906
+    second: celia_13
+  - first:
+      213: 4300144393931545598
+    second: celia_14
+  - first:
+      213: -780018816430801588
+    second: celia_15
+  - first:
+      213: -8961921410943926787
+    second: celia_16
+  - first:
+      213: -5713035638460733105
+    second: celia_17
+  - first:
+      213: 3420442473402902393
+    second: celia_18
+  - first:
+      213: 4975778632786400620
+    second: celia_19
+  - first:
+      213: -7461521367161567483
+    second: celia_20
+  - first:
+      213: -6624602738216531932
+    second: celia_21
+  - first:
+      213: 7670364621107298720
+    second: celia_22
+  - first:
+      213: 3862827439695570013
+    second: celia_23
+  - first:
+      213: 1067454275444215801
+    second: celia_24
+  - first:
+      213: -6102933315798586046
+    second: celia_25
+  - first:
+      213: -7023137108506019701
+    second: celia_26
+  - first:
+      213: -3218897160351099674
+    second: celia_27
+  - first:
+      213: 4398863722387355039
+    second: celia_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: celia_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 485
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60bb50d44666bfd60800000000000000
+      internalID: 7925040550263503622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 515
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d447eb57d285df80800000000000000
+      internalID: -8082410094775024430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 492
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5223cf02a89cb30800000000000000
+      internalID: 4308126392831321581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 494
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ddd5460c9298a490800000000000000
+      internalID: -7734771161191031335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 495
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1ad35ce50deb3e0800000000000000
+      internalID: -2035960876070231627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 494
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e48a1c3e7d4b650800000000000000
+      internalID: 6247855956276301360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_6
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 515
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ecc4228a8bf5ed0800000000000000
+      internalID: -2423015042232562017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_7
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 495
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03918efb06a14fdd0800000000000000
+      internalID: -2453306894171236048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 497
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b7980e2e491f5b0800000000000000
+      internalID: -5336320381306700909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_9
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 492
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f25403902670e3c0800000000000000
+      internalID: -4332332959252851975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_10
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 486
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f565e804440acd0800000000000000
+      internalID: -2548962345035079932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_11
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 485
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db04c6160c8c5ad00800000000000000
+      internalID: 983412822244081853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_12
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 458
+        width: 26
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80d2241cd44edee0800000000000000
+      internalID: -1234473535831617396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_13
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 445
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7d2c01ed8cdcaf40800000000000000
+      internalID: 5741206126914710906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_14
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 444
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb5d2b0b8e2dab30800000000000000
+      internalID: 4300144393931545598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_15
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 448
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d7588e401dc25f0800000000000000
+      internalID: -780018816430801588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_16
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 449
+        width: 46
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd38b385fbd0a380800000000000000
+      internalID: -8961921410943926787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_17
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 444
+        width: 20
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49a6641b5837b0b0800000000000000
+      internalID: -5713035638460733105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_18
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 459
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977a6d9ae4ad77f20800000000000000
+      internalID: 3420442473402902393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_19
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 460
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c655630cd448d0540800000000000000
+      internalID: 4975778632786400620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_20
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 463
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507095279d9537890800000000000000
+      internalID: -7461521367161567483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_21
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 465
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428068288eea014a0800000000000000
+      internalID: -6624602738216531932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_22
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 457
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a103dacbfb927a60800000000000000
+      internalID: 7670364621107298720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_23
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 456
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d54afab17158b9530800000000000000
+      internalID: 3862827439695570013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_24
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 460
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ff03d5020c50de00800000000000000
+      internalID: 1067454275444215801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_25
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 438
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24dade7eb760e4ba0800000000000000
+      internalID: -6102933315798586046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_26
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 455
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8872ae820ec88e90800000000000000
+      internalID: -7023137108506019701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_27
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 456
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e452cc461e2453d0800000000000000
+      internalID: -3218897160351099674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: celia_28
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 12
+        width: 474
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f953044df37eb0d30800000000000000
+      internalID: 4398863722387355039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      celia_0: 7925040550263503622
+      celia_1: -8082410094775024430
+      celia_10: -2548962345035079932
+      celia_11: 983412822244081853
+      celia_12: -1234473535831617396
+      celia_13: 5741206126914710906
+      celia_14: 4300144393931545598
+      celia_15: -780018816430801588
+      celia_16: -8961921410943926787
+      celia_17: -5713035638460733105
+      celia_18: 3420442473402902393
+      celia_19: 4975778632786400620
+      celia_2: 4308126392831321581
+      celia_20: -7461521367161567483
+      celia_21: -6624602738216531932
+      celia_22: 7670364621107298720
+      celia_23: 3862827439695570013
+      celia_24: 1067454275444215801
+      celia_25: -6102933315798586046
+      celia_26: -7023137108506019701
+      celia_27: -3218897160351099674
+      celia_28: 4398863722387355039
+      celia_3: -7734771161191031335
+      celia_4: -2035960876070231627
+      celia_5: 6247855956276301360
+      celia_6: -2423015042232562017
+      celia_7: -2453306894171236048
+      celia_8: -5336320381306700909
+      celia_9: -4332332959252851975
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

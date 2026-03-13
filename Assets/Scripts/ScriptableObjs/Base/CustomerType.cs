@@ -4,4 +4,5 @@ using UnityEngine;
 public class CustomerType : ScriptableObject
 {
     public float starsGiven;
+    public MushroomItem mushroom;
 }

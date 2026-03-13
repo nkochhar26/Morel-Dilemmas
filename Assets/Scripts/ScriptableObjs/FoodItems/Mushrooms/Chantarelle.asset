@@ -24,3 +24,4 @@ MonoBehaviour:
   lookalikeName: Jack-o-Lantern Mushroom
   lookalikeDescription: A lookalike to the chantarelle mushroom. It can glow in the
     dark at night!
+  spawnType: 0

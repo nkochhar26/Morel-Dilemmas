@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScaleAnimator : MonoBehaviour
 {
     public Animator animator;
-    public AlexTopDownMovement movement;
+    public TopDownMovement movement;
     public float baseScale = .2f;
     public Vector2 scaleBetweenMult = new Vector2(0.8f, 1.2f);
     public bool x, y, z;
