@@ -42,14 +42,24 @@ public class InventoryItem : MonoBehaviour
     {
         followmouse = false;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, targetLayer);
-        if (hit.collider != null)
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorld, targetLayer);
+        if (hit != null)
         {
-            hit.transform.GetComponent<DragFoodInto>().AddItem(this);
-            InventoryManager.foodItems.Remove(foodItem);
-        }else{
-            if (AlexKitchenInventoryUI.Instance != null) LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
+            DragFoodInto target = hit.GetComponent<DragFoodInto>();
+            if (target != null)
+            {
+                target.AddItem(this);
+                InventoryManager.foodItems.Remove(foodItem);
+                return;
+            }
+        }
+
+        if (AlexKitchenInventoryUI.Instance != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(
+                AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>()
+            );
         }
     }
 

@@ -1,0 +1,1729 @@
+fileFormatVersion: 2
+guid: ac1749c27faf1a94ea00e196aa205e3c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7653173467814461371
+    second: Mushroom Pasta_0
+  - first:
+      213: -4883225990476156141
+    second: Mushroom Pasta_1
+  - first:
+      213: 3621867834724415999
+    second: Mushroom Pasta_2
+  - first:
+      213: 2738731333737813834
+    second: Mushroom Pasta_3
+  - first:
+      213: -4269938486207095395
+    second: Mushroom Pasta_4
+  - first:
+      213: -7492592622892541736
+    second: Mushroom Pasta_5
+  - first:
+      213: 7786485795835136092
+    second: Mushroom Pasta_6
+  - first:
+      213: 1687524653186543953
+    second: Mushroom Pasta_7
+  - first:
+      213: -4476977295731439062
+    second: Mushroom Pasta_8
+  - first:
+      213: 7426342686821998847
+    second: Mushroom Pasta_9
+  - first:
+      213: -173006738553780467
+    second: Mushroom Pasta_10
+  - first:
+      213: 8975345505278320583
+    second: Mushroom Pasta_11
+  - first:
+      213: -1069185402525057304
+    second: Mushroom Pasta_12
+  - first:
+      213: -1434120852301786012
+    second: Mushroom Pasta_13
+  - first:
+      213: 5856062876401346081
+    second: Mushroom Pasta_14
+  - first:
+      213: -213149491103767134
+    second: Mushroom Pasta_15
+  - first:
+      213: -5849197583059633089
+    second: Mushroom Pasta_16
+  - first:
+      213: -6318097423234138914
+    second: Mushroom Pasta_17
+  - first:
+      213: 940615446680300673
+    second: Mushroom Pasta_18
+  - first:
+      213: -7593358808196110166
+    second: Mushroom Pasta_19
+  - first:
+      213: 553563076320295906
+    second: Mushroom Pasta_20
+  - first:
+      213: 2461230619286542064
+    second: Mushroom Pasta_21
+  - first:
+      213: 3143971527750434764
+    second: Mushroom Pasta_22
+  - first:
+      213: -5399307918405694003
+    second: Mushroom Pasta_23
+  - first:
+      213: -8418230032632307534
+    second: Mushroom Pasta_24
+  - first:
+      213: 2702955472709913635
+    second: Mushroom Pasta_25
+  - first:
+      213: 628541336572038441
+    second: Mushroom Pasta_26
+  - first:
+      213: -5863874649151735253
+    second: Mushroom Pasta_27
+  - first:
+      213: -6526877933057006074
+    second: Mushroom Pasta_28
+  - first:
+      213: -992296351837530796
+    second: Mushroom Pasta_29
+  - first:
+      213: 2140248776496778027
+    second: Mushroom Pasta_30
+  - first:
+      213: -9021466915638228118
+    second: Mushroom Pasta_31
+  - first:
+      213: 9083402843940573565
+    second: Mushroom Pasta_32
+  - first:
+      213: -8813850020437746381
+    second: Mushroom Pasta_33
+  - first:
+      213: 5616116429035136595
+    second: Mushroom Pasta_34
+  - first:
+      213: -6747087792355212635
+    second: Mushroom Pasta_35
+  - first:
+      213: -7880325259410782707
+    second: Mushroom Pasta_36
+  - first:
+      213: 4534995856658686489
+    second: Mushroom Pasta_37
+  - first:
+      213: 3601026980010933495
+    second: Mushroom Pasta_38
+  - first:
+      213: -7064473678357254427
+    second: Mushroom Pasta_39
+  - first:
+      213: -4091227550093244869
+    second: Mushroom Pasta_40
+  - first:
+      213: 3001410400454897793
+    second: Mushroom Pasta_41
+  - first:
+      213: 4452467258651559076
+    second: Mushroom Pasta_42
+  - first:
+      213: 6505148818111275844
+    second: Mushroom Pasta_43
+  - first:
+      213: 7317701385168974551
+    second: Mushroom Pasta_44
+  - first:
+      213: 5021049018708543104
+    second: Mushroom Pasta_45
+  - first:
+      213: -3192822067113563460
+    second: Mushroom Pasta_46
+  - first:
+      213: 2781402017705749129
+    second: Mushroom Pasta_47
+  - first:
+      213: -6803398175318316958
+    second: Mushroom Pasta_48
+  - first:
+      213: -5784186627236792685
+    second: Mushroom Pasta_49
+  - first:
+      213: -7791195569429952763
+    second: Mushroom Pasta_50
+  - first:
+      213: 5704386157285891916
+    second: Mushroom Pasta_51
+  - first:
+      213: -5991797831698413739
+    second: Mushroom Pasta_52
+  - first:
+      213: -5002792947182925663
+    second: Mushroom Pasta_53
+  - first:
+      213: -61120506179012726
+    second: Mushroom Pasta_54
+  - first:
+      213: 7232788268333943336
+    second: Mushroom Pasta_55
+  - first:
+      213: -7764202789856032458
+    second: Mushroom Pasta_56
+  - first:
+      213: 7618516471724086954
+    second: Mushroom Pasta_57
+  - first:
+      213: -8806032323956344585
+    second: Mushroom Pasta_58
+  - first:
+      213: -630773547107134879
+    second: Mushroom Pasta_59
+  - first:
+      213: -5004688233078399476
+    second: Mushroom Pasta_60
+  - first:
+      213: -9045129079107337167
+    second: Mushroom Pasta_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mushroom Pasta_0
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1238
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540897e77477ac590800000000000000
+      internalID: -7653173467814461371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_1
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 1251
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313b6b785db4b3cb0800000000000000
+      internalID: -4883225990476156141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_2
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1207
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff979203b95734230800000000000000
+      internalID: 3621867834724415999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_3
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1218
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a479caa33ade10620800000000000000
+      internalID: 2738731333737813834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_4
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 1218
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9d5bd4e1912eb4c0800000000000000
+      internalID: -4269938486207095395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_5
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 1218
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d817c9f4b6f40890800000000000000
+      internalID: -7492592622892541736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_6
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 1219
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58c065a3972f0c60800000000000000
+      internalID: 7786485795835136092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_7
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 1206
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 151f5ee2bba4b6710800000000000000
+      internalID: 1687524653186543953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_8
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 1201
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2a407c9ed49ed1c0800000000000000
+      internalID: -4476977295731439062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_9
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 1222
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff06854c35baf0760800000000000000
+      internalID: 7426342686821998847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_10
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 1201
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d07c0c4b94b599df0800000000000000
+      internalID: -173006738553780467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_11
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1191
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf53820f25de8c70800000000000000
+      internalID: 8975345505278320583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_12
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 1192
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eef57b8a8d7921f0800000000000000
+      internalID: -1069185402525057304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_13
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 1196
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4645291eeaaf81ce0800000000000000
+      internalID: -1434120852301786012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_14
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 1165
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 126214ac82ae44150800000000000000
+      internalID: 5856062876401346081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_15
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 1174
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a564bacaadba0df0800000000000000
+      internalID: -213149491103767134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_16
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 1167
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3c38a0e9c973dea0800000000000000
+      internalID: -5849197583059633089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_17
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 1182
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc71d74edb9158a0800000000000000
+      internalID: -6318097423234138914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_18
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1167
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18cef91e3ccbd0d00800000000000000
+      internalID: 940615446680300673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_19
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1174
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa823613568fe9690800000000000000
+      internalID: -7593358808196110166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_20
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 1176
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebf7dc5fa6aea700800000000000000
+      internalID: 553563076320295906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_21
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 1162
+        width: 50
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f693e4453c082220800000000000000
+      internalID: 2461230619286542064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_22
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1161
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccfb18f6271a1ab20800000000000000
+      internalID: 3143971527750434764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_23
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 1172
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd89721e0ec115b0800000000000000
+      internalID: -5399307918405694003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_24
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 1161
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b02d6313607c2b80800000000000000
+      internalID: -8418230032632307534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_25
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 1147
+        width: 11
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32c829a7ea3d28520800000000000000
+      internalID: 2702955472709913635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_26
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 1160
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92d8605f30709b800800000000000000
+      internalID: 628541336572038441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_27
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 1160
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2a74e123155f9ea0800000000000000
+      internalID: -5863874649151735253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_28
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 1163
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6062dcbc91fdb65a0800000000000000
+      internalID: -6526877933057006074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_29
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1142
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 455dec4b9b7aa32f0800000000000000
+      internalID: -992296351837530796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_30
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1133
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b0e063ce0b3bd10800000000000000
+      internalID: 2140248776496778027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_31
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 1157
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6bc17453af4dc280800000000000000
+      internalID: -9021466915638228118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_32
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 1135
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d71d9d8b2cabe0e70800000000000000
+      internalID: 9083402843940573565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_33
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 1147
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33d1d3caa1aeea580800000000000000
+      internalID: -8813850020437746381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_34
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1145
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 356efd1032470fd40800000000000000
+      internalID: 5616116429035136595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_35
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 289
+        width: 1390
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a20b4486678d52a0800000000000000
+      internalID: -6747087792355212635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_36
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 1127
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d064846ade573a290800000000000000
+      internalID: -7880325259410782707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_37
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1132
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 912620644ba8fee30800000000000000
+      internalID: 4534995856658686489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_38
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1140
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fc362295fa69f130800000000000000
+      internalID: 3601026980010933495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_39
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 1129
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee2b646e92f5fd90800000000000000
+      internalID: -7064473678357254427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_40
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 1122
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36866d283a0937c0800000000000000
+      internalID: -4091227550093244869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_41
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1136
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 180f6486bd627a920800000000000000
+      internalID: 3001410400454897793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_42
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 1140
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4cbfda1675acd30800000000000000
+      internalID: 4452467258651559076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_43
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 1137
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4432392626ee64a50800000000000000
+      internalID: 6505148818111275844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_44
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 1128
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2716393a2bd8560800000000000000
+      internalID: 7317701385168974551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_45
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1141
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08642f7da795ea540800000000000000
+      internalID: 5021049018708543104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_46
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1118
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbaeaaa0f31d0b3d0800000000000000
+      internalID: -3192822067113563460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_47
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1120
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ae7ea0666899620800000000000000
+      internalID: 2781402017705749129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_48
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1129
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2686c9ec7697591a0800000000000000
+      internalID: -6803398175318316958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_49
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1119
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3967cf098e07abfa0800000000000000
+      internalID: -5784186627236792685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_50
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 1129
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507c78cb8ec10e390800000000000000
+      internalID: -7791195569429952763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_51
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1099
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f5ea6acfc0a2f40800000000000000
+      internalID: 5704386157285891916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_52
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1113
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55709a33e9bd8dca0800000000000000
+      internalID: -5991797831698413739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_53
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 1099
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a8055a0252829ab0800000000000000
+      internalID: -5002792947182925663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_54
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 1101
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8735b4393bd62ff0800000000000000
+      internalID: -61120506179012726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_55
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 1112
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a48adeb96006460800000000000000
+      internalID: 7232788268333943336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_56
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1118
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639c88af2b2004490800000000000000
+      internalID: -7764202789856032458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_57
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1105
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa6939ccd586ab960800000000000000
+      internalID: 7618516471724086954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_58
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 1116
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f879f9f140bac580800000000000000
+      internalID: -8806032323956344585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_59
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1113
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16257f60dca0f37f0800000000000000
+      internalID: -630773547107134879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_60
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1118
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0ed8c76196cb8ab0800000000000000
+      internalID: -5004688233078399476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom Pasta_61
+      rect:
+        serializedVersion: 2
+        x: 1490
+        y: 1112
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1344044960f397280800000000000000
+      internalID: -9045129079107337167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Mushroom Pasta_0: -7653173467814461371
+      Mushroom Pasta_1: -4883225990476156141
+      Mushroom Pasta_10: -173006738553780467
+      Mushroom Pasta_11: 8975345505278320583
+      Mushroom Pasta_12: -1069185402525057304
+      Mushroom Pasta_13: -1434120852301786012
+      Mushroom Pasta_14: 5856062876401346081
+      Mushroom Pasta_15: -213149491103767134
+      Mushroom Pasta_16: -5849197583059633089
+      Mushroom Pasta_17: -6318097423234138914
+      Mushroom Pasta_18: 940615446680300673
+      Mushroom Pasta_19: -7593358808196110166
+      Mushroom Pasta_2: 3621867834724415999
+      Mushroom Pasta_20: 553563076320295906
+      Mushroom Pasta_21: 2461230619286542064
+      Mushroom Pasta_22: 3143971527750434764
+      Mushroom Pasta_23: -5399307918405694003
+      Mushroom Pasta_24: -8418230032632307534
+      Mushroom Pasta_25: 2702955472709913635
+      Mushroom Pasta_26: 628541336572038441
+      Mushroom Pasta_27: -5863874649151735253
+      Mushroom Pasta_28: -6526877933057006074
+      Mushroom Pasta_29: -992296351837530796
+      Mushroom Pasta_3: 2738731333737813834
+      Mushroom Pasta_30: 2140248776496778027
+      Mushroom Pasta_31: -9021466915638228118
+      Mushroom Pasta_32: 9083402843940573565
+      Mushroom Pasta_33: -8813850020437746381
+      Mushroom Pasta_34: 5616116429035136595
+      Mushroom Pasta_35: -6747087792355212635
+      Mushroom Pasta_36: -7880325259410782707
+      Mushroom Pasta_37: 4534995856658686489
+      Mushroom Pasta_38: 3601026980010933495
+      Mushroom Pasta_39: -7064473678357254427
+      Mushroom Pasta_4: -4269938486207095395
+      Mushroom Pasta_40: -4091227550093244869
+      Mushroom Pasta_41: 3001410400454897793
+      Mushroom Pasta_42: 4452467258651559076
+      Mushroom Pasta_43: 6505148818111275844
+      Mushroom Pasta_44: 7317701385168974551
+      Mushroom Pasta_45: 5021049018708543104
+      Mushroom Pasta_46: -3192822067113563460
+      Mushroom Pasta_47: 2781402017705749129
+      Mushroom Pasta_48: -6803398175318316958
+      Mushroom Pasta_49: -5784186627236792685
+      Mushroom Pasta_5: -7492592622892541736
+      Mushroom Pasta_50: -7791195569429952763
+      Mushroom Pasta_51: 5704386157285891916
+      Mushroom Pasta_52: -5991797831698413739
+      Mushroom Pasta_53: -5002792947182925663
+      Mushroom Pasta_54: -61120506179012726
+      Mushroom Pasta_55: 7232788268333943336
+      Mushroom Pasta_56: -7764202789856032458
+      Mushroom Pasta_57: 7618516471724086954
+      Mushroom Pasta_58: -8806032323956344585
+      Mushroom Pasta_59: -630773547107134879
+      Mushroom Pasta_6: 7786485795835136092
+      Mushroom Pasta_60: -5004688233078399476
+      Mushroom Pasta_61: -9045129079107337167
+      Mushroom Pasta_7: 1687524653186543953
+      Mushroom Pasta_8: -4476977295731439062
+      Mushroom Pasta_9: 7426342686821998847
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,23 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cynthia/Main Menu.unity
     guid: 672e3c13a3c75e14f9c064d9c6187a1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cynthia/Forage Area.unity
     guid: 3d85a585b7d7ab74586285589fc38043
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cynthia/Restaurant.unity
     guid: 3ed93986890ad77418f80af89057d092
   - enabled: 0
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/Main Menu - Copy.unity
     guid: a8785af7d8e18eb46a9b63066c5124e6
   - enabled: 0
-    path: Assets/Scenes/Forage Area.unity
+    path: Assets/Scenes/Forage Area - Copy.unity
     guid: bf7d9af0c74df424683cf64b59705a10
   - enabled: 0
-    path: Assets/Scenes/Restaurant.unity
+    path: Assets/Scenes/Restaurant - copy.unity
     guid: df30e1d2925cf2145884d8dc86eb87b9
   - enabled: 0
     path: Assets/Scenes/Cynthia/Dining Area.unity
@@ -47,6 +47,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Raymond/Restaurant.unity
     guid: a59d9851854614b4387f7a021d0e10dc
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 6974a7b170807d6429f9a1fe3de610c1
+  - enabled: 1
+    path: Assets/Scenes/Forage Area.unity
+    guid: a537233626c44474ca1b6ac94780b991
+  - enabled: 1
+    path: Assets/Scenes/Restaurant.unity
+    guid: 66d93f0fc0c4923459837328d3095b2f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
