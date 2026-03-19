@@ -22,9 +22,19 @@ public class MushroomPickup : ItemPickup
         isLookalike = mushroom.isLookalike;
     }
 
+    private void OnMouseEnter(){
+        CursorManager.changeTo(CursorType.HAND_OPEN);
+    }
+    private void OnMouseExit(){
+        CursorManager.changeTo(CursorType.ARROW);
+    }
+    private void OnMouseDown(){
+        CursorManager.changeTo(CursorType.HAND_GRAB);
+    }
     private void OnMouseUp()
     {
         OnInteract();
+        CursorManager.changeTo(CursorType.ARROW);
     }
 
 }
