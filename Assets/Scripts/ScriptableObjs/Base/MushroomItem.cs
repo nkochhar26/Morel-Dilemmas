@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+#endif
+
 using UnityEngine;
 
 public enum SpawnType
@@ -12,6 +16,7 @@ public enum SpawnType
 }
 
 [CreateAssetMenu(fileName = "MushroomItem", menuName = "MushroomItem", order = 0)]
+
 public class MushroomItem : FoodItem
 {
     [HideInInspector] public Sprite lookalikeSprite;  // lookalikes will be interchangeable but poisonous!
@@ -20,6 +25,7 @@ public class MushroomItem : FoodItem
     [HideInInspector] public SpawnType spawnType;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(MushroomItem))]
 public class MushroomDataEditor : Editor
 {
@@ -270,3 +276,4 @@ public class MushroomDataEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif

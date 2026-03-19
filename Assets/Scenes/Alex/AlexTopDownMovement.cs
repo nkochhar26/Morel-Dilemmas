@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using UnityEditor.UIElements;
+#endif
 using UnityEngine;
 
 // also contains code on interacting with interactables

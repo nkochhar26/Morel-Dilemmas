@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+#endif
+
 using UnityEngine;
 
 public enum tags
@@ -48,6 +51,7 @@ public class FoodItem : ScriptableObject
     [HideInInspector] public recipe recipe;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(FoodItem))]
 public class ItemDataEditor : Editor
 {
@@ -285,3 +289,4 @@ public class ItemDataEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
