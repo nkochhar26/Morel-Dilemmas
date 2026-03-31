@@ -89,12 +89,6 @@ public class CustomerManager : MonoBehaviour
     public void RemoveCustomer(int tableIndex)
     {
         var customer = activeCustomers[tableIndex];
-
-        //TODO: Fix review manager
-        if (customer != null)
-        {
-            ReviewManager.Instance.HandleCustomerRemoved();
-        }
         activeCustomers[tableIndex] = null;
     }
 
@@ -156,7 +150,6 @@ public class CustomerManager : MonoBehaviour
         completedDayCustomers += 1;
         if (numDayCustomers == completedDayCustomers)
         {
-            Debug.Log("Show panel!!");
             numDayCustomers = 0;
             currDayCustomers = 0;
             completedDayCustomers = 0;

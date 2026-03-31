@@ -30,6 +30,11 @@ public class ReviewManager : MonoBehaviour
         float starsGiven = Random.Range(1, 5 + 1);
         AddReview(starsGiven);
     }
+    public void HandleCustomerRemoved(float starsGiven)
+    {
+        AddReview(starsGiven);
+    }
+
 
     /// <summary>
     /// When the manager runs up, it will set the day number to zero to signify a new game.

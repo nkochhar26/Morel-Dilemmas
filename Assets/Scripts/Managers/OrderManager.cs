@@ -69,6 +69,24 @@ public class OrderManager : MonoBehaviour
         return currentOrders;
     }
 
+
+    public void ClearOrder(int tableNum)
+    {
+        RemoveOrder(tableNum);
+        RemoveHeldOrder();
+        currentOrders[tableNum] = null;
+        GameManager.Instance.customerManager.RemoveCustomer(tableNum);
+    }
+
+
+    // when you take too long and the customer leaves, called in customer
+    public void OrderTooLong(int tableNum)
+    {
+        ClearOrder(tableNum);
+        GameManager.Instance.starManager.DecreaseStarValue(0.25f);  //TODO: figure out thsi part
+        ReviewManager.Instance.HandleCustomerRemoved(1f);  //TODO: change to special 'took too long' review
+    }
+
     //returns if the customer dies
     public OrderResult OrderDelivery(int tableNum)
     {
@@ -78,11 +96,9 @@ public class OrderManager : MonoBehaviour
         }
         if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
         {
-            //TODO: reputation and money calculation
-            RemoveOrder(tableNum);
-            RemoveHeldOrder();
-            currentOrders[tableNum] = null;
-            GameManager.Instance.customerManager.RemoveCustomer(tableNum);
+            isPoisonous = false;
+            ClearOrder(tableNum);
+            ReviewManager.Instance.HandleCustomerRemoved();
 
             // TODO: Implement forumla
             GameManager.Instance.starManager.IncreaseStarValue(0.25f);
@@ -92,7 +108,6 @@ public class OrderManager : MonoBehaviour
             }
             else
             {
-                isPoisonous = false;
                 return OrderResult.Poisoned;
             }
         }

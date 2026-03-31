@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /*states of the customer
@@ -26,11 +27,25 @@ public class Customer : MonoBehaviour, IInteractable
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private CustomerType customerType;
     [SerializeField] private VisionCone visionCone;
-    public CustomerState state;
+    [SerializeField] private Slider timer;
+    private CustomerState state;
+    private float currTimer;
+    private float maxTimer = 30f;   //TODO hardcoded atm
 
     public void Start()
     {
         orderedDish = GameManager.Instance.orderManager.SelectRandomDish();
+        currTimer = 0f;
+    }
+
+    public void Update()
+    {
+        currTimer += Time.deltaTime;
+        timer.value = 1f - (currTimer / maxTimer);
+        if (currTimer >= maxTimer)
+        {
+            LeaveRestaurant();
+        }
     }
 
     public void OnInteract(GameObject player)
@@ -67,20 +82,7 @@ public class Customer : MonoBehaviour, IInteractable
             GameManager.Instance.orderManager.AddOrder(tableNum, orderedDish);  
             Debug.Log("Ordered: " + orderedDish.name + " at table " + tableNum);    
             SetTakenOrder(true);
-            
-            /** 
-                TODO: Replace following conditions with outcome (fail/success) of order and
-                quality of mushrooms used in a dish
-            */
-            // if (Random.Range(0f, 1f) < 0.5f)
-            // {
-            //     Debug.Log("Success condition");
-            //     GameManager.Instance.currencyManager.AddCurrency(1);
-            // } else
-            // {
-            //     Debug.Log("Recipe Fail Condition");
-            //     GameManager.Instance.currencyManager.DecreaseCurrency(1);
-            // }
+        
         }
     }
 
@@ -115,5 +117,13 @@ public class Customer : MonoBehaviour, IInteractable
     public void SetState(CustomerState state)
     {
         this.state = state;
+    }
+
+    private void LeaveRestaurant()
+    {
+        //remove from customer manager
+        GameManager.Instance.orderManager.OrderTooLong(tableNum); // needs to be able to trigger end of day
+        GameManager.Instance.customerManager.OnDespawnCustomer();
+        Destroy(this.gameObject);
     }
 }
