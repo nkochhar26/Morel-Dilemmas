@@ -157,6 +157,7 @@ MonoBehaviour:
   boxCollider: {fileID: 8093107851392590816}
   customerType: {fileID: 11400000, guid: 14f472d68811bec4aaecc3347380c4ba, type: 2}
   visionCone: {fileID: 323041093457207719}
+  state: 0
 --- !u!95 &8411825028889139655
 Animator:
   serializedVersion: 7
@@ -205,7 +206,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &5092230202288761171
 GameObject:
   m_ObjectHideFlags: 0

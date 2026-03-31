@@ -23,6 +23,7 @@ public class CustomerManager : MonoBehaviour
     public static CustomerManager Instance { get; private set; }
 
     public CustomerInfo[] activeCustomers =  new CustomerInfo[5];
+    public CustomerType waitingCustomer = null;
     public List<GameObject> possibleCustomers = new List<GameObject>();  // could be stored in customer spawner as well but i didnt wanna keep reloading the info
     public Dictionary<CustomerType, GameObject> customerTypeToGameObject = new Dictionary<CustomerType, GameObject>();
     public int numDayCustomers;
@@ -71,6 +72,11 @@ public class CustomerManager : MonoBehaviour
     public void AddCustomer(CustomerType customerType, int tableIndex, bool takenOrder)
     {
         activeCustomers[tableIndex] = new CustomerInfo(customerType, tableIndex, takenOrder);
+    }
+
+    public void SetWaitingCustomer(CustomerType customerType)
+    {
+        waitingCustomer = customerType;
     }
 
     /// <summary>
@@ -156,5 +162,14 @@ public class CustomerManager : MonoBehaviour
             completedDayCustomers = 0;
             GameObject.FindFirstObjectByType<FinishPanel>().ShowPanel();
         }
+    }
+
+    public bool CheckTableFull(int tableNum)
+    {
+        if (activeCustomers[tableNum] != null)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -4,7 +4,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
 {
     [SerializeField] protected FoodItem pickupItem;
     [SerializeField] private InventoryItem foodItemUI;
-    public void OnInteract()
+    public void OnInteract(GameObject player)
     {
         GameManager.Instance.inventoryManager.AddFoodItem(pickupItem);
         Destroy(this.gameObject);
@@ -16,7 +16,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            OnInteract();
+            OnInteract(other.gameObject);
         }
     }
 

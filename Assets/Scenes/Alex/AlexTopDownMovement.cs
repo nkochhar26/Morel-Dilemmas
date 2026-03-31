@@ -76,7 +76,7 @@ public class AlexTopDownMovement : MonoBehaviour
 
     private void Interacting(GameObject interactedObj)
     {
-        interactedObj.GetComponent<IInteractable>().OnInteract();
+        interactedObj.GetComponent<IInteractable>().OnInteract(this.gameObject);
     }
 
 
