@@ -11,4 +11,12 @@ public class CursorOnHover : MonoBehaviour
     {
         CursorManager.changeTo(CursorType.ARROW);
     }
+
+    public void toHand(){
+        CursorManager.changeTo(CursorType.HAND_OPEN);
+    }
+
+    public void toGrab(){
+        CursorManager.changeTo(CursorType.HAND_GRAB);
+    }
 }
