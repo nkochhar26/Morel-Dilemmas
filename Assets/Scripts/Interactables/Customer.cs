@@ -12,6 +12,7 @@ public class Customer : MonoBehaviour, IInteractable
     [SerializeField] private CustomerType customerType;
     [SerializeField] private VisionCone visionCone;
 
+    public CustomerType CustomerType => customerType;
     public void Start()
     {
         orderedDish = GameManager.Instance.orderManager.SelectRandomDish();
