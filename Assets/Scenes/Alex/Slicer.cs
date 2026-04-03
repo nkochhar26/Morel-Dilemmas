@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-public class EzyMeshSlicer : MonoBehaviour
+public class EzyMeshSlicer : DragFoodInto
 {
     Vector3 p1World, p2World;
     public float sliceTime = 1;
@@ -139,7 +139,7 @@ public class EzyMeshSlicer : MonoBehaviour
                                 modifiedFoodItem.foodItem = parentInventoryItem.foodItem.foodItem;
                                 modifiedFoodItem.starQuality = parentInventoryItem.foodItem.starQuality;
                                 modifiedFoodItem.sliceOperation = rootSliceOperation;
-                                modifiedFoodItem.tags = tags.chopped;
+                                modifiedFoodItem.tags.Add(tags.chopped);
                                 
                                 GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem);
                                 

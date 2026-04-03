@@ -14,9 +14,10 @@ public class WorkStation : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
+        if(Camera.main.GetComponent<CameraTransition>().zoomedWorkstation!=null) return;
 
         StopAllCoroutines();
         touching = true;
@@ -26,7 +27,7 @@ public class WorkStation : MonoBehaviour
 
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
