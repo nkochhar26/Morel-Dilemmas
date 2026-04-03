@@ -12,11 +12,12 @@ public class SliceOperation
     public bool lowerDestroyed = false;
 }
 
+[System.Serializable]
 public class FoodItemObject
 {
     public FoodItem foodItem;
     public float starQuality;
-    public tags tags;
+    public List<tags> tags;
     public SliceOperation sliceOperation;
 }
 public class InventoryManager : MonoBehaviour

@@ -34,10 +34,10 @@ public class MushroomDataEditor : Editor
 
     private ReorderableList GetRecipeList(FoodItem script)
     {
-        if (script.recipe.foodList == null) script.recipe.foodList = new List<TaggedFoodItem>();
+        if (script.recipe.foodList == null) script.recipe.foodList = new List<FoodItemQualifiers>();
         if (recipeList != null) return recipeList;
 
-        recipeList = new ReorderableList(script.recipe.foodList, typeof(TaggedFoodItem), true, true, true, true);
+        recipeList = new ReorderableList(script.recipe.foodList, typeof(FoodItemQualifiers), true, true, true, true);
         recipeList.drawHeaderCallback = r => EditorGUI.LabelField(r, "Ingredients");
         recipeList.elementHeight = 24;
         
@@ -126,7 +126,7 @@ public class MushroomDataEditor : Editor
         // Initialize lists if null
         if (script.SingleIngredientRecipes == null) script.SingleIngredientRecipes = new List<SingleIngredientRecipe>();
         if (script.recipe == null) script.recipe = new recipe();
-        if (script.recipe.foodList == null) script.recipe.foodList = new List<TaggedFoodItem>();
+        if (script.recipe.foodList == null) script.recipe.foodList = new List<FoodItemQualifiers>();
         
         var itemName = serializedObject.FindProperty("itemName");
         var itemDescription = serializedObject.FindProperty("itemDescription");
