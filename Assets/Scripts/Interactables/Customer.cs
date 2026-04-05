@@ -32,6 +32,7 @@ public class Customer : MonoBehaviour, IInteractable
     private float currTimer;
     private float maxTimer = 30f;   //TODO hardcoded atm
 
+    public CustomerType CustomerType => customerType;
     public void Start()
     {
         orderedDish = GameManager.Instance.orderManager.SelectRandomDish();

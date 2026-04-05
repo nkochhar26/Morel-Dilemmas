@@ -98,8 +98,7 @@ GameObject:
   - component: {fileID: 7680188667008449685}
   - component: {fileID: 2257259782125541308}
   - component: {fileID: 3538273513987427297}
-  - component: {fileID: 3142877980741332903}
-  - component: {fileID: 8384858714322150812}
+  - component: {fileID: 3806237497965426530}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -212,7 +211,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.018861294, y: 0.59499526}
+  m_Offset: {x: 0, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -222,9 +221,9 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.5673676, y: 1.5439544}
+  m_Size: {x: 3, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &3142877980741332903
+--- !u!114 &3806237497965426530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,20 +232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7802863511956601933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ac4e3aaec09d141836be05b889a406, type: 3}
+  m_Script: {fileID: 11500000, guid: c337eea46c8000a41a33647560e4f88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlined: {fileID: 5497585670794360993}
---- !u!114 &8384858714322150812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802863511956601933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e63537cd7abb049ab977f3359795ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tableNum: 0
+  outlined: {fileID: 0}

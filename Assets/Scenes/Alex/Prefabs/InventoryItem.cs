@@ -12,23 +12,23 @@ public class InventoryItem : MonoBehaviour
     public MeshRenderer meshRenderer;
     public Image image;
     public FoodItemObject foodItem;
-    
+
     void Start()
     {
         originalSize = transform.localScale;
         originalSizeWorld = transform.lossyScale;
     }
-    
+
     public void Grow()
     {
-        if(transform.parent.GetComponent<DragFoodInto>() == null) return;
+        if (transform.parent.GetComponent<DragFoodInto>() == null) return;
         //transform.DOScale(originalSize * 1.5f, 0.2f);
     }
 
     public void Shrink()
     {
         StopFollowMouse();
-        if(transform.parent.GetComponent<DragFoodInto>() == null) return;
+        if (transform.parent.GetComponent<DragFoodInto>() == null) return;
         //transform.DOScale(originalSize * 1f, 0.2f);
     }
 
@@ -48,12 +48,19 @@ public class InventoryItem : MonoBehaviour
         {
             hit.transform.GetComponent<DragFoodInto>().AddItem(this);
             InventoryManager.foodItems.Remove(foodItem);
-        }else{
-            if (AlexKitchenInventoryUI.Instance != null) LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
+        }
+        else
+        {
+            if (AlexKitchenInventoryUI.Instance != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
+                CursorManager.changeTo(CursorType.HAND_OPEN);
+            }
         }
     }
 
-    public void SetItem(FoodItemObject item){
+    public void SetItem(FoodItemObject item)
+    {
         foodItem = item;
         meshRenderer.material.mainTexture = item.foodItem.defaultSprite.texture;
         image.sprite = item.foodItem.defaultSprite;

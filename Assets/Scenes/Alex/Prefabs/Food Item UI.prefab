@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7221375764830611776}
   - component: {fileID: 220977731420358177}
   - component: {fileID: 2107951092604240379}
+  - component: {fileID: 5370149784553653977}
   m_Layer: 5
   m_Name: Quad
   m_TagString: Untagged
@@ -114,6 +115,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5370149784553653977
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862989178778865606}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &4109604413297572975
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +165,7 @@ GameObject:
   - component: {fileID: 9213109245909482898}
   - component: {fileID: 8452012753997680668}
   - component: {fileID: 914824624426779023}
+  - component: {fileID: 8979914285792900953}
   m_Layer: 5
   m_Name: Food Item UI
   m_TagString: Untagged
@@ -266,6 +304,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 8979914285792900953}
+          m_TargetAssemblyTypeName: CursorOnHover, Assembly-CSharp
+          m_MethodName: toHand
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -273,6 +323,18 @@ MonoBehaviour:
         - m_Target: {fileID: 914824624426779023}
           m_TargetAssemblyTypeName: InventoryItem, Assembly-CSharp
           m_MethodName: Shrink
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8979914285792900953}
+          m_TargetAssemblyTypeName: CursorOnHover, Assembly-CSharp
+          m_MethodName: ToPointer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -332,3 +394,15 @@ MonoBehaviour:
     m_Bits: 512
   meshRenderer: {fileID: 220977731420358177}
   image: {fileID: 6763840595460258229}
+--- !u!114 &8979914285792900953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109604413297572975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a800698256b964699da778cbf543f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
