@@ -14,14 +14,16 @@ public class CustomerDialogue : MonoBehaviour
     private string bodyNode;
     private string servedNode;
     
-    
-    
     private Customer customer;
     void Awake()
     {
         customer = GetComponentInParent<Customer>();
         GetDialogueNodeNames();
-        Debug.Log(customer.CustomerType.name);
+    }
+
+    private void Start()
+    {
+        ShowIdleDialogue();
     }
 
     public void ShowOrderDialogue()

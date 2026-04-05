@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BodyDragController : MonoBehaviour
+public class FollowTed : MonoBehaviour
 {
     [Header("Drag Settings")]
     [SerializeField] private KeyCode dragKey = KeyCode.LeftShift; // Changed from Space since Space is used for interaction
@@ -11,12 +11,16 @@ public class BodyDragController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform player; // Reference to Ted
 
-    private GameObject currentBody;
+    private GameObject currentFollow;
     private bool isDragging = false;
     private Vector3 bodyTargetPosition;
     private Rigidbody2D playerRb;
     private float originalPlayerSpeed;
     private TopDownMovement topDownMovement; // Your existing movement script
+
+    public bool isGuiding;
+    private int oldSortingOrder;
+    private int tedSortingOrder;
 
     void Start()
     {
@@ -31,16 +35,31 @@ public class BodyDragController : MonoBehaviour
         {
             originalPlayerSpeed = topDownMovement.moveSpeed;
         }
+
+        isGuiding = false;
+        tedSortingOrder = this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+        oldSortingOrder = -1;
     }
 
     void Update()
     {
         HandleDragInput();
 
-        if (isDragging && currentBody != null)
+        // if (isDragging && currentFollow != null)
+        // {
+        //     UpdateFollowPosition();
+        // }
+
+        // if (isDragging == false && isGuidingCustomer)
+        // {
+            
+        // }
+
+        if (currentFollow != null)
         {
-            UpdateBodyPosition();
+            UpdateFollowPosition();
         }
+
     }
 
     void HandleDragInput()
@@ -66,13 +85,17 @@ public class BodyDragController : MonoBehaviour
 
     bool CanStartDragging()
     {
+        if (isGuiding)
+        {
+            return false;
+        }
         // Check if there's a body nearby to drag
         Collider2D[] nearbyBodies = Physics2D.OverlapCircleAll(player.position, pickupRadius);
         foreach (Collider2D col in nearbyBodies)
         {
             if (col.CompareTag("Body"))
             {
-                currentBody = col.gameObject;
+                currentFollow = col.gameObject;
                 return true;
             }
         }
@@ -81,19 +104,50 @@ public class BodyDragController : MonoBehaviour
         return false;
     }
 
+    private void SetFollowingLayer()
+    {
+        SpriteRenderer spriteRenderer = currentFollow.GetComponent<SpriteRenderer>();
+        //toggles
+        if (oldSortingOrder == -1)
+        {
+            oldSortingOrder = spriteRenderer.sortingOrder;
+            spriteRenderer.sortingOrder = tedSortingOrder - 1;
+        }
+        else
+        {
+            spriteRenderer.sortingOrder = oldSortingOrder;
+            oldSortingOrder = -1;
+        }
+    }
+
+
+    public void SetIsGuiding(GameObject customer)
+    {
+        // you are holding a dead body, do not guide a customer rn
+        if (isDragging == true)
+        {
+            return;
+        }
+        isGuiding = true;
+        currentFollow = customer;
+        customer.GetComponent<BoxCollider2D>().enabled = false;  // set back to true once guided
+        SetFollowingLayer();
+    }
+
     void StartDragging()
     {
         isDragging = true;
 
         // Slow down player while dragging
-        // if (topDownMovement != null)
-        // {
-        //     topDownMovement.moveSpeed = originalPlayerSpeed * dragSpeed;
-        // }
+        if (topDownMovement != null)
+        {
+            topDownMovement.moveSpeed = originalPlayerSpeed * dragSpeed;
+        }
 
         // Notify vision cone system that player is now suspicious
         MusicManager.instance.SceneMusic(3);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(true);
+        SetFollowingLayer();
     }
 
     void StopDragging()
@@ -101,23 +155,23 @@ public class BodyDragController : MonoBehaviour
         isDragging = false;
 
         // Restore player speed
-        // if (topDownMovement != null)
-        // {
-        //     topDownMovement.moveSpeed = originalPlayerSpeed;
-        // }
+        if (topDownMovement != null)
+        {
+            topDownMovement.moveSpeed = originalPlayerSpeed;
+        }
 
         // Notify vision cone system
         MusicManager.instance.SceneMusic(2);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(false);
-
-        currentBody = null;
+        SetFollowingLayer();
+        currentFollow = null;
     }
 
-    void UpdateBodyPosition()
+    void UpdateFollowPosition()
     {
-        if (currentBody == null)
+        if (currentFollow == null)
         {
-            Debug.LogWarning("UpdateBodyPosition called but currentBody is null!");
+            Debug.LogWarning("Nobody following rn");
             return;
         }
 
@@ -148,16 +202,77 @@ public class BodyDragController : MonoBehaviour
         }
 
         // Move body to target position (faster lerp for more responsive feel)
-        currentBody.transform.position = Vector3.Lerp(
-            currentBody.transform.position,
+        currentFollow.transform.position = Vector3.Lerp(
+            currentFollow.transform.position,
             bodyTargetPosition,
             Time.deltaTime * 15f
         );
     }
 
+    public void StopFollow()
+    {
+        Debug.Log("You are now stopping follow");
+        currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
+        SetFollowingLayer();
+        currentFollow = null;
+        isGuiding=false;
+    }
+
+    // void UpdateBodyPosition()
+    // {
+    //     if (currentBody == null)
+    //     {
+    //         Debug.LogWarning("UpdateBodyPosition called but currentBody is null!");
+    //         return;
+    //     }
+
+    //     // Get movement direction from TopDownMovement component
+    //     Vector3 movementDir = Vector3.zero;
+
+    //     if (topDownMovement != null)
+    //     {
+    //         movementDir = topDownMovement.currDirection.normalized;
+    //     }
+
+    //     // Fallback: use velocity if TopDownMovement direction isn't available
+    //     if (movementDir.magnitude < 0.1f && playerRb != null)
+    //     {
+    //         movementDir = playerRb.linearVelocity.normalized;
+    //     }
+
+    //     // Calculate target position behind player
+    //     if (movementDir.magnitude > 0.1f)
+    //     {
+    //         // Body follows behind the player's movement direction
+    //         bodyTargetPosition = player.position - movementDir * dragDistance;
+    //     }
+    //     else
+    //     {
+    //         // If not moving, position body slightly behind player's last known direction
+    //         bodyTargetPosition = player.position - topDownMovement.currDirection.normalized * dragDistance;
+    //     }
+
+    //     // Move body to target position (faster lerp for more responsive feel)
+    //     currentBody.transform.position = Vector3.Lerp(
+    //         currentBody.transform.position,
+    //         bodyTargetPosition,
+    //         Time.deltaTime * 15f
+    //     );
+    // }
+
     public bool IsDragging()
     {
         return isDragging;
+    }
+
+    public bool GetIsGuiding()
+    {
+        return isGuiding;
+    }
+
+    public GameObject GetCurrentFollow()
+    {
+        return currentFollow;
     }
 
     void OnDrawGizmosSelected()

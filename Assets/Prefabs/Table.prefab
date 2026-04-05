@@ -99,7 +99,8 @@ GameObject:
   - component: {fileID: 2257259782125541308}
   - component: {fileID: 3538273513987427297}
   - component: {fileID: 3806237497965426530}
-  m_Layer: 0
+  - component: {fileID: 1012847169333646682}
+  m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7802863511956601933}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.91, y: -0.8, z: 9.320208}
   m_LocalScale: {x: 0.45471454, y: 0.31609297, z: 1}
   m_ConstrainProportionsScale: 0
@@ -165,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 33ceecd59db67014cac17937f87257c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,7 +212,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -3}
+  m_Offset: {x: 0.014437914, y: -0.9230585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,7 +222,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 0.5}
+  m_Size: {x: 6.6094413, y: 4.653883}
   m_EdgeRadius: 0
 --- !u!114 &3806237497965426530
 MonoBehaviour:
@@ -235,4 +236,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c337eea46c8000a41a33647560e4f88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlined: {fileID: 0}
+  outlined: {fileID: 5497585670794360993}
+--- !u!114 &1012847169333646682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802863511956601933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e63537cd7abb049ab977f3359795ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tableNum: 0

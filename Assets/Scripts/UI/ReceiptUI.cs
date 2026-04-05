@@ -10,7 +10,7 @@ public class ReceiptUI : MonoBehaviour
     public void Start()
     {
         GameManager.Instance.orderManager.OnOrdersChanged += LoadReceipts;
-        tables = FindFirstObjectByType<CustomerSpawner>().GetTables();
+        // tables = FindFirstObjectByType<CustomerSpawner>().GetTables();
         DestroyReceipts();
     }
 

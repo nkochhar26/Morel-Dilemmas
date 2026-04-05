@@ -23,6 +23,7 @@ public class CustomerManager : MonoBehaviour
     public static CustomerManager Instance { get; private set; }
 
     public CustomerInfo[] activeCustomers =  new CustomerInfo[5];
+    public CustomerType waitingCustomer = null;
     public List<GameObject> possibleCustomers = new List<GameObject>();  // could be stored in customer spawner as well but i didnt wanna keep reloading the info
     public Dictionary<CustomerType, GameObject> customerTypeToGameObject = new Dictionary<CustomerType, GameObject>();
     public int numDayCustomers;
@@ -73,6 +74,11 @@ public class CustomerManager : MonoBehaviour
         activeCustomers[tableIndex] = new CustomerInfo(customerType, tableIndex, takenOrder);
     }
 
+    public void SetWaitingCustomer(CustomerType customerType)
+    {
+        waitingCustomer = customerType;
+    }
+
     /// <summary>
     /// The RemoveCustomer function removes a customer by taking them out from a certain table.
     /// Before removing the customer, it checks to see if there is a customer at the table.
@@ -83,12 +89,6 @@ public class CustomerManager : MonoBehaviour
     public void RemoveCustomer(int tableIndex)
     {
         var customer = activeCustomers[tableIndex];
-
-        //TODO: Fix review manager
-        if (customer != null)
-        {
-            ReviewManager.Instance.HandleCustomerRemoved();
-        }
         activeCustomers[tableIndex] = null;
     }
 
@@ -150,11 +150,19 @@ public class CustomerManager : MonoBehaviour
         completedDayCustomers += 1;
         if (numDayCustomers == completedDayCustomers)
         {
-            Debug.Log("Show panel!!");
             numDayCustomers = 0;
             currDayCustomers = 0;
             completedDayCustomers = 0;
             GameObject.FindFirstObjectByType<FinishPanel>().ShowPanel();
         }
+    }
+
+    public bool CheckTableFull(int tableNum)
+    {
+        if (activeCustomers[tableNum] != null)
+        {
+            return true;
+        }
+        return false;
     }
 }

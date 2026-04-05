@@ -86,7 +86,7 @@ public class TopDownMovement : MonoBehaviour
     private void Interacting(GameObject interactedObj)
     {
         Debug.Log("Interacting");
-        interactedObj.GetComponent<IInteractable>().OnInteract();
+        interactedObj.GetComponent<IInteractable>().OnInteract(this.gameObject);
     }
 
 
