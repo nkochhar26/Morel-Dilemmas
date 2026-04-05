@@ -28,6 +28,7 @@ public class Customer : MonoBehaviour, IInteractable
     [SerializeField] private CustomerType customerType;
     [SerializeField] private VisionCone visionCone;
     [SerializeField] private Slider timer;
+    [SerializeField] private CustomerDialogue customerDialogue;
     private CustomerState state;
     private float currTimer;
     private float maxTimer = 30f;   //TODO hardcoded atm
@@ -81,7 +82,8 @@ public class Customer : MonoBehaviour, IInteractable
         {
             SoundManager.PlaySound(SoundType.NPC, 0, 1);
             GameManager.Instance.orderManager.AddOrder(tableNum, orderedDish);  
-            Debug.Log("Ordered: " + orderedDish.name + " at table " + tableNum);    
+            Debug.Log("Ordered: " + orderedDish.name + " at table " + tableNum); 
+            customerDialogue.ShowOrderDialogue();
             SetTakenOrder(true);
         
         }

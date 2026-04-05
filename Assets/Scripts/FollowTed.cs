@@ -19,6 +19,8 @@ public class FollowTed : MonoBehaviour
     private TopDownMovement topDownMovement; // Your existing movement script
 
     public bool isGuiding;
+    private int oldSortingOrder;
+    private int tedSortingOrder;
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class FollowTed : MonoBehaviour
         }
 
         isGuiding = false;
+        tedSortingOrder = this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+        oldSortingOrder = -1;
     }
 
     void Update()
@@ -100,6 +104,23 @@ public class FollowTed : MonoBehaviour
         return false;
     }
 
+    private void SetFollowingLayer()
+    {
+        SpriteRenderer spriteRenderer = currentFollow.GetComponent<SpriteRenderer>();
+        //toggles
+        if (oldSortingOrder == -1)
+        {
+            oldSortingOrder = spriteRenderer.sortingOrder;
+            spriteRenderer.sortingOrder = tedSortingOrder - 1;
+        }
+        else
+        {
+            spriteRenderer.sortingOrder = oldSortingOrder;
+            oldSortingOrder = -1;
+        }
+    }
+
+
     public void SetIsGuiding(GameObject customer)
     {
         // you are holding a dead body, do not guide a customer rn
@@ -110,6 +131,7 @@ public class FollowTed : MonoBehaviour
         isGuiding = true;
         currentFollow = customer;
         customer.GetComponent<BoxCollider2D>().enabled = false;  // set back to true once guided
+        SetFollowingLayer();
     }
 
     void StartDragging()
@@ -125,6 +147,7 @@ public class FollowTed : MonoBehaviour
         // Notify vision cone system that player is now suspicious
         MusicManager.instance.SceneMusic(3);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(true);
+        SetFollowingLayer();
     }
 
     void StopDragging()
@@ -140,7 +163,7 @@ public class FollowTed : MonoBehaviour
         // Notify vision cone system
         MusicManager.instance.SceneMusic(2);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(false);
-
+        SetFollowingLayer();
         currentFollow = null;
     }
 
@@ -190,6 +213,7 @@ public class FollowTed : MonoBehaviour
     {
         Debug.Log("You are now stopping follow");
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
+        SetFollowingLayer();
         currentFollow = null;
         isGuiding=false;
     }

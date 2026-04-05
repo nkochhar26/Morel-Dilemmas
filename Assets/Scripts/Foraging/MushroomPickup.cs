@@ -33,7 +33,7 @@ public class MushroomPickup : ItemPickup
     }
     private void OnMouseUp()
     {
-        OnInteract();
+        OnInteract(null);
         CursorManager.changeTo(CursorType.ARROW);
     }
 
