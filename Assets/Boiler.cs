@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boiler : DragFoodInto
 {
@@ -9,11 +10,21 @@ public class Boiler : DragFoodInto
     public List<InventoryItem> itemsInBoiler = new List<InventoryItem>();
     public Vector2 boilParticleRateRange = new Vector2(10, 50);
     public ParticleSystem boilParticles;
+    public Slider timeRemaining;
 
     void Start()
     {
+        timeRemaining.value = 0;
         tempTime = time;
     }
+
+    public override void AddItem(InventoryItem item)
+    {
+        Debug.Log("IN BOILDER ADD ITEM");
+        tempTime = time;
+        base.AddItem(item);
+    }
+
     void FixedUpdate()
     {
         foreach(Transform child in transform)
@@ -35,6 +46,7 @@ public class Boiler : DragFoodInto
         if(itemsInBoiler.Count>0)
         {
             tempTime-=Time.deltaTime;
+            timeRemaining.value = 1 - (tempTime * 1.0f / time);
             var emission = boilParticles.emission;
             emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
 
@@ -53,7 +65,10 @@ public class Boiler : DragFoodInto
                 emission.rateOverTime = boilParticleRateRange.x;
             }
                 
-        }else tempTime = time;
+        }else
+        {
+            tempTime = time;
+        }
 
     }
 }

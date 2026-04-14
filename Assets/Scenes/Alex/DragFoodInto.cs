@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public abstract class DragFoodInto : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
-    public void AddItem(InventoryItem item)
+    public virtual void AddItem(InventoryItem item)
     {
         Vector3 itemScale = item.transform.lossyScale;
         Vector3 itemPosition = item.transform.position;
