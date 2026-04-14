@@ -16,12 +16,14 @@ public class OrderManager : MonoBehaviour
 
     public event Action OnHeldOrderChanged;
     public event Action OnOrdersChanged;
-    private int heldOrderIndex;
+    //private int heldOrderIndex;
+    private FoodItemObject heldDish;
     public bool isPoisonous;
 
     public void Start()
     {
-        heldOrderIndex = -1;
+        //heldOrderIndex = -1;
+        heldDish = null;
     }
 
     public void AddOrder(int tableNum, FoodItem recipe)
@@ -36,16 +38,16 @@ public class OrderManager : MonoBehaviour
         OnOrdersChanged?.Invoke();
     }
 
-    public void SetHeldOrder(int heldOrderIndex)
+    public void SetHeldOrder(FoodItemObject dish)
     {
-        this.heldOrderIndex = heldOrderIndex;
+        heldDish = dish;
         OnHeldOrderChanged?.Invoke();
 
     }
 
     public void RemoveHeldOrder()
     {
-        heldOrderIndex = -1;
+        heldDish = null;
         OnHeldOrderChanged?.Invoke();
     }
 
@@ -54,15 +56,15 @@ public class OrderManager : MonoBehaviour
         return currentOrders[tableNum];
     }
 
-    public int GetHeldOrderIndex()
+    public FoodItemObject GetHeldOrder()
     {
-        return heldOrderIndex;
+        return heldDish;
     }
 
-    public FoodItem GetHeldOrder()
-    {
-        return currentOrders[heldOrderIndex];
-    }
+    //public FoodItemObject GetHeldOrder()
+    //{
+    //    return heldDish;
+    //}
 
     public FoodItem[] GetCurrentOrders()
     {
@@ -90,11 +92,12 @@ public class OrderManager : MonoBehaviour
     //returns if the customer dies
     public OrderResult OrderDelivery(int tableNum)
     {
-        if (heldOrderIndex == -1 || currentOrders[tableNum] == null || currentOrders[heldOrderIndex] == null)
+        if (heldDish == null || currentOrders[tableNum] == null)
         {
             return OrderResult.Invalid;
         }
-        if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
+        //if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
+        if (currentOrders[tableNum].itemName == heldDish.foodItem.itemName)   // so that if they order similar dishes can be interchangeable
         {
             isPoisonous = false;
             ClearOrder(tableNum);
@@ -125,5 +128,10 @@ public class OrderManager : MonoBehaviour
     public FoodItem SelectRandomDish()
     {
         return dailyDishes[UnityEngine.Random.Range(0, dailyDishes.Count)];
+    }
+
+    public List<FoodItem> GetDishes()
+    {
+        return dailyDishes;
     }
 }

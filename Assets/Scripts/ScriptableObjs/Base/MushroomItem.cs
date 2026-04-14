@@ -44,18 +44,18 @@ public class MushroomDataEditor : Editor
         recipeList.drawElementCallback = (rect, i, a, f) =>
         {
             var item = script.recipe.foodList[i];
-            if (item.tag == null) item.tag = new List<tags>();
+            if (item.tag == null) item.tag = new List<CookingStep>();
             float hw = rect.width / 2 - 5;
 
             item.foodItem = (FoodItem)EditorGUI.ObjectField(new Rect(rect.x, rect.y + 2, hw, 20), item.foodItem, typeof(FoodItem), false);
 
             if (EditorGUI.DropdownButton(new Rect(rect.x + hw + 10, rect.y + 2, hw, 20),
-                new GUIContent(item.tag.Count > 0 ? string.Join(", ", item.tag) : "Tags..."), FocusType.Keyboard))
+                new GUIContent(item.tag.Count > 0 ? string.Join(", ", item.tag) : "CookingStep..."), FocusType.Keyboard))
             {
                 var menu = new GenericMenu();
-                foreach (tags t in Enum.GetValues(typeof(tags)))
+                foreach (CookingStep t in Enum.GetValues(typeof(CookingStep)))
                 {
-                    tags tag = t;
+                    CookingStep tag = t;
                     menu.AddItem(new GUIContent(tag.ToString()), item.tag.Contains(tag), () =>
                     {
                         if (item.tag.Contains(tag)) item.tag.Remove(tag); else item.tag.Add(tag);
@@ -71,11 +71,11 @@ public class MushroomDataEditor : Editor
     private ReorderableList GetTagList(FoodItem script, int idx)
     {
         if (script.SingleIngredientRecipes[idx].tag == null)
-            script.SingleIngredientRecipes[idx].tag = new List<tags>();
+            script.SingleIngredientRecipes[idx].tag = new List<CookingStep>();
 
         if (!tagLists.ContainsKey(idx))
         {
-            var list = new ReorderableList(script.SingleIngredientRecipes[idx].tag, typeof(tags), true, false, true, true);
+            var list = new ReorderableList(script.SingleIngredientRecipes[idx].tag, typeof(CookingStep), true, false, true, true);
             
             list.drawElementCallback = (rect, i, a, f) =>
             {
@@ -86,9 +86,9 @@ public class MushroomDataEditor : Editor
             list.onAddDropdownCallback = (rect, l) =>
             {
                 var menu = new GenericMenu();
-                foreach (tags t in Enum.GetValues(typeof(tags)))
+                foreach (CookingStep t in Enum.GetValues(typeof(CookingStep)))
                 {
-                    tags tag = t;
+                    CookingStep tag = t;
                     menu.AddItem(new GUIContent(tag.ToString()), false, () =>
                     {
                         script.SingleIngredientRecipes[idx].tag.Add(tag);
@@ -125,7 +125,7 @@ public class MushroomDataEditor : Editor
         
         // Initialize lists if null
         if (script.SingleIngredientRecipes == null) script.SingleIngredientRecipes = new List<SingleIngredientRecipe>();
-        if (script.recipe == null) script.recipe = new recipe();
+        if (script.recipe == null) script.recipe = new Recipe();
         if (script.recipe.foodList == null) script.recipe.foodList = new List<FoodItemQualifiers>();
         
         var itemName = serializedObject.FindProperty("itemName");
@@ -159,7 +159,7 @@ public class MushroomDataEditor : Editor
         EditorGUILayout.BeginVertical("helpBox");
         
         GetRecipeList(script).DoLayoutList();
-        script.recipe.step = (tags)EditorGUILayout.EnumPopup("Step", script.recipe.step);
+        script.recipe.step = (CookingStep)EditorGUILayout.EnumPopup("Step", script.recipe.step);
 
         // Recipe sentence preview
         if (script.recipe.foodList != null && script.recipe.foodList.Count > 0)
@@ -236,7 +236,7 @@ public class MushroomDataEditor : Editor
                 script.SingleIngredientRecipes[i].itemSprite, typeof(Sprite), false,
                 GUILayout.Width(60), GUILayout.Height(60));
 
-            // Tags
+            // CookingStep
             GetTagList(script, i).DoLayoutList();
             
             EditorGUILayout.Space(10);

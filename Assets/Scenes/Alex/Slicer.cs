@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.Rendering;
 public class EzyMeshSlicer : DragFoodInto
 {
     Vector3 p1World, p2World;
@@ -20,6 +21,9 @@ public class EzyMeshSlicer : DragFoodInto
     private List<Vector3> outlinePoints = new List<Vector3>();
     private float outlineDistance;
     private SliceOperation rootSliceOperation; // Root of the slice tree
+    
+    //game stuff
+    private Mushroom currentMushroom; //needs to accomodate poisonous mushrooms
 
     void Start()
     {
@@ -139,7 +143,7 @@ public class EzyMeshSlicer : DragFoodInto
                                 modifiedFoodItem.foodItem = parentInventoryItem.foodItem.foodItem;
                                 modifiedFoodItem.starQuality = parentInventoryItem.foodItem.starQuality;
                                 modifiedFoodItem.sliceOperation = rootSliceOperation;
-                                modifiedFoodItem.tags.Add(tags.chopped);
+                                modifiedFoodItem.tags.Add(CookingStep.Chop);
                                 
                                 GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem);
                                 

@@ -69,13 +69,13 @@ public class TopDownMovement : MonoBehaviour
 
     private void UpdateDish()
     {
-        if (GameManager.Instance.orderManager.GetHeldOrderIndex() >= 0)
+        if (GameManager.Instance.orderManager.GetHeldOrder() != null)
         {
             if (GameManager.Instance.orderManager.GetHeldOrder() == null)
             {
                 Debug.Log("Weird thing happenning, index not -1 but no held order");
             }
-            dish.sprite = GameManager.Instance.orderManager.GetHeldOrder().defaultSprite;
+            dish.sprite = GameManager.Instance.orderManager.GetHeldOrder().foodItem.defaultSprite;
         }
         else
         {

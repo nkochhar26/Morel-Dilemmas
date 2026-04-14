@@ -18,8 +18,8 @@ MonoBehaviour:
   SingleIngredientRecipes: []
   recipe:
     foodList:
-    - tag: 01000000
+    - tag: 
       foodItem: {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
     - tag: 
       foodItem: {fileID: 11400000, guid: 26b3fa4b5a161b641b2167c08edde5bc, type: 2}
-    step: 4
+    step: 0

@@ -17,7 +17,7 @@ public class FoodItemObject
 {
     public FoodItem foodItem;
     public float starQuality;
-    public List<tags> tags;
+    public List<CookingStep> tags;
     public SliceOperation sliceOperation;
 }
 public class InventoryManager : MonoBehaviour

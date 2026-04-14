@@ -41,7 +41,8 @@ public class Boiler : DragFoodInto
             if(tempTime<=0){                
                 tempTime = time;
 
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(tags.boiled, itemsInBoiler.ConvertAll(i=>i.foodItem));
+                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
+                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
                 
                 foreach(InventoryItem item in itemsInBoiler)
                 {
@@ -53,7 +54,6 @@ public class Boiler : DragFoodInto
             }
                 
         }else tempTime = time;
-
 
     }
 }
