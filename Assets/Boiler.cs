@@ -20,9 +20,24 @@ public class Boiler : DragFoodInto
 
     public override void AddItem(InventoryItem item)
     {
-        Debug.Log("IN BOILDER ADD ITEM");
         tempTime = time;
         base.AddItem(item);
+    }
+
+    public void ClearBoiler()
+    {
+        var emission = boilParticles.emission;
+        
+        foreach(InventoryItem item in itemsInBoiler)
+        {
+            Destroy(item.gameObject);
+        }
+        itemsInBoiler.Clear();
+
+        emission.rateOverTime = boilParticleRateRange.x;
+        tempTime = time;
+        timeRemaining.value = 0;
+
     }
 
     void FixedUpdate()
@@ -51,9 +66,17 @@ public class Boiler : DragFoodInto
             emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
 
             if(tempTime<=0){                
-                tempTime = time;
 
                 FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
+                if (foodObject.foodItem == null)
+                {
+                    
+                    return;
+                }
+
+                tempTime = time;
+
+                //here is a completed order - probably dont immediately set 
                 GameManager.Instance.orderManager.SetHeldOrder(foodObject);
                 
                 foreach(InventoryItem item in itemsInBoiler)

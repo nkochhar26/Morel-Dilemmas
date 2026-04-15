@@ -27,7 +27,7 @@ public class InventoryItem : MonoBehaviour
 
     public void Shrink()
     {
-        StopFollowMouse();
+        // StopFollowMouse();
         if (transform.parent.GetComponent<DragFoodInto>() == null) return;
         //transform.DOScale(originalSize * 1f, 0.2f);
     }
