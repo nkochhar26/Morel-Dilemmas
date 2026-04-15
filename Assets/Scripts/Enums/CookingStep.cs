@@ -4,6 +4,5 @@ public enum CookingStep
 {
     Boil,
     Chop,
-    Wash,
-
+    Sautee,
 }

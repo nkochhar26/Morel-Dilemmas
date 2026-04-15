@@ -7,14 +7,14 @@ using System.Collections.Generic;
 public abstract class DragFoodInto : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
-    public void AddItem(InventoryItem item)
+    public virtual void AddItem(InventoryItem item)
     {
         Vector3 itemScale = item.transform.lossyScale;
         Vector3 itemPosition = item.transform.position;
         item.transform.SetParent(transform, true);
         item.transform.position = itemPosition;
         item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y, -1);
-        item.transform.localScale = new Vector3(.0175f, .0175f, item.transform.localScale.y);
+        item.transform.localScale = new Vector3(.005f, .005f, item.transform.localScale.y);
 
         // If this is a slicer, initialize it with the existing slice tree
         EzyMeshSlicer slicer = GetComponent<EzyMeshSlicer>();

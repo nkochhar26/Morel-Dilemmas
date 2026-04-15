@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Tomato
   itemDescription: A fruit or a vegetable?
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: fe6b5e3da1c449d4d88f94156acd64a1, type: 3}
   SingleIngredientRecipes: []
   recipe:
     foodList: []

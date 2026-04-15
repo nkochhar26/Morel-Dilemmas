@@ -31,7 +31,7 @@ public class Customer : MonoBehaviour, IInteractable
     [SerializeField] private CustomerDialogue customerDialogue;
     private CustomerState state;
     private float currTimer;
-    private float maxTimer = 30f;   //TODO hardcoded atm
+    private float maxTimer = 80f;   //TODO hardcoded atm
 
     public CustomerType CustomerType => customerType;
     public void Start()

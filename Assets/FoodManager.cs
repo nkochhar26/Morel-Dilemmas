@@ -14,25 +14,39 @@ public class FoodManager : MonoBehaviour
         Instance = this;
     }
 
-    public FoodItemObject IngredientsToFood(tags step, List<FoodItemObject> ingredients)
+    public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
     {
         FoodItemObject newFood = new FoodItemObject();
 
+        Debug.Log(ingredients);
+
         foreach(FoodItem foodData in allFoodItems)
         {
-            if(foodData.recipe.step!=step) continue;
-            if(ingredients.Count!=foodData.recipe.foodList.Count) continue;
+            Debug.Log(foodData.itemName);
+            if (foodData.recipe.step != step)
+            {
+                continue;
+            }
+            if (ingredients.Count != foodData.recipe.foodList.Count)
+            {
+                continue;
+            }
+
             foreach(FoodItemObject ingredient in ingredients)
             {
-                if(!FoodObjectMatchesQualifiers(ingredient, foodData.recipe.foodList[ingredients.IndexOf(ingredient)])) continue;
+                if (!FoodObjectMatchesQualifiers(ingredient, foodData.recipe.foodList[ingredients.IndexOf(ingredient)]))
+                {
+                    continue;
+                }
             }
+
+            Debug.Log("Setting new food");
 
             newFood.foodItem = foodData;
             
         }
 
         newFood.starQuality = CalculateQuality(ingredients);
-
         return newFood;
     }
 
@@ -49,8 +63,11 @@ public class FoodManager : MonoBehaviour
 
     public bool FoodObjectMatchesQualifiers(FoodItemObject foodObject, FoodItemQualifiers qualifiers)
     {
-        if(qualifiers.foodItem != foodObject.foodItem) return false;
-        if(qualifiers.tag != foodObject.tags) return false;
+        if (qualifiers.foodItem != foodObject.foodItem)
+        {
+            return false;
+        }
+        if (qualifiers.tag != foodObject.tags) return false;
         return true;
     }
 

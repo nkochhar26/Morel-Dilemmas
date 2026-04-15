@@ -80,6 +80,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isPoisonous: 0
 --- !u!114 &8555777464289860506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f8440ed430b6b4da98fb6a78f7af1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingCustomer: {fileID: 0}
   possibleCustomers:
   - {fileID: 8011956530343009066, guid: c613306c0746f534696f3974aee239a1, type: 3}
   - {fileID: 3437730016611834111, guid: 463ca7d2dd2d5904184196af9f70bff3, type: 3}

@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 7684786659963772672}
   - component: {fileID: 9103544672305001102}
   - component: {fileID: 5316577156059376461}
+  - component: {fileID: 7889718154962203435}
+  - component: {fileID: 9051457638725508173}
   m_Layer: 7
   m_Name: Ted Top-Down
   m_TagString: Player
@@ -86,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 136170661, guid: 9733c05bea6585f46b25242d17bf1134, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -157,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6212114601502855824}
-  moveSpeed: 7
+  moveSpeed: 8
   isMoving: 0
   dir: {x: 0, y: 0, z: 0}
   currDirection: {x: 0, y: 0, z: 0}
@@ -178,9 +180,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -191,7 +193,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &2443040398768430999
 Animator:
@@ -235,7 +237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798307731040782583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba43a35f4b449924fbf630d1c42a946b, type: 3}
   m_Name: 
@@ -248,14 +250,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798307731040782583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dcd0269aedd248aa9bdbaef00131b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dragKey: 304
   dragDistance: 1
-  dragSpeed: 0.8
+  dragSpeed: 0.5
   pickupRadius: 1.4
   player: {fileID: 7272506582100777846}
 --- !u!61 &5316577156059376461
@@ -304,6 +306,46 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5, y: 8}
   m_EdgeRadius: 0
+--- !u!114 &7889718154962203435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798307731040782583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be383f97b7d917f4f9677cb8811b0042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2443040398768430999}
+  movement: {fileID: 7157234310297376903}
+  baseScale: 0.05
+  scaleBetweenMult: {x: 0.95, y: 1.05}
+  x: 0
+  y: 1
+  z: 0
+  speed: 2
+  velocityStopScale: -0.01
+  lerpMult: 3
+--- !u!114 &9051457638725508173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798307731040782583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dec3ef7d121e0409b85925e30ae414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragKey: 304
+  dragDistance: 1
+  dragSpeed: 1
+  pickupRadius: 1.4
+  player: {fileID: 7272506582100777846}
+  isGuiding: 0
 --- !u!1 &1992163767312127697
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +539,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

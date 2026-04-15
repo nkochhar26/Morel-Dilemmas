@@ -22,4 +22,4 @@ MonoBehaviour:
       foodItem: {fileID: 11400000, guid: d9d230598314217439ced6fa856845e4, type: 2}
     - tag: 01000000
       foodItem: {fileID: 11400000, guid: 4785494cf105bca4d9fa62b52a5b8d50, type: 2}
-    step: 4
+    step: 0
