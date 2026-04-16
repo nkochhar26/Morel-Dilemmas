@@ -1,15 +1,20 @@
+using System;
 using UnityEngine;
-using TMPro;
 
 public class CurrencyManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text CurrencyUIText;
-    int currency;
+    public event Action OnCurrencyChanged;
+    public int currency;
+
+    private void Awake()
+    {
+        currency = 100;   // starting currency hardcoded here atm
+    }
 
     public void AddCurrency(int amount)
     {
         currency += amount;
-        CurrencyUIText.text = "Currency: " + currency;
+        OnCurrencyChanged?.Invoke();
     }
 
     public void DecreaseCurrency(int amount)
@@ -19,11 +24,12 @@ public class CurrencyManager : MonoBehaviour
         {
             currency = 0;
         }
-        CurrencyUIText.text = "Currency: " + currency;
+        OnCurrencyChanged?.Invoke();
     }
 
     public int GetCurrentCurrency()
     {
+        Debug.Log(currency);
         return currency;
     }
 }
