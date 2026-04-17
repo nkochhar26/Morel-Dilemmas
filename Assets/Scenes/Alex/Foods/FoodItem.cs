@@ -49,6 +49,7 @@ public class FoodItem : ScriptableObject
     [HideInInspector] public Sprite defaultSprite;
     [HideInInspector] public List<SingleIngredientRecipe> SingleIngredientRecipes;
     [HideInInspector] public Recipe recipe;
+    [HideInInspector] public int price;
 }
 
 #if UNITY_EDITOR
@@ -156,6 +157,7 @@ public class ItemDataEditor : Editor
         
         var itemName = serializedObject.FindProperty("itemName");
         var itemDescription = serializedObject.FindProperty("itemDescription");
+        var price = serializedObject.FindProperty("price");
 
         // Food Item Section
         EditorGUILayout.Space(10);
@@ -165,6 +167,7 @@ public class ItemDataEditor : Editor
         EditorGUILayout.PropertyField(itemDescription, new GUIContent("Description"));
         script.defaultSprite = (Sprite)EditorGUILayout.ObjectField("Default Sprite", script.defaultSprite, typeof(Sprite), false);
         EditorGUILayout.EndVertical();
+        EditorGUILayout.PropertyField(price, new GUIContent("Price"));
 
         // Recipe Section
         EditorGUILayout.Space(10);

@@ -18,7 +18,6 @@ public class FoodManager : MonoBehaviour
     {
         FoodItemObject newFood = new FoodItemObject();
 
-        Debug.Log(ingredients);
 
         foreach(FoodItem foodData in allFoodItems)
         {
@@ -39,8 +38,6 @@ public class FoodManager : MonoBehaviour
                     continue;
                 }
             }
-
-            Debug.Log("Setting new food");
 
             newFood.foodItem = foodData;
             

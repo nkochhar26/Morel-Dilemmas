@@ -19,3 +19,4 @@ MonoBehaviour:
   recipe:
     foodList: []
     step: 0
+  price: 5
