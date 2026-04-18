@@ -24,11 +24,21 @@ public class EzyMeshSlicer : DragFoodInto
     
     //game stuff
     private Mushroom currentMushroom; //needs to accomodate poisonous mushrooms
+    public List<InventoryItem> itemsOnBoard = new List<InventoryItem>();
+    private Dictionary<InventoryItem, SliceOperation> itemSliceOperations = new Dictionary<InventoryItem, SliceOperation>();
 
     void Start()
     {
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = true;
+    }
+
+    int GetSliceDepth(SliceOperation op)
+    {
+        if (op == null) return 0;
+        int upperDepth = op.upperHullSlice != null ? GetSliceDepth(op.upperHullSlice) : 0;
+        int lowerDepth = op.lowerHullSlice != null ? GetSliceDepth(op.lowerHullSlice) : 0;
+        return 1 + Mathf.Max(upperDepth, lowerDepth);
     }
 
     public void InitializeFromItem(InventoryItem item) // when moving an already sliced item onto the board
@@ -40,6 +50,13 @@ public class EzyMeshSlicer : DragFoodInto
         }
 
         rootSliceOperation = item.foodItem.sliceOperation;
+    }
+
+    public override void AddItem(InventoryItem item)
+    {
+        base.AddItem(item);
+        itemsOnBoard.Add(item);
+        itemSliceOperations[item] = item.foodItem?.sliceOperation ?? null;
     }
 
     Vector3 MouseWorldPos => Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
@@ -149,6 +166,8 @@ public class EzyMeshSlicer : DragFoodInto
                                 
                             }
                             Destroy(parentInventoryItem.gameObject);
+                            itemsOnBoard.Remove(parentInventoryItem);
+                            itemSliceOperations.Remove(parentInventoryItem);
                         });
                     });
                 }
@@ -225,6 +244,10 @@ public class EzyMeshSlicer : DragFoodInto
             SlicedHull hull = child.gameObject.Slice(p1World, planeNormal);
             if (hull == null) continue;
 
+            Transform parent = child.parent;
+            InventoryItem parentItem = parent.GetComponent<InventoryItem>();
+            SliceOperation parentSliceOp = itemSliceOperations.ContainsKey(parentItem) ? itemSliceOperations[parentItem] : null;
+
             // create a local slice operation
             SliceOperation currentSlice = new SliceOperation
             {
@@ -241,14 +264,34 @@ public class EzyMeshSlicer : DragFoodInto
             if (childSliceInfo?.sliceOperation != null)
             {
                 if (childSliceInfo.isUpperHull) childSliceInfo.sliceOperation.upperHullSlice = currentSlice;
-
                 else childSliceInfo.sliceOperation.lowerHullSlice = currentSlice;
             }
-            else if (rootSliceOperation == null) rootSliceOperation = currentSlice;
+            else if (parentSliceOp == null)
+            {
+                itemSliceOperations[parentItem] = currentSlice;
+            }
 
             StartCoroutine(MoveSlice(upper.transform, planeNormal, sliceMoveTime, sliceMoveDistance));
             StartCoroutine(MoveSlice(lower.transform, -planeNormal, sliceMoveTime, sliceMoveDistance));
             Destroy(child.gameObject);
+        }
+
+        // Check for recipe combination
+        bool allSufficientlySliced = itemsOnBoard.Count > 0 && itemsOnBoard.All(item => itemSliceOperations.ContainsKey(item) && GetSliceDepth(itemSliceOperations[item]) >= 5);
+        if (allSufficientlySliced)
+        {
+            List<FoodItemObject> foodItems = itemsOnBoard.ConvertAll(i => i.foodItem);
+            FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, foodItems);
+            if (foodObject.foodItem != null)
+            {
+                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
+                foreach (InventoryItem item in itemsOnBoard)
+                {
+                    Destroy(item.gameObject);
+                }
+                itemsOnBoard.Clear();
+                itemSliceOperations.Clear();
+            }
         }
     }
 
