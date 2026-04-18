@@ -7,7 +7,6 @@ public class Table : MonoBehaviour, IInteractable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void OnInteract(GameObject player)
     {
-        Debug.Log("interacting with table");
                 //check tablefull
         if (GameManager.Instance.customerManager.CheckTableFull(tableNum))
         {

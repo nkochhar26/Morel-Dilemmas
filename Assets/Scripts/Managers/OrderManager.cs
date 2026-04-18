@@ -99,7 +99,7 @@ public class OrderManager : MonoBehaviour
         //if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
         if (currentOrders[tableNum].itemName == heldDish.foodItem.itemName)   // so that if they order similar dishes can be interchangeable
         {
-            isPoisonous = false;
+            GameManager.Instance.currencyManager.AddCurrency(heldDish.foodItem.price);
             ClearOrder(tableNum);
             ReviewManager.Instance.HandleCustomerRemoved();
 
@@ -111,6 +111,7 @@ public class OrderManager : MonoBehaviour
             }
             else
             {
+                isPoisonous = false;
                 return OrderResult.Poisoned;
             }
         }

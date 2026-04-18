@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CustomerInfo
 {
@@ -153,7 +154,10 @@ public class CustomerManager : MonoBehaviour
             numDayCustomers = 0;
             currDayCustomers = 0;
             completedDayCustomers = 0;
-            GameObject.FindFirstObjectByType<FinishPanel>().ShowPanel();
+            GameManager.Instance.dayManager.IncrementDay();
+
+            //TODO: check if this is good code or not
+            SceneManager.LoadScene("Storage Room");
         }
     }
 

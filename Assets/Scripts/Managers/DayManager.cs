@@ -2,6 +2,7 @@ using UnityEngine;
 public class DayManager : MonoBehaviour
 {
     public int day;
+    public bool hasForaged;
 
     public void Start()
     {
@@ -11,6 +12,7 @@ public class DayManager : MonoBehaviour
 
     public void IncrementDay()
     {
+        hasForaged = false;
         day += 1;
     }
 
@@ -22,5 +24,15 @@ public class DayManager : MonoBehaviour
     public int GetDay()
     {
         return day;
+    }
+
+    public void SetHasForaged()
+    {
+        hasForaged = true;
+    }
+
+    public bool GetHasForaged()
+    {
+        return hasForaged;
     }
 }

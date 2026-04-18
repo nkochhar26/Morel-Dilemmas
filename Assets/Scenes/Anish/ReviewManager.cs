@@ -27,7 +27,7 @@ public class ReviewManager : MonoBehaviour
     /// </summary>
     public void HandleCustomerRemoved()
     {
-        float starsGiven = Random.Range(1, 5 + 1);
+        float starsGiven = Random.Range(2, 5 + 1);
         AddReview(starsGiven);
     }
     public void HandleCustomerRemoved(float starsGiven)

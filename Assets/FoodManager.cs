@@ -16,36 +16,88 @@ public class FoodManager : MonoBehaviour
 
     public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
     {
-        FoodItemObject newFood = new FoodItemObject();
-
-
         foreach(FoodItem foodData in allFoodItems)
         {
-            Debug.Log(foodData.itemName);
-            if (foodData.recipe.step != step)
+            var remaining = new List<FoodItemQualifiers>(foodData.recipe.foodList);
+            int ingredientCount = 0;
+            foreach (var ingredient in ingredients)
             {
-                continue;
-            }
-            if (ingredients.Count != foodData.recipe.foodList.Count)
-            {
-                continue;
-            }
-
-            foreach(FoodItemObject ingredient in ingredients)
-            {
-                if (!FoodObjectMatchesQualifiers(ingredient, foodData.recipe.foodList[ingredients.IndexOf(ingredient)]))
+                if (ingredient.foodItem.name == "Poison")
                 {
+                    GameManager.Instance.orderManager.SetPoisonous(true);
                     continue;
                 }
-            }
 
-            newFood.foodItem = foodData;
-            
+                ingredientCount += 1;
+                FoodItemQualifiers match = null;
+
+                foreach (var r in remaining)
+                {
+                    if (FoodObjectMatchesQualifiers(ingredient, r))
+                    {
+                        match = r;
+                        break;
+                    }
+                }
+
+                if (match != null)
+                {
+                    remaining.Remove(match);
+                }
+            }
+            if (remaining.Count == 0 && ingredientCount == foodData.recipe.foodList.Count)
+            {
+                FoodItemObject rtn = new FoodItemObject();
+                rtn.foodItem = foodData;
+                return rtn;
+            }
         }
 
-        newFood.starQuality = CalculateQuality(ingredients);
-        return newFood;
+        return null;
     }
+
+    // public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
+    // {
+    //     bool isPoisoned;
+    //     FoodItemObject newFood = new FoodItemObject();
+
+
+    //     foreach(FoodItem foodData in allFoodItems)
+    //     {
+    //         bool isDish = true;
+    //         if (foodData.recipe.step != step)
+    //         {
+    //             continue;
+    //         }
+    //         // if (ingredients.Count != foodData.recipe.foodList.Count)
+    //         // {
+    //         //     continue;
+    //         // }
+
+    //         int ingredientCount = 0;
+    //         foreach(FoodItemObject ingredient in ingredients)
+    //         {
+    //             //TODO: Fix this scuffed code
+    //             if (ingredient.foodItem.name == "Poison")
+    //             {
+    //                 GameManager.Instance.orderManager.SetPoisonous(true);
+    //             }
+    //             ingredientCount += 1;
+    //             else if (!FoodObjectMatchesQualifiers(ingredient, foodData.recipe.foodList[ingredients.IndexOf(ingredient)]))
+    //             {
+    //                 isDish = false;
+    //             }
+    //         }
+    //         if (isDish)
+    //         {
+    //             newFood.foodItem = foodData;
+    //         }
+            
+    //     }
+
+    //     newFood.starQuality = CalculateQuality(ingredients);
+    //     return newFood;
+    // }
 
     public float CalculateQuality(List<FoodItemObject> ingredients)
     {
@@ -58,13 +110,19 @@ public class FoodManager : MonoBehaviour
         return quality;
     }
 
+    //TODO: IDK BRO whats happening with the tags
     public bool FoodObjectMatchesQualifiers(FoodItemObject foodObject, FoodItemQualifiers qualifiers)
     {
         if (qualifiers.foodItem != foodObject.foodItem)
         {
             return false;
         }
-        if (qualifiers.tag != foodObject.tags) return false;
+        // if (qualifiers.tag != foodObject.tags)
+        // {
+        //     Debug.Log("Second input" +  qualifiers.tag);
+        //     Debug.Log("First input" + foodObject.tags);
+        //     return false;
+        // }
         return true;
     }
 

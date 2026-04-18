@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
-  m_Name: Milk
+  m_Name: Potato
   m_EditorClassIdentifier: 
-  itemName: Milk
-  itemDescription: Basic dairy ingredient.
-  defaultSprite: {fileID: 21300000, guid: 85a4d8f568c50284e925e6d7e47d8673, type: 3}
+  itemName: Potato
+  itemDescription: The father of western food.
+  defaultSprite: {fileID: 21300000, guid: 8f75734406cfc8046aff28120a43992e, type: 3}
   SingleIngredientRecipes: []
   recipe:
     foodList: []
     step: 0
-  price: 7
+  price: 3

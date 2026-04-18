@@ -145,7 +145,7 @@ public class FollowTed : MonoBehaviour
         }
 
         // Notify vision cone system that player is now suspicious
-        MusicManager.instance.SceneMusic(3);  //hardcoded oops
+        MusicManager.instance.SceneMusic(4);  //hardcoded oops
         VisionConeManager.Instance?.SetPlayerDragging(true);
         SetFollowingLayer();
     }
@@ -211,7 +211,6 @@ public class FollowTed : MonoBehaviour
 
     public void StopFollow()
     {
-        Debug.Log("You are now stopping follow");
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
         SetFollowingLayer();
         currentFollow = null;
