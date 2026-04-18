@@ -25910,6 +25910,7 @@ MonoBehaviour:
   sliceLineRenderer: {fileID: 947491305}
   effectLineRenderer: {fileID: 443649664}
   outlineLineRenderer: {fileID: 464127964}
+  itemsOnBoard: []
 --- !u!222 &947491308
 CanvasRenderer:
   m_ObjectHideFlags: 0
