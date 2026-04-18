@@ -73,7 +73,6 @@ public class CustomerDialogue : MonoBehaviour
             {
                 await dialogueRunner.Stop();
             }
-            Debug.Log(idleNode);
             await dialogueRunner.StartDialogue(idleNode);
         }
         catch (Exception e)

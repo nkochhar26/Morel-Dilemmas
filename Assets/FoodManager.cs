@@ -16,12 +16,12 @@ public class FoodManager : MonoBehaviour
 
     public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
     {
+        bool isPoisoned;
         FoodItemObject newFood = new FoodItemObject();
 
 
         foreach(FoodItem foodData in allFoodItems)
         {
-            Debug.Log(foodData.itemName);
             if (foodData.recipe.step != step)
             {
                 continue;
@@ -33,6 +33,11 @@ public class FoodManager : MonoBehaviour
 
             foreach(FoodItemObject ingredient in ingredients)
             {
+                //TODO: Fix this scuffed code
+                if (ingredient.foodItem.name == "Poison")
+                {
+                    GameManager.Instance.orderManager.SetPoisonous(true);
+                }
                 if (!FoodObjectMatchesQualifiers(ingredient, foodData.recipe.foodList[ingredients.IndexOf(ingredient)]))
                 {
                     continue;

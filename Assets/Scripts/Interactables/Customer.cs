@@ -82,7 +82,6 @@ public class Customer : MonoBehaviour, IInteractable
         {
             SoundManager.PlaySound(SoundType.NPC, 0, 1);
             GameManager.Instance.orderManager.AddOrder(tableNum, orderedDish);  
-            Debug.Log("Ordered: " + orderedDish.name + " at table " + tableNum); 
             customerDialogue.ShowOrderDialogue();
             SetTakenOrder(true);
         

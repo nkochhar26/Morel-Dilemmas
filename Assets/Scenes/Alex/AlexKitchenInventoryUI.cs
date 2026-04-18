@@ -9,6 +9,7 @@ public class AlexKitchenInventoryUI : MonoBehaviour
     public Vector2 originalPosition, originalSize;
     public static AlexKitchenInventoryUI Instance;
     public InventoryItem draggedItem;
+    public GameObject itemPanel;
 
     private void Awake()
     {
@@ -36,22 +37,25 @@ public class AlexKitchenInventoryUI : MonoBehaviour
 
     public void UpdateItems()
     {
-        foreach(Transform child in transform)
+        foreach(Transform child in itemPanel.transform)
         {
-            Destroy(child.gameObject);
+            if (child.gameObject != itemPanel)
+            {
+                Destroy(child.gameObject);
+            }
+
         }
-        Debug.Log("Loading Items");
         List<FoodItemObject> items = GameManager.Instance.inventoryManager.GetFoodItems();
         foreach (FoodItemObject item in items)
         {
-            GameObject gamefoodItemUIIns = Instantiate(foodItemUI, this.gameObject.transform);
+            GameObject gamefoodItemUIIns = Instantiate(foodItemUI, itemPanel.transform);
             gamefoodItemUIIns.GetComponent<InventoryItem>().SetItem(item);
         }
     }
 
     public void Grow()
     {
-        transform.DOScale(originalSize * 2f, 0.2f);
+        transform.DOScale(originalSize * 1.5f, 0.2f);
         CursorManager.changeTo(CursorType.POINTER);
     }
 

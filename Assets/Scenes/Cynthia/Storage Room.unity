@@ -746,6 +746,7 @@ MonoBehaviour:
   itemsSold:
   - {fileID: 11400000, guid: d9d230598314217439ced6fa856845e4, type: 2}
   - {fileID: 11400000, guid: 26b3fa4b5a161b641b2167c08edde5bc, type: 2}
+  - {fileID: 11400000, guid: f3a03af142d7c324298c8fc3ca877379, type: 2}
   itemHolder: {fileID: 1731297178}
   itemBasket: {fileID: 7463461572331575956, guid: a8d3cc03df9a9ce46ab7123947b2ba3f, type: 3}
 --- !u!114 &636224136
@@ -1641,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864420851491180810, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: possibleCustomers.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9036760247063195212, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: m_LocalPosition.x

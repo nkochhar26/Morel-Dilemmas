@@ -211,7 +211,6 @@ public class FollowTed : MonoBehaviour
 
     public void StopFollow()
     {
-        Debug.Log("You are now stopping follow");
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
         SetFollowingLayer();
         currentFollow = null;

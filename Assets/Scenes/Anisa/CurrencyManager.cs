@@ -13,6 +13,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddCurrency(int amount)
     {
+        Debug.Log("adding currency");
         currency += amount;
         OnCurrencyChanged?.Invoke();
     }

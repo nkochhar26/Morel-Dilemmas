@@ -100,6 +100,9 @@ public class OrderManager : MonoBehaviour
         if (currentOrders[tableNum].itemName == heldDish.foodItem.itemName)   // so that if they order similar dishes can be interchangeable
         {
             isPoisonous = false;
+            Debug.Log("About to add currency");
+            Debug.Log(heldDish.foodItem.price);
+            GameManager.Instance.currencyManager.AddCurrency(heldDish.foodItem.price);
             ClearOrder(tableNum);
             ReviewManager.Instance.HandleCustomerRemoved();
 

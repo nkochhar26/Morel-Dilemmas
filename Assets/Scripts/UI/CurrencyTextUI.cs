@@ -13,6 +13,7 @@ public class CurrencyTextUI : MonoBehaviour
 
     private void ChangeCurrencyText()
     {
+        Debug.Log("Changing currency text");
         CurrencyUIText.text = "Currency: " + GameManager.Instance.currencyManager.GetCurrentCurrency();
     }
 
