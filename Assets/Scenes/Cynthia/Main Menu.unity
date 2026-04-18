@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04063881b9e03490cb53cf5e607a5e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSceneName: Forage Area
+  mainSceneName: Storage Room
 --- !u!1 &1308921721
 GameObject:
   m_ObjectHideFlags: 0

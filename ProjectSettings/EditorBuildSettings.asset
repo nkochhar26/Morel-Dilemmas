@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cynthia/Restaurant.unity
     guid: 3ed93986890ad77418f80af89057d092
+  - enabled: 1
+    path: Assets/Scenes/Cynthia/Storage Room.unity
+    guid: 100d8a46a1e083d44941e71e3b6672a8
   - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: a8785af7d8e18eb46a9b63066c5124e6
