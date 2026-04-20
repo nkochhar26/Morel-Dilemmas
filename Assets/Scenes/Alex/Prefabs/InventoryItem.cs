@@ -12,6 +12,8 @@ public class InventoryItem : MonoBehaviour
     public MeshRenderer meshRenderer;
     public Image image;
     public FoodItemObject foodItem;
+    private Vector3 originalPosition;
+    private Transform originalParent;
 
     void Start()
     {
@@ -34,7 +36,10 @@ public class InventoryItem : MonoBehaviour
 
     public void FollowMouse()
     {
+        originalPosition = this.transform.position;
+        originalParent = this.transform.parent;
         AlexKitchenInventoryUI.Instance.draggedItem = this;
+        this.transform.parent = AlexKitchenInventoryUI.Instance.gameObject.transform;
         followmouse = true;
     }
 
@@ -53,6 +58,8 @@ public class InventoryItem : MonoBehaviour
         {
             if (AlexKitchenInventoryUI.Instance != null)
             {
+                this.transform.position = originalPosition;
+                this.transform.parent = originalParent;
                 LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
                 CursorManager.changeTo(CursorType.HAND_OPEN);
             }
