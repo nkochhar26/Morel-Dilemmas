@@ -213,6 +213,7 @@ public class FollowTed : MonoBehaviour
     {
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
         SetFollowingLayer();
+        currentFollow.GetComponent<Customer>().WalkAnimToggle(false);
         currentFollow = null;
         isGuiding=false;
     }
