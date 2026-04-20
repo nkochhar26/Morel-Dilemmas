@@ -16,6 +16,12 @@ public class MushroomPickup : ItemPickup
         }
     }
 
+    public override void OnInteract(GameObject player)
+    {
+        GameManager.Instance.inventoryManager.AddFoodItem(pickupItem, 5, isLookalike);
+        Destroy(this.gameObject);
+    }
+
     public void SetPickupItem(Mushroom mushroom)
     {
         pickupItem = mushroom.mushroomItem;

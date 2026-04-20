@@ -107,6 +107,10 @@ public class FollowTed : MonoBehaviour
     private void SetFollowingLayer()
     {
         SpriteRenderer spriteRenderer = currentFollow.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            return;
+        }
         //toggles
         if (oldSortingOrder == -1)
         {

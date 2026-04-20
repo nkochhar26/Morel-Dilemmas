@@ -69,8 +69,16 @@ public class InventoryItem : MonoBehaviour
     public void SetItem(FoodItemObject item)
     {
         foodItem = item;
-        meshRenderer.material.mainTexture = item.foodItem.defaultSprite.texture;
-        image.sprite = item.foodItem.defaultSprite;
+        if (item.isLookalike)
+        {
+            image.sprite = ((MushroomItem)(item.foodItem)).lookalikeSprite;
+            meshRenderer.material.mainTexture = ((MushroomItem)(item.foodItem)).lookalikeSprite.texture;
+        }
+        else
+        {
+            image.sprite = item.foodItem.defaultSprite;
+            meshRenderer.material.mainTexture = item.foodItem.defaultSprite.texture;
+        }
         meshRenderer.GetComponent<MeshFilter>().mesh = BuildMeshFromSprite(item.foodItem.defaultSprite);
     }
 

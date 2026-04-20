@@ -17,6 +17,7 @@ public class FoodItemObject
 {
     public FoodItem foodItem;
     public float starQuality;
+    public bool isLookalike;
     public List<CookingStep> tags;
     public SliceOperation sliceOperation;
 }
@@ -26,11 +27,12 @@ public class InventoryManager : MonoBehaviour
     public static List<FoodItemObject> foodItems = new List<FoodItemObject>();
 
 
-    public void AddFoodItem(FoodItem item, float quality = 5)
+    public void AddFoodItem(FoodItem item, float quality = 5, bool isLookalike=false)
     {
         FoodItemObject foodobject = new FoodItemObject();
         foodobject.foodItem = item;
         foodobject.starQuality = quality;
+        foodobject.isLookalike = isLookalike;
 
         foodItems.Add(foodobject);
         if (AlexKitchenInventoryUI.Instance != null)
