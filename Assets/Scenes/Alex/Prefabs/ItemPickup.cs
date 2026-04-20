@@ -4,7 +4,8 @@ public class ItemPickup : MonoBehaviour, IInteractable
 {
     [SerializeField] protected FoodItem pickupItem;
     [SerializeField] private InventoryItem foodItemUI;
-    public void OnInteract(GameObject player)
+    
+    public virtual void OnInteract(GameObject player)
     {
         GameManager.Instance.inventoryManager.AddFoodItem(pickupItem);
         Destroy(this.gameObject);

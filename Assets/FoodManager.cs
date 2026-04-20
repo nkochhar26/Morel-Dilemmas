@@ -36,6 +36,10 @@ public class FoodManager : MonoBehaviour
                     if (FoodObjectMatchesQualifiers(ingredient, r))
                     {
                         match = r;
+                        if (ingredient.isLookalike)
+                        {
+                            GameManager.Instance.orderManager.SetPoisonous(true);
+                        }
                         break;
                     }
                 }

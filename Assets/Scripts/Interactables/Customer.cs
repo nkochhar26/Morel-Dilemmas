@@ -22,20 +22,22 @@ public class Customer : MonoBehaviour, IInteractable
 
     //TODO: change recipe based on day, remove serialized field
     private FoodItem orderedDish;
-    [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private CustomerType customerType;
     [SerializeField] private VisionCone visionCone;
     [SerializeField] private Slider timer;
     [SerializeField] private CustomerDialogue customerDialogue;
+    [SerializeField] private Animator animator;
     private CustomerState state;
+    [SerializeField] private GameObject ghost;
     private float currTimer;
     private float maxTimer = 80f;   //TODO hardcoded atm
 
     public CustomerType CustomerType => customerType;
     public void Start()
     {
+        ghost.SetActive(false);
         orderedDish = GameManager.Instance.orderManager.SelectRandomDish();
         currTimer = 0f;
     }
@@ -50,12 +52,19 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
+    public void WalkAnimToggle(bool value)
+    {
+        Debug.Log("WALKING IS: " + value);
+        animator.SetBool("isWalking", value);
+    }
+
     public void OnInteract(GameObject player)
     {
         if (state == CustomerState.IsWaiting)
         {
             //follow code
             player.GetComponent<FollowTed>().SetIsGuiding(this.gameObject);
+            WalkAnimToggle(true);
         }
 
         //check if served
@@ -108,12 +117,14 @@ public class Customer : MonoBehaviour, IInteractable
     private void BecomeABody()
     {
         state = CustomerState.Dead;
+        animator.SetBool("isDead", true);
         this.gameObject.layer = 0;
         this.gameObject.tag = "Body";
         boxCollider.isTrigger = true;
         animator.enabled = false;
         Destroy(visionCone);
         spriteRenderer.color = new Color(103/255f, 192/255f, 101/255f, 1f);
+        ghost.SetActive(true);
     }
 
     public void SetState(CustomerState state)

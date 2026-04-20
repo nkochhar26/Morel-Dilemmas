@@ -107,6 +107,10 @@ public class FollowTed : MonoBehaviour
     private void SetFollowingLayer()
     {
         SpriteRenderer spriteRenderer = currentFollow.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            return;
+        }
         //toggles
         if (oldSortingOrder == -1)
         {
@@ -213,6 +217,7 @@ public class FollowTed : MonoBehaviour
     {
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
         SetFollowingLayer();
+        currentFollow.GetComponent<Customer>().WalkAnimToggle(false);
         currentFollow = null;
         isGuiding=false;
     }
