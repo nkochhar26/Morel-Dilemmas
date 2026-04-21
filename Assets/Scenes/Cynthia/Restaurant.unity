@@ -441,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Star Slider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5982732229952658626, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6477,6 +6481,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5982732229952658626, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6926,6 +6934,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
       propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5982732229952658626, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
@@ -20083,6 +20095,7 @@ MonoBehaviour:
   sliceLineRenderer: {fileID: 947491305}
   effectLineRenderer: {fileID: 443649664}
   outlineLineRenderer: {fileID: 464127964}
+  itemsOnBoard: []
 --- !u!222 &947491308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21748,6 +21761,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5982732229952658626, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -23392,7 +23409,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1431944318
@@ -23834,6 +23851,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
       propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535535555092485270, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5982732229952658626, guid: 8f4781b3905a78c458d769e13afb8d78, type: 3}
