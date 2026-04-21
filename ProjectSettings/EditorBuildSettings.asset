@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cynthia/Forage Area.unity
     guid: 3d85a585b7d7ab74586285589fc38043
   - enabled: 1
-    path: Assets/Scenes/Cynthia/Restaurant.unity
+    path: Assets/Scenes/Cynthia/Restaurant-neil.unity
     guid: 3ed93986890ad77418f80af89057d092
   - enabled: 1
     path: Assets/Scenes/Cynthia/Storage Room.unity
