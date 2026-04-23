@@ -245,8 +245,10 @@ public class EzyMeshSlicer : DragFoodInto
             if (hull == null) continue;
 
             Transform parent = child.parent;
+            if (parent == null) continue;
+            
             InventoryItem parentItem = parent.GetComponent<InventoryItem>();
-            SliceOperation parentSliceOp = itemSliceOperations.ContainsKey(parentItem) ? itemSliceOperations[parentItem] : null;
+            SliceOperation parentSliceOp = parentItem != null && itemSliceOperations.ContainsKey(parentItem) ? itemSliceOperations[parentItem] : null;
 
             // create a local slice operation
             SliceOperation currentSlice = new SliceOperation
@@ -266,7 +268,7 @@ public class EzyMeshSlicer : DragFoodInto
                 if (childSliceInfo.isUpperHull) childSliceInfo.sliceOperation.upperHullSlice = currentSlice;
                 else childSliceInfo.sliceOperation.lowerHullSlice = currentSlice;
             }
-            else if (parentSliceOp == null)
+            else if (parentSliceOp == null && parentItem != null)
             {
                 itemSliceOperations[parentItem] = currentSlice;
             }
@@ -282,7 +284,7 @@ public class EzyMeshSlicer : DragFoodInto
         {
             List<FoodItemObject> foodItems = itemsOnBoard.ConvertAll(i => i.foodItem);
             FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, foodItems);
-            if (foodObject.foodItem != null)
+            if (foodObject != null && foodObject.foodItem != null)
             {
                 GameManager.Instance.orderManager.SetHeldOrder(foodObject);
                 foreach (InventoryItem item in itemsOnBoard)
