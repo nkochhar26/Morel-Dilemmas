@@ -74,6 +74,7 @@ MonoBehaviour:
   dailyDishes:
   - {fileID: 11400000, guid: 087e46bf3e044e14ebd8422c3dcbe65a, type: 2}
   - {fileID: 11400000, guid: feeebf8124a0bc64eb454032da203dd5, type: 2}
+  - {fileID: 11400000, guid: a40a08ecd3d627f41980dfdf0044bef6, type: 2}
   currentOrders:
   - {fileID: 0}
   - {fileID: 0}

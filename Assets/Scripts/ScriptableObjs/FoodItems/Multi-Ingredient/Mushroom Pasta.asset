@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
-  m_Name: Mushroom Wellington
+  m_Name: Mushroom Pasta
   m_EditorClassIdentifier: 
-  itemName: Mushroom Wellington
-  itemDescription: A difficult signature dish of a renowned mushroom chef!
-  defaultSprite: {fileID: 5442448357990442727, guid: b6dfc660081e66b4f97e9c1655006917, type: 3}
+  itemName: Mushroom Pasta
+  itemDescription: A hearty pasta dish that will definitely trigger a food coma.
+  defaultSprite: {fileID: -9021466915638228118, guid: ecdb6af84bf1ed2449e9905c3da59b5e, type: 3}
   SingleIngredientRecipes: []
   recipe:
     foodList:
-    - tag: 01000000
+    - tag: 
+      foodItem: {fileID: 11400000, guid: 26b3fa4b5a161b641b2167c08edde5bc, type: 2}
+    - tag: 
       foodItem: {fileID: 11400000, guid: 4785494cf105bca4d9fa62b52a5b8d50, type: 2}
-    - tag: 06000000
+    - tag: 
+      foodItem: {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
+    - tag: 
       foodItem: {fileID: 11400000, guid: b97531dbb9ae640469e369b6340ad2bc, type: 2}
-    step: 5
+    step: 0
+  price: 30

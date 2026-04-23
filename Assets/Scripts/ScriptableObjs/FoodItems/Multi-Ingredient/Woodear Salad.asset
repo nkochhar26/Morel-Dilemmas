@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Woodear Salad
   m_EditorClassIdentifier: 
   itemName: Woodear Salad
-  itemDescription: A nice salad of woodear mushrooms
-  defaultSprite: {fileID: 21300000, guid: ca8d403b19aa61c448ba4a81fa58bbf6, type: 3}
+  itemDescription: A very textured dish best served cold!
+  defaultSprite: {fileID: -4487696031783955915, guid: 14ec26bfaa0d4c84daae77012123302c, type: 3}
   SingleIngredientRecipes: []
   recipe:
     foodList:
-    - tag: 01000000
+    - tag: 
       foodItem: {fileID: 11400000, guid: ef43348c14e359c4ab737baf252c6031, type: 2}
     step: 1
-  price: 5
+  price: 10

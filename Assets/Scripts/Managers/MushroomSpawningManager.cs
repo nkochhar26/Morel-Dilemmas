@@ -16,7 +16,7 @@ public class MushroomSpawningManager : MonoBehaviour
     // currently just flat memorized 
     private void LoadMushrooms()
     {
-        int numMushrooms = GameManager.Instance.dayManager.GetDay() * 10;   //TODO: replace with real algorithm lol
+        int numMushrooms = GameManager.Instance.dayManager.GetDay() * 12;   //TODO: replace with real algorithm lol
         for (int i = 0; i < numMushrooms; i++)
         {
             int index = (int) (Random.value * collectibleMushrooms.Count);
@@ -43,16 +43,17 @@ public class MushroomSpawningManager : MonoBehaviour
             }
 
             //needs to differentiate from tree guys and non tree guys
-            Transform posTransform = GetSpawnSpot(mushroomData.spawnType);
+            (Transform posTransform, int sortingOrder) = GetSpawnSpot(mushroomData.spawnType);
             if (posTransform != null)
             {
                 GameObject mushroomObj = Instantiate(pickupPrefab, posTransform.position, Quaternion.identity);
+                mushroomObj.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
                 mushroomObj.GetComponent<MushroomPickup>().SetPickupItem(mushroom);
             }
         }
     }
 
-    private Transform GetSpawnSpot(SpawnType spawnType)
+    private (Transform, int) GetSpawnSpot(SpawnType spawnType)
     {
         List<ForagingProp> props;
         if (spawnType == SpawnType.Ground)
@@ -74,17 +75,7 @@ public class MushroomSpawningManager : MonoBehaviour
         // loop through props and determine a spot
         int propIndex = Random.Range(0, props.Count);
         Transform spot = props[propIndex].GetOpenSpot();
-        return spot;
-        // foreach (ForagingProp foragingProp in props)
-        // {
-        //     Transform spot = foragingProp.GetOpenSpot();
-        //     if (spot != null)
-        //     {
-        //         return spot;
-        //     }
-        // }
-
-        // return null;
+        return (spot, props[propIndex].GetComponent<SpriteRenderer>().sortingOrder + 1);
         
     }
 }

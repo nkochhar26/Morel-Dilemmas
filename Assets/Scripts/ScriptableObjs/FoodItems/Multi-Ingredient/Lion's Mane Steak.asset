@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
-  m_Name: Flour
+  m_Name: Lion's Mane Steak
   m_EditorClassIdentifier: 
-  itemName: Flour
-  itemDescription: A powdery what substance.
-  defaultSprite: {fileID: -7751777048443264340, guid: 3defc0194e120394aa5274a517600643, type: 3}
+  itemName: Lion's Mane Steak
+  itemDescription: A buttery steak seared to perfection.
+  defaultSprite: {fileID: 8468791890117401937, guid: 753d9c5fc3c6e9c4e8712debdb49ea1f, type: 3}
   SingleIngredientRecipes: []
   recipe:
-    foodList: []
-    step: 0
-  price: 2
+    foodList:
+    - tag: 
+      foodItem: {fileID: 11400000, guid: 1ffb117697f2c484e84e5cb8962f6b7b, type: 2}
+    step: 2
+  price: 10

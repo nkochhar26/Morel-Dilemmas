@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
-  m_Name: Flour
+  m_Name: Sauteed Chantarelle
   m_EditorClassIdentifier: 
-  itemName: Flour
-  itemDescription: A powdery what substance.
-  defaultSprite: {fileID: -7751777048443264340, guid: 3defc0194e120394aa5274a517600643, type: 3}
+  itemName: Sauteed Chantarelle
+  itemDescription: A simple yet complex dish.
+  defaultSprite: {fileID: 3245156858556851853, guid: 084c5e2006c854841a25b2bf15b71dee, type: 3}
   SingleIngredientRecipes: []
   recipe:
-    foodList: []
-    step: 0
-  price: 2
+    foodList:
+    - tag: 
+      foodItem: {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
+    step: 2
+  price: 10
