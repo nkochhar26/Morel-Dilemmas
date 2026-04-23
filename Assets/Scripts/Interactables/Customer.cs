@@ -74,11 +74,13 @@ public class Customer : MonoBehaviour, IInteractable
             if (result == OrderResult.Success)
             {
                 GameManager.Instance.customerManager.OnDespawnCustomer();
+                SoundManager.PlaySound(SoundType.UI, 1, 0.2f);
                 Destroy(this.gameObject);
             }
             else if (result == OrderResult.Poisoned)
             {
                 GameManager.Instance.customerManager.OnDespawnCustomer();
+                SoundManager.PlaySound(SoundType.UI, 2, 0.2f);
                 BecomeABody();
             }
             else
@@ -137,6 +139,7 @@ public class Customer : MonoBehaviour, IInteractable
         //remove from customer manager
         GameManager.Instance.orderManager.OrderTooLong(tableNum); // needs to be able to trigger end of day
         GameManager.Instance.customerManager.OnDespawnCustomer();
+        SoundManager.PlaySound(SoundType.UI, 2, 0.2f);
         Destroy(this.gameObject);
     }
 }
