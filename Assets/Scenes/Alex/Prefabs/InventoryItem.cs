@@ -80,6 +80,10 @@ public class InventoryItem : MonoBehaviour
             meshRenderer.material.mainTexture = item.foodItem.defaultSprite.texture;
         }
         meshRenderer.GetComponent<MeshFilter>().mesh = BuildMeshFromSprite(item.foodItem.defaultSprite);
+        if (image != null)
+        {
+            image.color = item.isIntermediate ? new Color(1f, 0.92f, 0.6f, 1f) : Color.white;
+        }
     }
 
     void Update()

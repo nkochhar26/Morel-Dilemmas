@@ -32,7 +32,7 @@ public class Boiler : DragFoodInto
         {
             if (item != null && item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem);
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
             }
             Destroy(item.gameObject);
         }
