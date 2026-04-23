@@ -30,6 +30,10 @@ public class Boiler : DragFoodInto
         
         foreach(InventoryItem item in itemsInBoiler)
         {
+            if (item != null && item.foodItem != null)
+            {
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem);
+            }
             Destroy(item.gameObject);
         }
         itemsInBoiler.Clear();
