@@ -18,8 +18,9 @@ public class FoodItemObject
     public FoodItem foodItem;
     public float starQuality;
     public bool isLookalike;
-    public List<CookingStep> tags;
+    public List<CookingStep> tags = new List<CookingStep>();
     public SliceOperation sliceOperation;
+    public bool isIntermediate;
 }
 public class InventoryManager : MonoBehaviour
 {
@@ -43,10 +44,19 @@ public class InventoryManager : MonoBehaviour
 
     public void AddFoodObject(FoodItemObject item)
     {
-        foodItems.Add(item);
-        AlexKitchenInventoryUI.Instance.UpdateItems();
+        AddFoodObject(item, false);
     }
 
+    public void AddFoodObject(FoodItemObject item, bool isIntermediate)
+    {
+        if (item == null) return;
+        item.isIntermediate = isIntermediate;
+        foodItems.Add(item);
+        if (AlexKitchenInventoryUI.Instance != null)
+        {
+            AlexKitchenInventoryUI.Instance.UpdateItems();
+        }
+    }
 
     public void AddItem(Item item) // remove later
     {

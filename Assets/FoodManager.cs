@@ -53,6 +53,8 @@ public class FoodManager : MonoBehaviour
             {
                 FoodItemObject rtn = new FoodItemObject();
                 rtn.foodItem = foodData;
+                rtn.starQuality = CalculateQuality(ingredients);
+                rtn.tags = new List<CookingStep>();
                 return rtn;
             }
         }

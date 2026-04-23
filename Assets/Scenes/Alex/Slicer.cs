@@ -162,7 +162,7 @@ public class EzyMeshSlicer : DragFoodInto
                                 modifiedFoodItem.sliceOperation = rootSliceOperation;
                                 modifiedFoodItem.tags.Add(CookingStep.Chop);
                                 
-                                GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem);
+                                GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem, true);
                                 
                             }
                             Destroy(parentInventoryItem.gameObject);
