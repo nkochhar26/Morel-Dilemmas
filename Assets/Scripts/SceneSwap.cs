@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwap : MonoBehaviour
 {
-    [SerializeField] private string nextScene;
+    [SerializeField] protected string nextScene;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,7 +15,7 @@ public class SceneSwap : MonoBehaviour
         }
     }
 
-    public void SwapScene()
+    public virtual void SwapScene()
     {
         if (GameManager.Instance != null)
         {

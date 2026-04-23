@@ -128,7 +128,7 @@ public class CustomerManager : MonoBehaviour
 
     public void NewDay()
     {
-        numDayCustomers = numDayCustomers = GameManager.Instance.dayManager.GetDay() * 5;  //TODO: adjust based on design documents
+        numDayCustomers = numDayCustomers = GameManager.Instance.dayManager.GetDay() * 3;  //TODO: adjust based on design documents
         currDayCustomers = 0;
     }
 

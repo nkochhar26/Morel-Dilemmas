@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787f44f035f653f4b90a9056f15a7abd, type: 3}
-  m_Name: Flour
+  m_Name: Woodear Salad
   m_EditorClassIdentifier: 
-  itemName: Flour
-  itemDescription: A powdery what substance.
-  defaultSprite: {fileID: -7751777048443264340, guid: 3defc0194e120394aa5274a517600643, type: 3}
+  itemName: Woodear Salad
+  itemDescription: A very textured dish best served cold!
+  defaultSprite: {fileID: -4487696031783955915, guid: 14ec26bfaa0d4c84daae77012123302c, type: 3}
   SingleIngredientRecipes: []
   recipe:
-    foodList: []
-    step: 0
-  price: 2
+    foodList:
+    - tag: 
+      foodItem: {fileID: 11400000, guid: ef43348c14e359c4ab737baf252c6031, type: 2}
+    step: 1
+  price: 10

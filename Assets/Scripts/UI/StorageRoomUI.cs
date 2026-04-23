@@ -4,9 +4,11 @@ using UnityEngine.UI;
 public class StorageRoomUI : MonoBehaviour
 {
     public Button forageButton;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void OnEnable()
     {
+        Debug.Log("Loading storage room");
+        Debug.Log(GameManager.Instance.dayManager.GetHasForaged());
         if (GameManager.Instance.dayManager.GetHasForaged())
         {
             forageButton.interactable = false;
