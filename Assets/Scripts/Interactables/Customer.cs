@@ -44,6 +44,10 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void Update()
     {
+        if (state == CustomerState.Dead)
+        {
+            return;
+        }
         currTimer += Time.deltaTime;
         timer.value = 1f - (currTimer / maxTimer);
         if (currTimer >= maxTimer)
