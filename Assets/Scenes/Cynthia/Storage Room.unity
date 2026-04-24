@@ -2183,7 +2183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e86dd01c06d0b4b937cc9ce2f1e007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Restaurant
+  nextScene: Restaurant1
 --- !u!114 &1268876321
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,6 +30,10 @@ public class Plating : DragFoodInto
             {
                 intermediateIngredients.Add(item.foodItem);
             }
+            if (item.foodItem.foodItem.itemName == "Poison")
+            {
+                intermediateIngredients.Add(item.foodItem);
+            }
         }
 
         if (intermediateIngredients.Count == 0)
@@ -38,6 +42,7 @@ public class Plating : DragFoodInto
         }
 
         FoodItemObject matchedDish = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, intermediateIngredients);
+        // FoodItemObject matchedDish = FoodManager.Instance.IngredientsToFoodWithTags(intermediateIngredients);
         if (matchedDish == null || matchedDish.foodItem == null)
         {
             return;
@@ -56,6 +61,43 @@ public class Plating : DragFoodInto
 
         itemsOnPlate.Clear();
     }
+
+    // private void TryMatchIntermediateRecipe()
+    // {
+    //     List<FoodItemObject> intermediateIngredients = new List<FoodItemObject>();
+    //     foreach (InventoryItem item in itemsOnPlate)
+    //     {
+    //         if (item != null && item.foodItem != null && item.foodItem.isIntermediate)
+    //         {
+    //             intermediateIngredients.Add(item.foodItem);
+    //         }
+    //     }
+
+    //     if (intermediateIngredients.Count == 0)
+    //     {
+    //         return;
+    //     }
+
+    //     // FoodItemObject matchedDish = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, intermediateIngredients);
+    //     FoodItemObject matchedDish = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, intermediateIngredients);
+    //     if (matchedDish == null || matchedDish.foodItem == null)
+    //     {
+    //         return;
+    //     }
+
+    //     matchedDish.isIntermediate = false;
+    //     GameManager.Instance.orderManager.SetHeldOrder(matchedDish);
+
+    //     foreach (InventoryItem item in itemsOnPlate)
+    //     {
+    //         if (item != null)
+    //         {
+    //             Destroy(item.gameObject);
+    //         }
+    //     }
+
+    //     itemsOnPlate.Clear();
+    // }
 
     public void ClearPlating()
     {

@@ -78,36 +78,15 @@ public class EzyMeshSlicer : DragFoodInto
         sliceTimer = 1;
     }
 
-    public void CheckComplete()
-    {
-        FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, itemsOnBoard.ConvertAll(i=>i.foodItem));
-        if (foodObject == null)
-        {
-            Debug.Log("No food");
-            return;
-        }
-
-        //here is a completed order - probably dont immediately set 
-        GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-        
-        foreach(InventoryItem item in itemsOnBoard)
-        {
-            Destroy(item.gameObject);
-        }
-        itemsOnBoard.Clear();
-        sliceCount = 0;
-    }
-
-    public void ClearBoiler()
-    {
-        foreach(InventoryItem item in itemsOnBoard)
-        {
-            Destroy(item.gameObject);
-        }
-        itemsOnBoard.Clear();
-        sliceCount = 0;
-    }
-
+    // public void CheckComplete()
+    // {
+    //     FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, itemsOnBoard.ConvertAll(i=>i.foodItem));
+    //     if (foodObject.foodItem == null)
+    //     {
+    //         return;
+    //     }
+    //     GameManager.Instance.orderManager.SetHeldOrder(foodObject);
+    // }
 
     void Update()
     {
@@ -191,9 +170,11 @@ public class EzyMeshSlicer : DragFoodInto
                                 modifiedFoodItem.foodItem = parentInventoryItem.foodItem.foodItem;
                                 modifiedFoodItem.starQuality = parentInventoryItem.foodItem.starQuality;
                                 modifiedFoodItem.sliceOperation = rootSliceOperation;
-                                modifiedFoodItem.tags.Add(CookingStep.Chop);
+                                // modifiedFoodItem.tags.Add(CookingStep.Chop);
                                 
-                                GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem, true);
+                                //TODO: re-add this later
+                                GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem, true, CookingStep.Chop);
+                                // CheckComplete();
                                 
                             }
                             Destroy(parentInventoryItem.gameObject);
@@ -254,11 +235,11 @@ public class EzyMeshSlicer : DragFoodInto
                 });
 
                 sliceLineRenderer.enabled = false;
-                sliceCount += 1;
-                if (sliceCount >= 5)
-                {
-                    CheckComplete();
-                }
+                // sliceCount += 1;
+                // if (sliceCount >= 5)
+                // {
+                //     CheckComplete();
+                // }
             }
         }
     }
@@ -315,22 +296,22 @@ public class EzyMeshSlicer : DragFoodInto
         }
 
         // Check for recipe combination
-        bool allSufficientlySliced = itemsOnBoard.Count > 0 && itemsOnBoard.All(item => itemSliceOperations.ContainsKey(item) && GetSliceDepth(itemSliceOperations[item]) >= 5);
-        if (allSufficientlySliced)
-        {
-            List<FoodItemObject> foodItems = itemsOnBoard.ConvertAll(i => i.foodItem);
-            FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, foodItems);
-            if (foodObject != null && foodObject.foodItem != null)
-            {
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-                foreach (InventoryItem item in itemsOnBoard)
-                {
-                    Destroy(item.gameObject);
-                }
-                itemsOnBoard.Clear();
-                itemSliceOperations.Clear();
-            }
-        }
+        // bool allSufficientlySliced = itemsOnBoard.Count > 0 && itemsOnBoard.All(item => itemSliceOperations.ContainsKey(item) && GetSliceDepth(itemSliceOperations[item]) >= 5);
+        // if (allSufficientlySliced)
+        // {
+        //     List<FoodItemObject> foodItems = itemsOnBoard.ConvertAll(i => i.foodItem);
+        //     FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, foodItems);
+        //     if (foodObject != null && foodObject.foodItem != null)
+        //     {
+        //         GameManager.Instance.orderManager.SetHeldOrder(foodObject);
+        //         foreach (InventoryItem item in itemsOnBoard)
+        //         {
+        //             Destroy(item.gameObject);
+        //         }
+        //         itemsOnBoard.Clear();
+        //         itemSliceOperations.Clear();
+        //     }
+        // }
     }
 
     GameObject SetupHull(GameObject hull, Transform parent, SliceOperation sliceOp, bool isUpper)

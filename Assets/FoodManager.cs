@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -127,12 +128,12 @@ public class FoodManager : MonoBehaviour
         {
             return false;
         }
-        // if (qualifiers.tag != foodObject.tags)
-        // {
-        //     Debug.Log("Second input" +  qualifiers.tag);
-        //     Debug.Log("First input" + foodObject.tags);
-        //     return false;
-        // }
+        if (!qualifiers.tag.OrderBy(x => x).SequenceEqual(foodObject.tags.OrderBy(x => x)))
+        {
+            Debug.Log("Qualifiers tags: " + string.Join(", ", qualifiers.tag));
+            Debug.Log("FoodObject tags: " + string.Join(", ", foodObject.tags));
+            return false;
+        }
         return true;
     }
 

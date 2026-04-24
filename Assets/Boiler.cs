@@ -44,17 +44,24 @@ public class Boiler : DragFoodInto
             Debug.LogWarning($"{GetType().Name} ({name}): boilParticles is not assigned; cannot reset particle emission.");
         }
         
+        //TODO: Add this later
         foreach(InventoryItem item in itemsInBoiler)
         {
             if (item != null && item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
+                if(tempTime<=0){      
+                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true, CookingStep.Boil);
+                }
+                else
+                {
+                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, false, CookingStep.Boil);
+                }
             }
             Destroy(item.gameObject);
         }
+        tempTime = time;
         itemsInBoiler.Clear();
 
-        tempTime = time;
         if (timeRemaining != null)
         {
             timeRemaining.value = 0;
@@ -91,33 +98,34 @@ public class Boiler : DragFoodInto
             var emission = boilParticles.emission;
             emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
 
-            if(tempTime<=0){                
+            // if(tempTime<=0){                
 
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
-                if (foodObject.foodItem == null)
-                {
+            //     // FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
+            //     // if (foodObject.foodItem == null)
+            //     // {
                     
-                    return;
-                }
+            //     //     return;
+            //     // }
 
-                tempTime = time;
+            //     // tempTime = time;
 
-                //here is a completed order - probably dont immediately set 
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
+            //     // //here is a completed order - probably dont immediately set 
+            //     // GameManager.Instance.orderManager.SetHeldOrder(foodObject);
                 
-                foreach(InventoryItem item in itemsInBoiler)
-                {
-                    Destroy(item.gameObject);
-                }
-                itemsInBoiler.Clear();
+            //     // foreach(InventoryItem item in itemsInBoiler)
+            //     // {
+            //     //     Destroy(item.gameObject);
+            //     // }
+            //     // itemsInBoiler.Clear();
 
-                emission.rateOverTime = boilParticleRateRange.x;
-            }
+            //     emission.rateOverTime = boilParticleRateRange.x;
+            // }
                 
-        }else
-        {
-            tempTime = time;
         }
+        // else
+        // {
+        //     tempTime = time;
+        // }
 
     }
 }

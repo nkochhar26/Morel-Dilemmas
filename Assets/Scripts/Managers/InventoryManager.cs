@@ -75,13 +75,22 @@ public class InventoryManager : MonoBehaviour
 
     public void AddFoodObject(FoodItemObject item)
     {
-        AddFoodObject(item, false);
+        // AddFoodObject(item, false, null);
+        if (item == null) return;
+        // item.isIntermediate = isIntermediate;
+        // item.tags.Add(step);
+        foodItems.Add(item);
+        if (AlexKitchenInventoryUI.Instance != null)
+        {
+            AlexKitchenInventoryUI.Instance.UpdateItems();
+        }
     }
 
-    public void AddFoodObject(FoodItemObject item, bool isIntermediate)
+    public void AddFoodObject(FoodItemObject item, bool isIntermediate, CookingStep step)
     {
         if (item == null) return;
         item.isIntermediate = isIntermediate;
+        item.tags.Add(step);
         foodItems.Add(item);
         if (AlexKitchenInventoryUI.Instance != null)
         {

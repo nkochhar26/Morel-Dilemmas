@@ -18,7 +18,7 @@ MonoBehaviour:
   SingleIngredientRecipes: []
   recipe:
     foodList:
-    - tag: 
+    - tag: 02000000
       foodItem: {fileID: 11400000, guid: 1ffb117697f2c484e84e5cb8962f6b7b, type: 2}
     step: 2
   price: 10
