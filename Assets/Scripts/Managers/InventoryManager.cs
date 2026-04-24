@@ -29,12 +29,11 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<Item, int> items = new Dictionary<Item, int>();
     public static List<FoodItemObject> foodItems = new List<FoodItemObject>();
 
-
     public void AddFoodItem(FoodItem item, float quality = 5, int quantity =1, bool isLookalike=false)
     {
         foreach (FoodItemObject f in foodItems)
         {
-            if (item == f.foodItem && f.starQuality == quality)
+            if (item == f.foodItem && f.starQuality == quality && f.isIntermediate == false && f.tags.Count == 0)
             {
                 f.quantity += quantity;
                 if (AlexKitchenInventoryUI.Instance != null)
@@ -89,8 +88,21 @@ public class InventoryManager : MonoBehaviour
     public void AddFoodObject(FoodItemObject item, bool isIntermediate, CookingStep step)
     {
         if (item == null) return;
-        item.isIntermediate = isIntermediate;
         item.tags.Add(step);
+        foreach (FoodItemObject f in foodItems)
+        {
+            if (item.foodItem == f.foodItem && f.isIntermediate && item.tags == f.tags)
+            {
+                f.quantity += 1;
+                if (AlexKitchenInventoryUI.Instance != null)
+                {
+                    AlexKitchenInventoryUI.Instance.UpdateItems();
+                }
+            return;
+            }
+        }
+        item.quantity = 1;
+        item.isIntermediate = isIntermediate;
         foodItems.Add(item);
         if (AlexKitchenInventoryUI.Instance != null)
         {

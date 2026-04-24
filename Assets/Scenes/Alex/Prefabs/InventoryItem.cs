@@ -17,6 +17,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Vector3 originalPosition;
     private Transform originalParent;
     public TextMeshProUGUI quantityText;
+    public GameObject boilIcon;
+    public GameObject sauteeIcon;
+    public GameObject chopIcon;
+    public GameObject tagHolder;
 
     void Start()
     {
@@ -81,7 +85,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void StopFollowMouse()
     {
         followmouse = false;
-        Debug.Log("Quantity before drop: " + foodItem.quantity);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, targetLayer);
         if (hit.collider != null)
@@ -137,6 +140,26 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (image != null)
         {
             image.color = item.isIntermediate ? new Color(1f, 0.92f, 0.6f, 1f) : Color.white;
+        }
+        LoadTags(item);
+    }
+
+    public void LoadTags(FoodItemObject item)
+    {
+        foreach (CookingStep tag in item.tags)
+        {
+            if (tag == CookingStep.Boil)
+            {
+                Instantiate(boilIcon, tagHolder.transform);
+            }
+            if (tag == CookingStep.Sautee)
+            {
+                Instantiate(sauteeIcon, tagHolder.transform);
+            }
+            if (tag == CookingStep.Chop)
+            {
+                Instantiate(chopIcon, tagHolder.transform);
+            }
         }
     }
 

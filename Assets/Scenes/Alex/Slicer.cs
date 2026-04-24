@@ -172,8 +172,8 @@ public class EzyMeshSlicer : DragFoodInto
                                 modifiedFoodItem.sliceOperation = rootSliceOperation;
                                 // modifiedFoodItem.tags.Add(CookingStep.Chop);
                                 
-                                //TODO: re-add this later
                                 GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem, true, CookingStep.Chop);
+                                // GameManager.Instance.inventoryManager.AddFoodItem(FoodItem item, float quality = 5, int quantity = 1, bool isLookalike=false, bool isIntermediate = false)
                                 // CheckComplete();
                                 
                             }
