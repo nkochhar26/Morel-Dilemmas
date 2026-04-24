@@ -238,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4109604413297572975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4109604413297572975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
@@ -394,6 +394,17 @@ MonoBehaviour:
     m_Bits: 512
   meshRenderer: {fileID: 220977731420358177}
   image: {fileID: 6763840595460258229}
+  foodItem:
+    foodItem: {fileID: 0}
+    starQuality: 0
+    isLookalike: 0
+    tags: 
+    sliceOperation:
+      centerPoint: {x: 0, y: 0, z: 0}
+      planeNormal: {x: 0, y: 0, z: 0}
+      upperDestroyed: 0
+      lowerDestroyed: 0
+    isIntermediate: 0
 --- !u!114 &8979914285792900953
 MonoBehaviour:
   m_ObjectHideFlags: 0

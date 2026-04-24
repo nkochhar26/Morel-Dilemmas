@@ -7791,11 +7791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupPrefab: {fileID: 4832578559212040363, guid: b9b592e84c5580148b68d178d749350c, type: 3}
-  collectibleMushrooms:
-  - {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
-  - {fileID: 11400000, guid: 4785494cf105bca4d9fa62b52a5b8d50, type: 2}
-  - {fileID: 11400000, guid: 1ffb117697f2c484e84e5cb8962f6b7b, type: 2}
-  - {fileID: 11400000, guid: ef43348c14e359c4ab737baf252c6031, type: 2}
   foragingProps:
   - {fileID: 5166793881818990469}
   - {fileID: 27835019}
@@ -11652,10 +11647,6 @@ PrefabInstance:
     - target: {fileID: 64593716309421285, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8744838985020244286, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-      propertyPath: day
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9036760247063195212, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: m_LocalPosition.x

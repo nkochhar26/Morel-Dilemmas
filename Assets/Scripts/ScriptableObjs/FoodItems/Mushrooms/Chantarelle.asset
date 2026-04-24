@@ -20,8 +20,9 @@ MonoBehaviour:
   recipe:
     foodList: []
     step: 0
+  price: 0
   lookalikeSprite: {fileID: 6632115677372465605, guid: 41fc7b7608f76a340a62064d7a746d38, type: 3}
   lookalikeName: Jack-o-Lantern Mushroom
   lookalikeDescription: A lookalike to the chantarelle mushroom. It can glow in the
-    dark at night!
+    dark at night and is toxic! DO NOT EAT!!
   spawnType: 0

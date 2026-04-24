@@ -2,8 +2,9 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     Vector3 originalSize;
     Vector3 originalSizeWorld;
@@ -21,6 +22,40 @@ public class InventoryItem : MonoBehaviour
         originalSizeWorld = transform.lossyScale;
     }
 
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        StopFollowMouse();
+    }
+
+    // public void OnPointerUp(PointerEventData eventData)
+    // {
+    //     StopFollowMouse();
+    // }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        FollowMouse();
+    }
+
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        originalPosition = this.transform.position;
+        originalParent = this.transform.parent;
+        FollowMouse();
+    }   
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Shrink();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Grow();
+    }
+
+
     public void Grow()
     {
         if (transform.parent.GetComponent<DragFoodInto>() == null) return;
@@ -36,10 +71,8 @@ public class InventoryItem : MonoBehaviour
 
     public void FollowMouse()
     {
-        originalPosition = this.transform.position;
-        originalParent = this.transform.parent;
         AlexKitchenInventoryUI.Instance.draggedItem = this;
-        this.transform.parent = AlexKitchenInventoryUI.Instance.gameObject.transform;
+        this.transform.SetParent(AlexKitchenInventoryUI.Instance.gameObject.transform);
         followmouse = true;
     }
 
@@ -53,13 +86,18 @@ public class InventoryItem : MonoBehaviour
         {
             hit.transform.GetComponent<DragFoodInto>().AddItem(this);
             InventoryManager.foodItems.Remove(foodItem);
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            transform.position = worldPosition;
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0.005f);
         }
         else
         {
             if (AlexKitchenInventoryUI.Instance != null)
             {
                 this.transform.position = originalPosition;
-                this.transform.parent = originalParent;
+                this.transform.SetParent(originalParent);
                 LayoutRebuilder.ForceRebuildLayoutImmediate(AlexKitchenInventoryUI.Instance.GetComponent<RectTransform>());
                 CursorManager.changeTo(CursorType.HAND_OPEN);
             }
@@ -91,9 +129,9 @@ public class InventoryItem : MonoBehaviour
         if (followmouse)
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            transform.position = worldPosition;
+            // mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
+            // Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            transform.position = Input.mousePosition;
         }
     }
 
