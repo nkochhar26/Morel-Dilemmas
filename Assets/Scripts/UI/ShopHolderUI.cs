@@ -14,7 +14,6 @@ public class ShopHolderUI : MonoBehaviour
     public void CloseShop()
     {
         shopEntrance.SetActive(false);
-        MusicManager.instance.SceneMusic(2);
     }
 
     public void OpenIngredientsShop()

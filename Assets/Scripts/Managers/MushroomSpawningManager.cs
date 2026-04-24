@@ -4,12 +4,13 @@ using System.Collections.Generic;
 public class MushroomSpawningManager : MonoBehaviour
 {
     [SerializeField] private GameObject pickupPrefab;
-    [SerializeField] private List<MushroomItem> collectibleMushrooms;
+    private List<MushroomItem> collectibleMushrooms;
     [SerializeField] private List<ForagingProp> foragingProps = new List<ForagingProp>();
     [SerializeField] private List<ForagingProp> ground = new List<ForagingProp>();
 
     private void Start()
     {
+        collectibleMushrooms = GameManager.Instance.mushroomManager.GetAllMushrooms();
         LoadMushrooms();
     }
 

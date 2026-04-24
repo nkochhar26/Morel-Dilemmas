@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7118533387306255682}
   - component: {fileID: 8744838985020244286}
   - component: {fileID: 8109544962577306719}
+  - component: {fileID: 5191563888732215934}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -59,6 +60,7 @@ MonoBehaviour:
   starManager: {fileID: 2372981988764308445}
   currencyManager: {fileID: 322557177492980354}
   dayManager: {fileID: 8744838985020244286}
+  mushroomManager: {fileID: 5191563888732215934}
 --- !u!114 &578260495059733337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +185,20 @@ MonoBehaviour:
   allFoodItems:
   - {fileID: 11400000, guid: 087e46bf3e044e14ebd8422c3dcbe65a, type: 2}
   - {fileID: 11400000, guid: feeebf8124a0bc64eb454032da203dd5, type: 2}
+--- !u!114 &5191563888732215934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64593716309421285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f0d05d9fa2a524b9a6c7340af64876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allMushrooms:
+  - {fileID: 11400000, guid: 9e07dc6abe45c1748b178eb71d34d0fd, type: 2}
+  - {fileID: 11400000, guid: 4785494cf105bca4d9fa62b52a5b8d50, type: 2}
+  - {fileID: 11400000, guid: 1ffb117697f2c484e84e5cb8962f6b7b, type: 2}
+  - {fileID: 11400000, guid: ef43348c14e359c4ab737baf252c6031, type: 2}

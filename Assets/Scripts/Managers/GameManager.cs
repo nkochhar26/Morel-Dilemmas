@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public StarManager starManager;
     public CurrencyManager currencyManager;
     public DayManager dayManager;
+    public MushroomManager mushroomManager;
 
     private void Awake()
     {
