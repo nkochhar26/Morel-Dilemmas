@@ -20,6 +20,10 @@ public class FoodManager : MonoBehaviour
         {
             var remaining = new List<FoodItemQualifiers>(foodData.recipe.foodList);
             int ingredientCount = 0;
+            if (step != foodData.recipe.step)
+            {
+                continue;
+            }
             foreach (var ingredient in ingredients)
             {
                 if (ingredient.foodItem.name == "Poison")

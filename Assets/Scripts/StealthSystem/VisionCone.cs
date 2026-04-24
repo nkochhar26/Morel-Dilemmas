@@ -145,7 +145,7 @@ public class VisionCone : MonoBehaviour
             if (hit.collider != null)
             {
                 // Check if we hit the player layer
-                if (((1 << hit.collider.gameObject.layer) & playerLayer) != 0)
+                if (((((1 << hit.collider.gameObject.layer) & playerLayer) != 0)) || (hit.collider.gameObject.tag == "Body"))
                 {
                     // Player detected!
                     playerDetected = true;

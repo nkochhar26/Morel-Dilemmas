@@ -58,7 +58,6 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void WalkAnimToggle(bool value)
     {
-        Debug.Log("WALKING IS: " + value);
         animator.SetBool("isWalking", value);
     }
 
@@ -127,10 +126,10 @@ public class Customer : MonoBehaviour, IInteractable
         this.gameObject.layer = 0;
         this.gameObject.tag = "Body";
         boxCollider.isTrigger = true;
-        animator.enabled = false;
-        Destroy(visionCone);
+        // animator.enabled = false;
         spriteRenderer.color = new Color(103/255f, 192/255f, 101/255f, 1f);
         ghost.SetActive(true);
+        Destroy(visionCone);
     }
 
     public void SetState(CustomerState state)

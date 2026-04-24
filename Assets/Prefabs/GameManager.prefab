@@ -76,7 +76,8 @@ MonoBehaviour:
   dailyDishes:
   - {fileID: 11400000, guid: 087e46bf3e044e14ebd8422c3dcbe65a, type: 2}
   - {fileID: 11400000, guid: feeebf8124a0bc64eb454032da203dd5, type: 2}
-  - {fileID: 11400000, guid: a40a08ecd3d627f41980dfdf0044bef6, type: 2}
+  - {fileID: 11400000, guid: 5528bb590523cae42ab8164a3c76913b, type: 2}
+  - {fileID: 11400000, guid: 9600c7cc2eb72874d87ed6b1aae586ab, type: 2}
   currentOrders:
   - {fileID: 0}
   - {fileID: 0}
@@ -185,6 +186,8 @@ MonoBehaviour:
   allFoodItems:
   - {fileID: 11400000, guid: 087e46bf3e044e14ebd8422c3dcbe65a, type: 2}
   - {fileID: 11400000, guid: feeebf8124a0bc64eb454032da203dd5, type: 2}
+  - {fileID: 11400000, guid: 5528bb590523cae42ab8164a3c76913b, type: 2}
+  - {fileID: 11400000, guid: 9600c7cc2eb72874d87ed6b1aae586ab, type: 2}
 --- !u!114 &5191563888732215934
 MonoBehaviour:
   m_ObjectHideFlags: 0
