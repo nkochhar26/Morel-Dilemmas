@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1262892741361216523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6532370881109116371}
+  - component: {fileID: 4242845303838082}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6532370881109116371
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262892741361216523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6019053492110550204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.2, y: -65}
+  m_SizeDelta: {x: 151.9337, y: 108.5063}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4242845303838082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262892741361216523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 45, y: 45}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1999359827346070365
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,13 +230,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6532370881109116371}
   - {fileID: 5627948364366642446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.6798, y: -3.7532}
-  m_SizeDelta: {x: 201.6004, y: 304.0326}
+  m_AnchoredPosition: {x: 2.6798096, y: -31.224487}
+  m_SizeDelta: {x: 201.6004, y: 358.9751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3757780065473111996
 CanvasRenderer:
@@ -234,6 +295,11 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0}
   originalSize: {x: 0, y: 0}
   table: {fileID: 0}
+  recipeHolder: {fileID: 1262892741361216523}
+  boilIcon: {fileID: 7122670411428195861, guid: bfc7bc4b98aedfb4fa363d7c9aa37e08, type: 3}
+  chopIcon: {fileID: 7122670411428195861, guid: 7448df7af5bd7a94eb3142fc5c60fb7c, type: 3}
+  sauteeIcon: {fileID: 7122670411428195861, guid: 2198702622eaa804db7e3b3b6e53e5ec, type: 3}
+  ingredientIcon: {fileID: 8284881128800800704, guid: e1ee24ac259111f4cbd90ac5c4c84961, type: 3}
 --- !u!114 &8751896451322033321
 MonoBehaviour:
   m_ObjectHideFlags: 0
