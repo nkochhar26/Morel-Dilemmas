@@ -15,7 +15,15 @@ public class Sautee : DragFoodInto
 
     void Start()
     {
-        timeRemaining.value = 0;
+        if (timeRemaining != null)
+        {
+            timeRemaining.value = 0;
+        }
+        else
+        {
+            Debug.LogWarning($"{GetType().Name} ({name}): timeRemaining slider is not assigned.");
+        }
+
         tempTime = time;
     }
 
@@ -27,7 +35,15 @@ public class Sautee : DragFoodInto
 
     public void ClearBoiler()
     {
-        var emission = boilParticles.emission;
+        if (boilParticles != null)
+        {
+            var emission = boilParticles.emission;
+            emission.rateOverTime = boilParticleRateRange.x;
+        }
+        else
+        {
+            Debug.LogWarning($"{GetType().Name} ({name}): boilParticles is not assigned; cannot reset particle emission.");
+        }
         
         foreach(InventoryItem item in itemsInBoiler)
         {
@@ -39,9 +55,15 @@ public class Sautee : DragFoodInto
         }
         itemsInBoiler.Clear();
 
-        emission.rateOverTime = boilParticleRateRange.x;
         tempTime = time;
-        timeRemaining.value = 0;
+        if (timeRemaining != null)
+        {
+            timeRemaining.value = 0;
+        }
+        else
+        {
+            Debug.LogWarning($"{GetType().Name} ({name}): timeRemaining slider is not assigned; cannot reset timer.");
+        }
 
     }
 
