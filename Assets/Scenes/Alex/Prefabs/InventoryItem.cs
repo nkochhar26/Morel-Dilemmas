@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,6 +16,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public FoodItemObject foodItem;
     private Vector3 originalPosition;
     private Transform originalParent;
+    public TextMeshProUGUI quantityText;
 
     void Start()
     {
@@ -79,18 +81,30 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void StopFollowMouse()
     {
         followmouse = false;
-
+        Debug.Log("Quantity before drop: " + foodItem.quantity);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, targetLayer);
         if (hit.collider != null)
         {
             hit.transform.GetComponent<DragFoodInto>().AddItem(this);
-            InventoryManager.foodItems.Remove(foodItem);
+            
+            if (foodItem.quantity > 1)
+            {
+                foodItem.quantity -= 1;
+
+            }
+            else {
+                // last item, remove
+                InventoryManager.foodItems.Remove(foodItem);
+            
+            }
+            
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = worldPosition;
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0.005f);
+            AlexKitchenInventoryUI.Instance.UpdateItems();
         }
         else
         {
@@ -107,6 +121,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void SetItem(FoodItemObject item)
     {
         foodItem = item;
+        quantityText.text = item.quantity.ToString();
+
         if (item.isLookalike)
         {
             image.sprite = ((MushroomItem)(item.foodItem)).lookalikeSprite;

@@ -21,24 +21,55 @@ public class FoodItemObject
     public List<CookingStep> tags = new List<CookingStep>();
     public SliceOperation sliceOperation;
     public bool isIntermediate;
+    public int quantity;
 }
+
 public class InventoryManager : MonoBehaviour
 {
     public Dictionary<Item, int> items = new Dictionary<Item, int>();
     public static List<FoodItemObject> foodItems = new List<FoodItemObject>();
 
 
-    public void AddFoodItem(FoodItem item, float quality = 5, bool isLookalike=false)
+    public void AddFoodItem(FoodItem item, float quality = 5, int quantity =1, bool isLookalike=false)
     {
+        foreach (FoodItemObject f in foodItems)
+        {
+            if (item == f.foodItem && f.starQuality == quality)
+            {
+                f.quantity += quantity;
+                if (AlexKitchenInventoryUI.Instance != null)
+                {
+                    AlexKitchenInventoryUI.Instance.UpdateItems();
+                }
+            return;
+            }
+        }
         FoodItemObject foodobject = new FoodItemObject();
         foodobject.foodItem = item;
         foodobject.starQuality = quality;
         foodobject.isLookalike = isLookalike;
+        foodobject.quantity = quantity;
 
         foodItems.Add(foodobject);
         if (AlexKitchenInventoryUI.Instance != null)
         {
             AlexKitchenInventoryUI.Instance.UpdateItems();
+        }
+    }
+
+    public void RemoveFoodItem(FoodItemObject item)
+    {
+        for (int i = 0; i < foodItems.Count; i++)
+        {
+            if (item.foodItem == foodItems[i].foodItem && foodItems[i].starQuality == item.starQuality)
+            {
+                foodItems[i].quantity -= 1;
+                if (foodItems[i].quantity <= 0)
+                {
+                    foodItems.RemoveAt(i);
+                }
+                return;
+            }
         }
     }
 
