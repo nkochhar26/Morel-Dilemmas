@@ -21,6 +21,7 @@ public class EzyMeshSlicer : DragFoodInto
     private List<Vector3> outlinePoints = new List<Vector3>();
     private float outlineDistance;
     private SliceOperation rootSliceOperation; // Root of the slice tree
+    public int sliceCount = 0;
     
     //game stuff
     private Mushroom currentMushroom; //needs to accomodate poisonous mushrooms
@@ -75,6 +76,36 @@ public class EzyMeshSlicer : DragFoodInto
         p2World = MouseWorldPos;
         sliceLineRenderer.SetPosition(1, p2World);
         sliceTimer = 1;
+    }
+
+    public void CheckComplete()
+    {
+        FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, itemsOnBoard.ConvertAll(i=>i.foodItem));
+        if (foodObject == null)
+        {
+            Debug.Log("No food");
+            return;
+        }
+
+        //here is a completed order - probably dont immediately set 
+        GameManager.Instance.orderManager.SetHeldOrder(foodObject);
+        
+        foreach(InventoryItem item in itemsOnBoard)
+        {
+            Destroy(item.gameObject);
+        }
+        itemsOnBoard.Clear();
+        sliceCount = 0;
+    }
+
+    public void ClearBoiler()
+    {
+        foreach(InventoryItem item in itemsOnBoard)
+        {
+            Destroy(item.gameObject);
+        }
+        itemsOnBoard.Clear();
+        sliceCount = 0;
     }
 
 
@@ -223,6 +254,11 @@ public class EzyMeshSlicer : DragFoodInto
                 });
 
                 sliceLineRenderer.enabled = false;
+                sliceCount += 1;
+                if (sliceCount >= 5)
+                {
+                    CheckComplete();
+                }
             }
         }
     }

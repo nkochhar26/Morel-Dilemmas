@@ -2312,14 +2312,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8109544962577306719, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-      propertyPath: allFoodItems.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8109544962577306719, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
-      propertyPath: 'allFoodItems.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: a40a08ecd3d627f41980dfdf0044bef6, type: 2}
     - target: {fileID: 9036760247063195212, guid: 8ef0468867f5094429965e31bff8065d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.537727

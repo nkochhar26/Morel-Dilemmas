@@ -1,4 +1,3 @@
-//LITERALLY THE EXACT SAME AS SAUTEE BUT I JUST CHANGED THE COOKING STEP :)
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,7 +61,7 @@ public class Sautee : DragFoodInto
         }
         else
         {
-            Debug.LogWarning($"{GetType().Name} ({name}): timeRemaining slider is not assigned; cannot reset timer.");
+            Debug.LogWarning($"{name}: timeRemaining slider is not assigned; cannot reset timer.");
         }
 
     }

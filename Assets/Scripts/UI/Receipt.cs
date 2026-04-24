@@ -38,6 +38,14 @@ public class Receipt : MonoBehaviour
         {
             Instantiate(boilIcon, recipeHolder.transform);
         }
+        if (recipe.recipe.step == CookingStep.Sautee)
+        {
+            Instantiate(sauteeIcon, recipeHolder.transform);
+        }
+        if (recipe.recipe.step == CookingStep.Chop)
+        {
+            Instantiate(chopIcon, recipeHolder.transform);
+        }
         foreach (FoodItemQualifiers food in recipe.recipe.foodList)
         {
             GameObject currFoodIcon = Instantiate(ingredientIcon, recipeHolder.transform);
