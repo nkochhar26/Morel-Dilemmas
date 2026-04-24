@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hello World, I like mushrooms!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6efd6db17d9d5bb40b852ce550b52bb7, type: 2}
+  m_sharedMaterial: {fileID: 822082267201090142, guid: 6efd6db17d9d5bb40b852ce550b52bb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
