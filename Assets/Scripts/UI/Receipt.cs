@@ -11,6 +11,11 @@ public class Receipt : MonoBehaviour
     public GameObject stepPrefab;
     public Vector2 originalPosition, originalSize;
     public TableOutline table;
+    public GameObject recipeHolder;
+    public GameObject boilIcon;
+    public GameObject chopIcon;
+    public GameObject sauteeIcon;
+    public GameObject ingredientIcon;
 
     void Start()
     {
@@ -24,7 +29,22 @@ public class Receipt : MonoBehaviour
         dishImage.sprite = recipe.defaultSprite;
         this.table = table;
         // load steps
+        LoadRecipe(recipe);
     }
+
+    public void LoadRecipe(FoodItem recipe)
+    {
+        if (recipe.recipe.step == CookingStep.Boil)
+        {
+            Instantiate(boilIcon, recipeHolder.transform);
+        }
+        foreach (FoodItemQualifiers food in recipe.recipe.foodList)
+        {
+            GameObject currFoodIcon = Instantiate(ingredientIcon, recipeHolder.transform);
+            currFoodIcon.GetComponent<Image>().sprite = food.foodItem.defaultSprite;
+        }
+    }
+
     public void Grow()
     {
         transform.DOScale(originalSize * 1.2f, 0.2f);

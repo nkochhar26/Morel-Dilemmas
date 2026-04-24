@@ -91,7 +91,7 @@ public class TopDownMovement : MonoBehaviour
 
     public GameObject CheckRaycast()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, currDirection, 64f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, currDirection, 2f, layerMask);
         if (hit)
         {
             return hit.collider.gameObject;
