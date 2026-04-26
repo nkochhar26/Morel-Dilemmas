@@ -85,9 +85,18 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddFoodObject(FoodItemObject item, bool isIntermediate, CookingStep step)
+    public void AddFoodObject(FoodItemObject itemoriginal, bool isIntermediate, CookingStep step)
     {
-        if (item == null) return;
+        if (itemoriginal == null) return;
+
+        FoodItemObject item = new FoodItemObject();
+        item.foodItem = itemoriginal.foodItem;
+        print(item.foodItem);
+        item.isIntermediate = itemoriginal.isIntermediate;
+        item.quantity = itemoriginal.quantity;
+
+        // IMPORTANT: create a new list, not a reference
+        item.tags = new List<CookingStep>(itemoriginal.tags);
         item.tags.Add(step);
         foreach (FoodItemObject f in foodItems)
         {

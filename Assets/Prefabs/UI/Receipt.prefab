@@ -296,10 +296,7 @@ MonoBehaviour:
   originalSize: {x: 0, y: 0}
   table: {fileID: 0}
   recipeHolder: {fileID: 1262892741361216523}
-  boilIcon: {fileID: 7122670411428195861, guid: bfc7bc4b98aedfb4fa363d7c9aa37e08, type: 3}
-  chopIcon: {fileID: 7122670411428195861, guid: 7448df7af5bd7a94eb3142fc5c60fb7c, type: 3}
-  sauteeIcon: {fileID: 7122670411428195861, guid: 2198702622eaa804db7e3b3b6e53e5ec, type: 3}
-  ingredientIcon: {fileID: 8284881128800800704, guid: e1ee24ac259111f4cbd90ac5c4c84961, type: 3}
+  ingredientPrefab: {fileID: 2658868706196264915, guid: d2425454adc1fcb40a06eaf1fbe9c2a2, type: 3}
 --- !u!114 &8751896451322033321
 MonoBehaviour:
   m_ObjectHideFlags: 0

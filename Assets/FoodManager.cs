@@ -17,6 +17,7 @@ public class FoodManager : MonoBehaviour
 
     public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
     {
+        Debug.Log(ingredients.Count);
         foreach(FoodItem foodData in allFoodItems)
         {
             var remaining = new List<FoodItemQualifiers>(foodData.recipe.foodList);
@@ -27,6 +28,7 @@ public class FoodManager : MonoBehaviour
             }
             foreach (var ingredient in ingredients)
             {
+                Debug.Log(ingredient.foodItem.itemName);
                 if (ingredient.foodItem.name == "Poison")
                 {
                     GameManager.Instance.orderManager.SetPoisonous(true);
@@ -124,7 +126,7 @@ public class FoodManager : MonoBehaviour
     //TODO: IDK BRO whats happening with the tags
     public bool FoodObjectMatchesQualifiers(FoodItemObject foodObject, FoodItemQualifiers qualifiers)
     {
-        if (qualifiers.foodItem != foodObject.foodItem)
+        if (qualifiers.foodItem.itemName != foodObject.foodItem.itemName)
         {
             return false;
         }

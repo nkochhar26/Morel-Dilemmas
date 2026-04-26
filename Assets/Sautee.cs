@@ -49,13 +49,7 @@ public class Sautee : DragFoodInto
         {
             if (item != null && item.foodItem != null)
             {
-                if(tempTime<=0){      
-                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true, CookingStep.Sautee);
-                }
-                else
-                {
-                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, false, CookingStep.Sautee);
-                }
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true, CookingStep.Sautee);
             }
             Destroy(item.gameObject);
         }

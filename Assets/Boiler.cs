@@ -49,13 +49,7 @@ public class Boiler : DragFoodInto
         {
             if (item != null && item.foodItem != null)
             {
-                if(tempTime<=0){      
-                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true, CookingStep.Boil);
-                }
-                else
-                {
-                    GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, false, CookingStep.Boil);
-                }
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true, CookingStep.Boil);
             }
             Destroy(item.gameObject);
         }
