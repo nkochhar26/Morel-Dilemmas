@@ -32,6 +32,22 @@ public class Sautee : DragFoodInto
         base.AddItem(item);
     }
 
+    private void RefreshItemsInBoiler()
+    {
+        List<InventoryItem> currentItems = new List<InventoryItem>();
+
+        foreach (Transform child in transform)
+        {
+            InventoryItem item = child.GetComponent<InventoryItem>();
+            if (item != null)
+            {
+                currentItems.Add(item);
+            }
+        }
+
+        itemsInBoiler = currentItems;
+    }
+
     public void ClearBoiler()
     {
         if (boilParticles != null)
@@ -43,15 +59,23 @@ public class Sautee : DragFoodInto
         {
             Debug.LogWarning($"{GetType().Name} ({name}): boilParticles is not assigned; cannot reset particle emission.");
         }
-        
-        foreach(InventoryItem item in itemsInBoiler)
+
+        foreach (Transform child in transform)
         {
-            if (item != null && item.foodItem != null)
+            InventoryItem item = child.GetComponent<InventoryItem>();
+            if (item == null)
+            {
+                continue;
+            }
+
+            if (item.foodItem != null)
             {
                 GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
             }
-            Destroy(item.gameObject);
+
+            Destroy(child.gameObject);
         }
+
         itemsInBoiler.Clear();
 
         tempTime = time;
@@ -63,61 +87,90 @@ public class Sautee : DragFoodInto
         {
             Debug.LogWarning($"{name}: timeRemaining slider is not assigned; cannot reset timer.");
         }
-
     }
 
     void FixedUpdate()
     {
-        foreach(Transform child in transform)
-        {
-            if(child.GetComponent<InventoryItem>())
-            {
-                GameObject meshObject = child.GetComponent<InventoryItem>().meshRenderer.gameObject;
-                Vector2 pos = meshObject.transform.position-transform.position;
-                Vector2 tangent = new Vector2(pos.y, -pos.x);
-                meshObject.GetComponent<Rigidbody2D>().AddForce(tangent*stirForce);
+        RefreshItemsInBoiler();
 
-                if(!itemsInBoiler.Contains(child.GetComponent<InventoryItem>()))
-                {
-                    itemsInBoiler.Add(child.GetComponent<InventoryItem>());
-                }
+        foreach (Transform child in transform)
+        {
+            InventoryItem item = child.GetComponent<InventoryItem>();
+            if (item == null)
+            {
+                continue;
+            }
+
+            if (item.meshRenderer == null || item.meshRenderer.gameObject == null)
+            {
+                continue;
+            }
+
+            GameObject meshObject = item.meshRenderer.gameObject;
+            Rigidbody2D rb = meshObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 pos = meshObject.transform.position - transform.position;
+                Vector2 tangent = new Vector2(pos.y, -pos.x);
+                rb.AddForce(tangent * stirForce);
             }
         }
 
-        if(itemsInBoiler.Count>0)
+        if (itemsInBoiler.Count > 0)
         {
-            tempTime-=Time.deltaTime;
-            timeRemaining.value = 1 - (tempTime * 1.0f / time);
-            var emission = boilParticles.emission;
-            emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
+            tempTime -= Time.deltaTime;
 
-            if(tempTime<=0){                
+            if (timeRemaining != null)
+            {
+                timeRemaining.value = 1 - (tempTime * 1.0f / time);
+            }
 
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Sautee, itemsInBoiler.ConvertAll(i=>i.foodItem));
-                if (foodObject.foodItem == null)
+            if (boilParticles != null)
+            {
+                var emission = boilParticles.emission;
+                emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1 - (tempTime / time));
+            }
+
+            if (tempTime <= 0)
+            {
+                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Sautee, itemsInBoiler.ConvertAll(i => i.foodItem));
+                if (foodObject == null || foodObject.foodItem == null)
                 {
-                    
+                    tempTime = time;
+                    if (timeRemaining != null)
+                    {
+                        timeRemaining.value = 0;
+                    }
                     return;
                 }
 
                 tempTime = time;
 
-                //here is a completed order - probably dont immediately set 
                 GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-                
-                foreach(InventoryItem item in itemsInBoiler)
+
+                foreach (InventoryItem item in itemsInBoiler.ToArray())
                 {
-                    Destroy(item.gameObject);
+                    if (item != null)
+                    {
+                        Destroy(item.gameObject);
+                    }
                 }
                 itemsInBoiler.Clear();
 
-                emission.rateOverTime = boilParticleRateRange.x;
+                if (boilParticles != null)
+                {
+                    var emission = boilParticles.emission;
+                    emission.rateOverTime = boilParticleRateRange.x;
+                }
             }
-                
-        }else
+        }
+        else
         {
             tempTime = time;
+            if (timeRemaining != null)
+            {
+                timeRemaining.value = 0;
+            }
         }
-
     }
 }
