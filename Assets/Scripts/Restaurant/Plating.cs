@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The only station that turns ingredients into a finished dish.
+// Drop prepared (chopped/boiled/sauteed) ingredients here; once they exactly match
+// a recipe, the dish is made and becomes the held order.
 public class Plating : DragFoodInto
 {
     public List<InventoryItem> itemsOnPlate = new List<InventoryItem>();
@@ -18,42 +21,34 @@ public class Plating : DragFoodInto
             itemsOnPlate.Add(item);
         }
 
-        TryMatchIntermediateRecipe();
+        TryMakeDish();
     }
 
-    private void TryMatchIntermediateRecipe()
+    private void TryMakeDish()
     {
-        List<FoodItemObject> intermediateIngredients = new List<FoodItemObject>();
+        itemsOnPlate.RemoveAll(i => i == null);
+
+        List<FoodItemObject> ingredients = new List<FoodItemObject>();
         foreach (InventoryItem item in itemsOnPlate)
         {
-            if (item != null && item.foodItem != null && item.foodItem.isIntermediate)
+            if (item.foodItem != null)
             {
-                intermediateIngredients.Add(item.foodItem);
+                ingredients.Add(item.foodItem);
             }
         }
 
-        if (intermediateIngredients.Count == 0)
+        FoodItemObject dish = FoodManager.Instance.PlateIngredients(ingredients);
+        if (dish == null)
         {
             return;
         }
 
-        FoodItemObject matchedDish = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, intermediateIngredients);
-        if (matchedDish == null || matchedDish.foodItem == null)
-        {
-            return;
-        }
-
-        matchedDish.isIntermediate = false;
-        GameManager.Instance.orderManager.SetHeldOrder(matchedDish);
+        GameManager.Instance.orderManager.SetHeldOrder(dish);
 
         foreach (InventoryItem item in itemsOnPlate)
         {
-            if (item != null)
-            {
-                Destroy(item.gameObject);
-            }
+            Destroy(item.gameObject);
         }
-
         itemsOnPlate.Clear();
     }
 
@@ -61,9 +56,11 @@ public class Plating : DragFoodInto
     {
         foreach (InventoryItem item in itemsOnPlate)
         {
-            if (item != null && item.foodItem != null)
+            if (item == null) continue;
+            if (item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem);
+                // keep whatever preparation it already had
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, item.foodItem.isIntermediate);
             }
             Destroy(item.gameObject);
         }

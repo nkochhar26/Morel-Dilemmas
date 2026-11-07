@@ -68,9 +68,10 @@ public class Sautee : DragFoodInto
                 continue;
             }
 
+            // Taken out before the timer finished: return them unchanged (not sauteed)
             if (item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, item.foodItem.isIntermediate);
             }
 
             Destroy(child.gameObject);
@@ -133,29 +134,26 @@ public class Sautee : DragFoodInto
 
             if (tempTime <= 0)
             {
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Sautee, itemsInBoiler.ConvertAll(i => i.foodItem));
-                if (foodObject == null || foodObject.foodItem == null)
-                {
-                    tempTime = time;
-                    if (timeRemaining != null)
-                    {
-                        timeRemaining.value = 0;
-                    }
-                    return;
-                }
-
-                tempTime = time;
-
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-
+                // Done sauteeing: each ingredient is now "sauteed" and goes back to the inventory.
+                // Dishes are only made at the plating station.
                 foreach (InventoryItem item in itemsInBoiler.ToArray())
                 {
-                    if (item != null)
+                    if (item == null) continue;
+                    if (item.foodItem != null)
                     {
-                        Destroy(item.gameObject);
+                        FoodManager.Instance.ApplyCookingStep(item.foodItem, CookingStep.Sautee);
+                        GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
                     }
+                    item.transform.SetParent(null); // so the next physics step doesn't pick it up again
+                    Destroy(item.gameObject);
                 }
                 itemsInBoiler.Clear();
+
+                tempTime = time;
+                if (timeRemaining != null)
+                {
+                    timeRemaining.value = 0;
+                }
 
                 if (boilParticles != null)
                 {

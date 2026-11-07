@@ -44,11 +44,13 @@ public class Boiler : DragFoodInto
             Debug.LogWarning($"{GetType().Name} ({name}): boilParticles is not assigned; cannot reset particle emission.");
         }
         
+        // Taken out before the timer finished: return them unchanged (not boiled)
         foreach(InventoryItem item in itemsInBoiler)
         {
-            if (item != null && item.foodItem != null)
+            if (item == null) continue;
+            if (item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, item.foodItem.isIntermediate);
             }
             Destroy(item.gameObject);
         }
@@ -91,26 +93,24 @@ public class Boiler : DragFoodInto
             var emission = boilParticles.emission;
             emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
 
-            if(tempTime<=0){                
-
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
-                if (foodObject.foodItem == null)
-                {
-                    
-                    return;
-                }
-
-                tempTime = time;
-
-                //here is a completed order - probably dont immediately set 
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-                
+            if(tempTime<=0){
+                // Done boiling: each ingredient is now "boiled" and goes back to the inventory.
+                // Dishes are only made at the plating station.
                 foreach(InventoryItem item in itemsInBoiler)
                 {
+                    if (item == null) continue;
+                    if (item.foodItem != null)
+                    {
+                        FoodManager.Instance.ApplyCookingStep(item.foodItem, CookingStep.Boil);
+                        GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
+                    }
+                    item.transform.SetParent(null); // so the next physics step doesn't pick it up again
                     Destroy(item.gameObject);
                 }
                 itemsInBoiler.Clear();
 
+                tempTime = time;
+                timeRemaining.value = 0;
                 emission.rateOverTime = boilParticleRateRange.x;
             }
                 

@@ -14,6 +14,84 @@ public class FoodManager : MonoBehaviour
         Instance = this;
     }
 
+    // ---- Cooking stations: mark each ingredient as having gone through a step ----
+    public void ApplyCookingStep(FoodItemObject ingredient, CookingStep step)
+    {
+        if (ingredient == null) return;
+        if (ingredient.tags == null) ingredient.tags = new List<CookingStep>();
+        if (!ingredient.tags.Contains(step)) ingredient.tags.Add(step);
+        ingredient.isIntermediate = true;
+    }
+
+    // ---- Plating station: the only place a finished dish is made ----
+    // Returns the dish if the plate holds exactly one recipe's ingredients, each prepared
+    // with the right steps (the ingredient's own tags + the recipe's final step).
+    // Returns null otherwise. Poison/lookalikes don't block a match; they poison the dish.
+    public FoodItemObject PlateIngredients(List<FoodItemObject> ingredients)
+    {
+        if (ingredients == null || ingredients.Count == 0) return null;
+
+        bool poisoned = false;
+        List<FoodItemObject> food = new List<FoodItemObject>();
+        foreach (FoodItemObject ingredient in ingredients)
+        {
+            if (ingredient == null || ingredient.foodItem == null) continue;
+            if (ingredient.foodItem.name == "Poison")
+            {
+                poisoned = true;
+                continue;
+            }
+            food.Add(ingredient);
+        }
+        if (food.Count == 0) return null;
+
+        foreach (FoodItem dish in allFoodItems)
+        {
+            if (dish == null || dish.recipe == null || dish.recipe.foodList == null) continue;
+            if (!System.Enum.IsDefined(typeof(CookingStep), dish.recipe.step)) continue; // test/unfinished recipes
+
+            List<FoodItemQualifiers> required = dish.recipe.foodList.FindAll(q => q != null && q.foodItem != null);
+            if (required.Count == 0 || required.Count != food.Count) continue;
+
+            List<FoodItemObject> unmatched = new List<FoodItemObject>(food);
+            bool allMatched = true;
+            foreach (FoodItemQualifiers q in required)
+            {
+                FoodItemObject match = unmatched.Find(i => IngredientMeetsRequirement(i, q, dish.recipe.step));
+                if (match == null) { allMatched = false; break; }
+                unmatched.Remove(match);
+            }
+            if (!allMatched) continue;
+
+            if (food.Exists(i => i.isLookalike)) poisoned = true;
+            if (poisoned) GameManager.Instance.orderManager.SetPoisonous(true);
+
+            FoodItemObject result = new FoodItemObject();
+            result.foodItem = dish;
+            result.starQuality = CalculateQuality(food);
+            result.tags = new List<CookingStep>();
+            result.isIntermediate = false;
+            return result;
+        }
+        return null;
+    }
+
+    // Same ingredient, and prepared with exactly the steps the recipe asks for
+    private bool IngredientMeetsRequirement(FoodItemObject ingredient, FoodItemQualifiers q, CookingStep finalStep)
+    {
+        if (ingredient.foodItem != q.foodItem) return false;
+
+        HashSet<CookingStep> needed = new HashSet<CookingStep>();
+        if (q.tag != null) needed.UnionWith(q.tag);
+        needed.Add(finalStep);
+
+        HashSet<CookingStep> has = new HashSet<CookingStep>();
+        if (ingredient.tags != null) has.UnionWith(ingredient.tags);
+
+        return has.SetEquals(needed);
+    }
+
+    [System.Obsolete("Stations no longer make dishes. Use ApplyCookingStep at stations and PlateIngredients at the plate.")]
     public FoodItemObject IngredientsToFood(CookingStep step, List<FoodItemObject> ingredients)
     {
         foreach(FoodItem foodData in allFoodItems)

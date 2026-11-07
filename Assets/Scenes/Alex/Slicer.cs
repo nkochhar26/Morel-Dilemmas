@@ -78,33 +78,23 @@ public class EzyMeshSlicer : DragFoodInto
         sliceTimer = 1;
     }
 
-    public void CheckComplete()
-    {
-        FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, itemsOnBoard.ConvertAll(i=>i.foodItem));
-        if (foodObject == null)
-        {
-            Debug.Log("No food");
-            return;
-        }
-
-        //here is a completed order - probably dont immediately set 
-        GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-        
-        foreach(InventoryItem item in itemsOnBoard)
-        {
-            Destroy(item.gameObject);
-        }
-        itemsOnBoard.Clear();
-        sliceCount = 0;
-    }
+    // Chopped ingredients go back to the inventory with the right-click lasso.
+    // Dishes are only made at the plating station.
 
     public void ClearBoiler()
     {
+        // return anything still on the board instead of deleting it
         foreach(InventoryItem item in itemsOnBoard)
         {
+            if (item == null) continue;
+            if (item.foodItem != null)
+            {
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, item.foodItem.isIntermediate);
+            }
             Destroy(item.gameObject);
         }
         itemsOnBoard.Clear();
+        itemSliceOperations.Clear();
         sliceCount = 0;
     }
 
@@ -146,63 +136,12 @@ public class EzyMeshSlicer : DragFoodInto
                     outlinePoints
                 );
                 
-                // Get inventory item once before animations
-                InventoryItem parentInventoryItem = null;
-                if(selectedMeshes.Count > 0)
+                // The lasso can catch pieces from several items: handle each item separately
+                foreach (var group in selectedMeshes.GroupBy(m => m.parent))
                 {
-                    parentInventoryItem = selectedMeshes[0].transform.parent.GetComponent<InventoryItem>();
+                    LassoItem(group.Key, group.ToList());
                 }
 
-                //animate each unselected mesh to go away from the player and be destroyed
-                if(selectedMeshes.Count > 0) foreach(Transform child in selectedMeshes[0].transform.parent)
-                {
-                    if(!child.gameObject.activeSelf || selectedMeshes.Contains(child)) continue;
-                    if(child.GetComponent<Collider2D>()) child.GetComponent<Collider2D>().enabled = false;
-                    
-                    // mark branch as destroyed in the slice tree
-                    SliceInfo info = child.GetComponent<SliceInfo>();
-                    if (info?.sliceOperation != null)
-                    {
-                        if (info.isUpperHull) info.sliceOperation.upperDestroyed = true;
-                        else info.sliceOperation.lowerDestroyed = true;
-                    }
-
-                    child.DOMove(child.position + (child.position-child.parent.position)*3, .25f).OnComplete(()=>
-                    {
-                        child.DOMove(transform.position + transform.up, 0.5f).OnComplete(()=>
-                        {
-                            Destroy(child.gameObject);
-                        });
-                    });
-                }
-                
-                //animate each selected mesh to go toward the player and add to inventory
-                foreach(Transform mesh in selectedMeshes)
-                {
-                    if(mesh.GetComponent<Collider2D>()) mesh.GetComponent<Collider2D>().enabled = false;
-
-                    mesh.DOMove(mesh.position + (mesh.position-mesh.parent.position)*3, .25f).OnComplete(()=>
-                    {
-                        mesh.DOMove(transform.position -transform.up, 0.5f).OnComplete(()=>
-                        {
-                            if (parentInventoryItem != null && parentInventoryItem.foodItem != null && selectedMeshes.IndexOf(mesh) == 0)
-                            {
-                                FoodItemObject modifiedFoodItem = new FoodItemObject();
-                                modifiedFoodItem.foodItem = parentInventoryItem.foodItem.foodItem;
-                                modifiedFoodItem.starQuality = parentInventoryItem.foodItem.starQuality;
-                                modifiedFoodItem.sliceOperation = rootSliceOperation;
-                                modifiedFoodItem.tags.Add(CookingStep.Chop);
-                                
-                                GameManager.Instance.inventoryManager.AddFoodObject(modifiedFoodItem, true);
-                                
-                            }
-                            Destroy(parentInventoryItem.gameObject);
-                            itemsOnBoard.Remove(parentInventoryItem);
-                            itemSliceOperations.Remove(parentInventoryItem);
-                        });
-                    });
-                }
-                
 
                 outlinePoints.Clear();
                 outlineLineRenderer.positionCount = 0;
@@ -255,14 +194,84 @@ public class EzyMeshSlicer : DragFoodInto
 
                 sliceLineRenderer.enabled = false;
                 sliceCount += 1;
-                if (sliceCount >= 5)
-                {
-                    CheckComplete();
-                }
             }
         }
     }
 
+
+    // Pull the lassoed pieces of one item back into the inventory; its other pieces are discarded
+    void LassoItem(Transform parent, List<Transform> selected)
+    {
+        if (parent == null) return;
+        InventoryItem parentItem = parent.GetComponent<InventoryItem>();
+        if (parentItem == null) return; // not a food item (never destroy the board itself)
+
+        // Take the item off the board right away so it can't be added twice
+        FoodItemObject returned = null;
+        if (itemsOnBoard.Contains(parentItem))
+        {
+            itemsOnBoard.Remove(parentItem);
+            if (parentItem.foodItem != null)
+            {
+                returned = parentItem.foodItem.CloneSingle(); // keeps lookalike status, quality, tags
+                if (itemSliceOperations.TryGetValue(parentItem, out SliceOperation op) && op != null)
+                {
+                    returned.sliceOperation = op;
+                }
+                if (!returned.tags.Contains(CookingStep.Chop))
+                {
+                    returned.tags.Add(CookingStep.Chop);
+                }
+            }
+            itemSliceOperations.Remove(parentItem);
+        }
+
+        // unselected pieces fly away and are destroyed
+        foreach (Transform child in parent)
+        {
+            if (!child.gameObject.activeSelf || selected.Contains(child) || child.GetComponent<MeshFilter>() == null) continue;
+            if (child.GetComponent<Collider2D>()) child.GetComponent<Collider2D>().enabled = false;
+
+            // mark branch as destroyed in the slice tree
+            SliceInfo info = child.GetComponent<SliceInfo>();
+            if (info?.sliceOperation != null)
+            {
+                if (info.isUpperHull) info.sliceOperation.upperDestroyed = true;
+                else info.sliceOperation.lowerDestroyed = true;
+            }
+
+            child.DOKill();
+            child.DOMove(child.position + (child.position - parent.position) * 3, .25f).OnComplete(() =>
+            {
+                child.DOMove(transform.position + transform.up, 0.5f);
+            });
+        }
+
+        // selected pieces fly toward the player; once the last one lands, add the item to inventory
+        int remaining = selected.Count;
+        foreach (Transform mesh in selected)
+        {
+            if (mesh.GetComponent<Collider2D>()) mesh.GetComponent<Collider2D>().enabled = false;
+
+            mesh.DOKill();
+            mesh.DOMove(mesh.position + (mesh.position - parent.position) * 3, .25f).OnComplete(() =>
+            {
+                mesh.DOMove(transform.position - transform.up, 0.5f).OnComplete(() =>
+                {
+                    remaining--;
+                    if (remaining > 0) return;
+
+                    if (returned != null)
+                    {
+                        GameManager.Instance.inventoryManager.AddFoodObject(returned, true);
+                    }
+                    parent.DOKill(true);
+                    foreach (Transform t in parent) t.DOKill();
+                    Destroy(parent.gameObject);
+                });
+            });
+        }
+    }
 
     void SliceAllChildren()
     {
@@ -312,24 +321,6 @@ public class EzyMeshSlicer : DragFoodInto
             StartCoroutine(MoveSlice(upper.transform, planeNormal, sliceMoveTime, sliceMoveDistance));
             StartCoroutine(MoveSlice(lower.transform, -planeNormal, sliceMoveTime, sliceMoveDistance));
             Destroy(child.gameObject);
-        }
-
-        // Check for recipe combination
-        bool allSufficientlySliced = itemsOnBoard.Count > 0 && itemsOnBoard.All(item => itemSliceOperations.ContainsKey(item) && GetSliceDepth(itemSliceOperations[item]) >= 5);
-        if (allSufficientlySliced)
-        {
-            List<FoodItemObject> foodItems = itemsOnBoard.ConvertAll(i => i.foodItem);
-            FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Chop, foodItems);
-            if (foodObject != null && foodObject.foodItem != null)
-            {
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-                foreach (InventoryItem item in itemsOnBoard)
-                {
-                    Destroy(item.gameObject);
-                }
-                itemsOnBoard.Clear();
-                itemSliceOperations.Clear();
-            }
         }
     }
 
@@ -411,6 +402,8 @@ public class EzyMeshSlicer : DragFoodInto
     {
         for(float t=0; t<duration; t+=Time.fixedDeltaTime)
         {
+            // the piece may have been sliced again or lassoed away mid-move
+            if (sliceTransform == null) yield break;
             Vector3 originalposition = sliceTransform.position;
             Vector3 targetPosition = originalposition + point.normalized * distance;
             sliceTransform.position = Vector3.Lerp(originalposition, targetPosition, sliceMoveCurve.Evaluate(t/duration));
