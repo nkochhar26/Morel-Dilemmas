@@ -92,6 +92,49 @@ public class DonenessWindow
     }
 }
 
+// Cut-count window for the cutting board: like DonenessWindow, but counted in cuts.
+[Serializable]
+public class ChopWindow
+{
+    [Tooltip("Fewest cuts for a perfect chop.")]
+    public int perfectMin = 3;
+    [Tooltip("Most cuts for a perfect chop. More than this turns it to mush.")]
+    public int perfectMax = 5;
+
+    [Header("Star penalties per ingredient (ingredients start at 5)")]
+    [Tooltip("Stars lost for each cut short of Perfect Min.")]
+    public float penaltyPerMissingCut = 1f;
+    [Tooltip("Stars lost for each cut past Perfect Max.")]
+    public float penaltyPerExtraCut = 0.75f;
+    public float maxPenalty = 3f;
+
+    // Undercooked = roughly chopped, Overcooked = mushy. 0 cuts = raw (returned unchanged).
+    public CookResult Evaluate(int cuts, out float penalty)
+    {
+        penalty = 0f;
+        if (cuts <= 0) return CookResult.Raw;
+        if (cuts < perfectMin)
+        {
+            penalty = Mathf.Min(maxPenalty, (perfectMin - cuts) * penaltyPerMissingCut);
+            return CookResult.Undercooked;
+        }
+        if (cuts <= perfectMax) return CookResult.Perfect;
+        penalty = Mathf.Min(maxPenalty, (cuts - perfectMax) * penaltyPerExtraCut);
+        return CookResult.Overcooked;
+    }
+
+    public static string Label(CookResult r)
+    {
+        switch (r)
+        {
+            case CookResult.Perfect: return "Perfect!";
+            case CookResult.Undercooked: return "Roughly chopped";
+            case CookResult.Overcooked: return "Mushy";
+            default: return "";
+        }
+    }
+}
+
 public static class CookingDoneness
 {
     // Applies the timing result to one ingredient. Returns what happened.
@@ -99,12 +142,18 @@ public static class CookingDoneness
     public static CookResult Cook(FoodItemObject food, CookingStep step, float doneness, DonenessWindow window)
     {
         CookResult result = window.Evaluate(doneness, out float penalty);
-        if (food == null || result == CookResult.Raw) return result;
+        ApplyResult(food, step, result, penalty);
+        return result;
+    }
+
+    // Shared by every station: tag the step and take the quality penalty (unless raw)
+    public static void ApplyResult(FoodItemObject food, CookingStep step, CookResult result, float penalty)
+    {
+        if (food == null || result == CookResult.Raw) return;
 
         FoodManager.Instance.ApplyCookingStep(food, step);
-        // round to half stars so items cooked about equally well still stack in the inventory
+        // round to half stars so items prepared about equally well still stack in the inventory
         food.starQuality = Mathf.Max(0f, Mathf.Round((food.starQuality - penalty) * 2f) / 2f);
-        return result;
     }
 
     // Colors the slider's fill from the doneness window whenever its value changes.

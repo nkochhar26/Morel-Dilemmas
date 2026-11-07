@@ -33,7 +33,11 @@ public class Sautee : DragFoodInto
         {
             Debug.LogWarning($"{GetType().Name} ({name}): timeRemaining slider is not assigned.");
         }
-        if (resultText != null) resultText.gameObject.SetActive(false);
+        if (resultText != null)
+        {
+            resultText.raycastTarget = false; // display-only: never block the Clear button
+            resultText.gameObject.SetActive(false);
+        }
 
         tempTime = time;
     }

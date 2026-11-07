@@ -28,7 +28,11 @@ public class Plating : DragFoodInto
 
     void Start()
     {
-        if (resultText != null) resultText.gameObject.SetActive(false);
+        if (resultText != null)
+        {
+            resultText.raycastTarget = false; // display-only: never block the plate buttons
+            resultText.gameObject.SetActive(false);
+        }
         RefreshPlateButton();
     }
 

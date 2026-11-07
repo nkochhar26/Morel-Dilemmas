@@ -27,11 +27,30 @@ public class EzyMeshSlicer : DragFoodInto
     private Mushroom currentMushroom; //needs to accomodate poisonous mushrooms
     public List<InventoryItem> itemsOnBoard = new List<InventoryItem>();
     private Dictionary<InventoryItem, SliceOperation> itemSliceOperations = new Dictionary<InventoryItem, SliceOperation>();
+    private Dictionary<InventoryItem, int> itemCuts = new Dictionary<InventoryItem, int>();
+
+    [Header("Chopping")]
+    [Tooltip("How many cuts make a perfect chop. Press Done Chopping to take everything back.")]
+    public ChopWindow chopping = new ChopWindow();
+    [Tooltip("Optional text showing the cut count, colored by zone (e.g. 'Cuts: 4  (aim 3-5)').")]
+    public TMPro.TMP_Text cutCounterText;
+    [Tooltip("Optional text that flashes 'Perfect!', 'Roughly chopped' or 'Mushy'.")]
+    public TMPro.TMP_Text resultText;
+    [Tooltip("Old right-click lasso to take back only some pieces. Off by default; use Done Chopping instead.")]
+    public bool allowLasso = false;
 
     void Start()
     {
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = true;
+        // labels are display-only: never let them swallow clicks meant for the Done Chopping button
+        if (cutCounterText != null) cutCounterText.raycastTarget = false;
+        if (resultText != null)
+        {
+            resultText.raycastTarget = false;
+            resultText.gameObject.SetActive(false);
+        }
+        RefreshCutCounter();
     }
 
     int GetSliceDepth(SliceOperation op)
@@ -58,6 +77,8 @@ public class EzyMeshSlicer : DragFoodInto
         base.AddItem(item);
         itemsOnBoard.Add(item);
         itemSliceOperations[item] = item.foodItem?.sliceOperation ?? null;
+        itemCuts[item] = item.foodItem != null ? item.foodItem.chopCount : 0; // re-chopping continues the count
+        RefreshCutCounter();
     }
 
     Vector3 MouseWorldPos => Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
@@ -78,12 +99,92 @@ public class EzyMeshSlicer : DragFoodInto
         sliceTimer = 1;
     }
 
-    // Chopped ingredients go back to the inventory with the right-click lasso.
+    // "Done Chopping" button: take everything back to the inventory, scored by how many cuts
+    // each ingredient got (too few = roughly chopped, too many = mushy).
     // Dishes are only made at the plating station.
+    public void DoneChopping()
+    {
+        CookResult shown = CookResult.Raw;
+        foreach (InventoryItem item in itemsOnBoard)
+        {
+            if (item == null) continue;
+            FoodItemObject returned = BuildChopped(item, out CookResult result);
+            if (returned != null)
+            {
+                GameManager.Instance.inventoryManager.AddFoodObject(returned, returned.isIntermediate);
+            }
+            if (result != CookResult.Raw) shown = result;
+            item.DOKill();
+            foreach (Transform t in item.transform) t.DOKill();
+            Destroy(item.gameObject);
+        }
+        itemsOnBoard.Clear();
+        itemSliceOperations.Clear();
+        itemCuts.Clear();
+        sliceCount = 0;
+        RefreshCutCounter();
 
+        string label = ChopWindow.Label(shown);
+        CookingDoneness.ShowMessage(this, resultText, label, CookingDoneness.LabelColor(shown));
+    }
+
+    // The ingredient as it leaves the board: its slice shape, cut count, and chop score applied
+    private FoodItemObject BuildChopped(InventoryItem item, out CookResult result)
+    {
+        result = CookResult.Raw;
+        if (item == null || item.foodItem == null) return null;
+
+        int cuts = itemCuts.TryGetValue(item, out int c) ? c : item.foodItem.chopCount;
+        FoodItemObject food = item.foodItem.CloneSingle(); // keeps lookalike status, quality, earlier steps
+        if (itemSliceOperations.TryGetValue(item, out SliceOperation op) && op != null)
+        {
+            food.sliceOperation = op;
+        }
+        food.chopCount = cuts;
+
+        // Only score if it was cut this time. The score uses the total cut count, so
+        // re-chopping something mushy keeps it mushy (like re-boiling, penalties add up).
+        int newCuts = cuts - item.foodItem.chopCount;
+        if (newCuts <= 0)
+        {
+            return food; // not cut this time: back unchanged
+        }
+        result = chopping.Evaluate(cuts, out float penalty);
+        CookingDoneness.ApplyResult(food, CookingStep.Chop, result, penalty);
+        return food;
+    }
+
+    // Cut count over the board, colored like the cooking slider
+    private void RefreshCutCounter()
+    {
+        if (cutCounterText == null) return;
+        itemsOnBoard.RemoveAll(i => i == null);
+        if (itemsOnBoard.Count == 0)
+        {
+            cutCounterText.text = "";
+            return;
+        }
+
+        int min = int.MaxValue, max = 0;
+        foreach (InventoryItem item in itemsOnBoard)
+        {
+            int c = itemCuts.TryGetValue(item, out int n) ? n : 0;
+            min = Mathf.Min(min, c);
+            max = Mathf.Max(max, c);
+        }
+        // color by the worst-prepared ingredient
+        CookResult worstLow = chopping.Evaluate(min, out _);
+        CookResult worstHigh = chopping.Evaluate(max, out _);
+        CookResult shown = worstHigh == CookResult.Overcooked ? worstHigh : worstLow;
+        string color = ColorUtility.ToHtmlStringRGB(shown == CookResult.Raw ? Color.white : CookingDoneness.LabelColor(shown));
+
+        string count = min == max ? min.ToString() : $"{min}-{max}";
+        cutCounterText.text = $"<color=#{color}>Cuts: {count}</color>  <size=70%>(aim {chopping.perfectMin}-{chopping.perfectMax})</size>";
+    }
+
+    // Take everything off the board unchanged (cancel). Cuts made are kept on the item.
     public void ClearBoiler()
     {
-        // return anything still on the board instead of deleting it
         foreach(InventoryItem item in itemsOnBoard)
         {
             if (item == null) continue;
@@ -95,15 +196,17 @@ public class EzyMeshSlicer : DragFoodInto
         }
         itemsOnBoard.Clear();
         itemSliceOperations.Clear();
+        itemCuts.Clear();
         sliceCount = 0;
+        RefreshCutCounter();
     }
 
 
     void Update()
     {
-        //Mouse outline logic
-        
-        if (Input.GetMouseButton(1))
+        //Mouse outline logic (optional right-click lasso; Done Chopping is the main way to finish)
+
+        if (allowLasso && Input.GetMouseButton(1))
         {
             Vector3 currentPoint = MouseWorldPos;
             
@@ -210,20 +313,14 @@ public class EzyMeshSlicer : DragFoodInto
         FoodItemObject returned = null;
         if (itemsOnBoard.Contains(parentItem))
         {
+            // scored the same way as Done Chopping
+            returned = BuildChopped(parentItem, out CookResult result);
+            CookingDoneness.ShowMessage(this, resultText, ChopWindow.Label(result), CookingDoneness.LabelColor(result));
+
             itemsOnBoard.Remove(parentItem);
-            if (parentItem.foodItem != null)
-            {
-                returned = parentItem.foodItem.CloneSingle(); // keeps lookalike status, quality, tags
-                if (itemSliceOperations.TryGetValue(parentItem, out SliceOperation op) && op != null)
-                {
-                    returned.sliceOperation = op;
-                }
-                if (!returned.tags.Contains(CookingStep.Chop))
-                {
-                    returned.tags.Add(CookingStep.Chop);
-                }
-            }
             itemSliceOperations.Remove(parentItem);
+            itemCuts.Remove(parentItem);
+            RefreshCutCounter();
         }
 
         // unselected pieces fly away and are destroyed
@@ -263,7 +360,7 @@ public class EzyMeshSlicer : DragFoodInto
 
                     if (returned != null)
                     {
-                        GameManager.Instance.inventoryManager.AddFoodObject(returned, true);
+                        GameManager.Instance.inventoryManager.AddFoodObject(returned, returned.isIntermediate);
                     }
                     parent.DOKill(true);
                     foreach (Transform t in parent) t.DOKill();
@@ -279,6 +376,7 @@ public class EzyMeshSlicer : DragFoodInto
         var meshesToSlice = GetComponentsInChildren<MeshFilter>().Where(mf => mf.gameObject.activeInHierarchy && CutHitsMesh(mf.transform, p1World, p2World)).ToArray();
 
         Vector3 planeNormal = Vector3.Cross((p2World - p1World).normalized, Camera.main.transform.forward).normalized;
+        HashSet<InventoryItem> cutThisSwipe = new HashSet<InventoryItem>(); // one swipe = one cut per ingredient
 
         foreach (var meshFilter in meshesToSlice)
         {
@@ -293,6 +391,7 @@ public class EzyMeshSlicer : DragFoodInto
             if (parent == null) continue;
             
             InventoryItem parentItem = parent.GetComponent<InventoryItem>();
+            if (parentItem != null) cutThisSwipe.Add(parentItem);
             SliceOperation parentSliceOp = parentItem != null && itemSliceOperations.ContainsKey(parentItem) ? itemSliceOperations[parentItem] : null;
 
             // create a local slice operation
@@ -322,6 +421,12 @@ public class EzyMeshSlicer : DragFoodInto
             StartCoroutine(MoveSlice(lower.transform, -planeNormal, sliceMoveTime, sliceMoveDistance));
             Destroy(child.gameObject);
         }
+
+        foreach (InventoryItem item in cutThisSwipe)
+        {
+            itemCuts[item] = (itemCuts.TryGetValue(item, out int c) ? c : 0) + 1;
+        }
+        RefreshCutCounter();
     }
 
     GameObject SetupHull(GameObject hull, Transform parent, SliceOperation sliceOp, bool isUpper)

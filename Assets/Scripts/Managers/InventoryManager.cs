@@ -22,6 +22,7 @@ public class FoodItemObject
     public SliceOperation sliceOperation;
     public bool isIntermediate;
     public int quantity = 1;
+    public int chopCount;   // cuts made on the cutting board so far (carries over if re-chopped)
 
     // A separate single unit of this item, so moving one out of a stack
     // never changes (or gets re-added as) the stack itself
@@ -36,6 +37,7 @@ public class FoodItemObject
             sliceOperation = sliceOperation,
             isIntermediate = isIntermediate,
             quantity = 1,
+            chopCount = chopCount,
         };
     }
 
