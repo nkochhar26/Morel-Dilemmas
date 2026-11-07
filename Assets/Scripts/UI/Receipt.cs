@@ -48,8 +48,17 @@ public class Receipt : MonoBehaviour
         }
         foreach (FoodItemQualifiers food in recipe.recipe.foodList)
         {
+            if (food == null || food.foodItem == null) continue;
             GameObject currFoodIcon = Instantiate(ingredientIcon, recipeHolder.transform);
             currFoodIcon.GetComponent<Image>().sprite = food.foodItem.defaultSprite;
+
+            // Steps this ingredient needs before the final step (e.g. tomato must be chopped
+            // before going in the soup pot). The final step is already the big icon in front.
+            if (food.tag != null)
+            {
+                List<CookingStep> extraSteps = food.tag.FindAll(s => s != recipe.recipe.step);
+                CookingStepIcons.AddBadges((RectTransform)currFoodIcon.transform, extraSteps, 0.5f);
+            }
         }
     }
 

@@ -10,4 +10,10 @@ public class GradientSlider : MonoBehaviour
     {
         image.color = gradient.Evaluate(value);
     }
+
+    // lets a cooking station make the colors match its timing window
+    public void SetGradient(Gradient newGradient)
+    {
+        gradient = newGradient;
+    }
 }

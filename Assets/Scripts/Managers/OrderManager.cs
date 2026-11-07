@@ -99,12 +99,17 @@ public class OrderManager : MonoBehaviour
         //if (currentOrders[tableNum].itemName == currentOrders[heldOrderIndex].itemName)   // so that if they order similar dishes can be interchangeable
         if (currentOrders[tableNum].itemName == heldDish.foodItem.itemName)   // so that if they order similar dishes can be interchangeable
         {
+            // Dish quality (0-5, average of its ingredients) drives the rating:
+            // 5 = +0.25 restaurant stars, 3 = no change, 1 or less = -0.25
+            float quality = Mathf.Clamp(heldDish.starQuality, 0f, 5f);
+            float starChange = Mathf.Lerp(-0.25f, 0.25f, Mathf.InverseLerp(1f, 5f, quality));
+
             GameManager.Instance.currencyManager.AddCurrency(heldDish.foodItem.price);
             ClearOrder(tableNum);
-            ReviewManager.Instance.HandleCustomerRemoved();
+            ReviewManager.Instance.HandleCustomerRemoved(Mathf.Clamp(Mathf.Round(quality), 1f, 5f));
 
-            // TODO: Implement forumla
-            GameManager.Instance.starManager.IncreaseStarValue(0.25f);
+            if (starChange >= 0f) GameManager.Instance.starManager.IncreaseStarValue(starChange);
+            else GameManager.Instance.starManager.DecreaseStarValue(-starChange);
             if (isPoisonous == false)
             {
                 return OrderResult.Success;

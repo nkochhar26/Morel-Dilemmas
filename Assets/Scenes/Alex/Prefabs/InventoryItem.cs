@@ -142,6 +142,23 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             image.color = item.isIntermediate ? new Color(1f, 0.92f, 0.6f, 1f) : Color.white;
         }
+        ShowStepBadges(item);
+    }
+
+    // Small knife / pot / pan icons in the corner showing how this ingredient was prepared
+    private readonly List<GameObject> stepBadges = new List<GameObject>();
+
+    private void ShowStepBadges(FoodItemObject item)
+    {
+        foreach (GameObject badge in stepBadges)
+        {
+            if (badge != null) Destroy(badge);
+        }
+        stepBadges.Clear();
+
+        if (item == null || item.tags == null || item.tags.Count == 0) return;
+        RectTransform tile = image != null ? image.rectTransform : transform as RectTransform;
+        stepBadges.AddRange(CookingStepIcons.AddBadges(tile, item.tags));
     }
 
     void Update()

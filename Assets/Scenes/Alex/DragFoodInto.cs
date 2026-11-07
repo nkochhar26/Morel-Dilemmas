@@ -42,7 +42,8 @@ public abstract class DragFoodInto : MonoBehaviour
 
     public void Remove(InventoryItem item)
     {
-        item.meshRenderer.gameObject.SetActive(false);
+        // a sliced item's original mesh is replaced by its pieces, so it may be gone
+        if (item.meshRenderer != null) item.meshRenderer.gameObject.SetActive(false);
     }
 
     private void RecreateSlicedMesh(InventoryItem item, SliceOperation sliceOp, MeshRenderer meshRenderer)
