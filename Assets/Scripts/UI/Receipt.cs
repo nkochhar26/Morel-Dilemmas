@@ -76,6 +76,7 @@ public class Receipt : MonoBehaviour
 
     private void OnDestroy()
     {
+        transform.DOKill(); // stop a hover grow/shrink still running on this ticket
         if (table != null)
         {
             table.SetOutline(false);
