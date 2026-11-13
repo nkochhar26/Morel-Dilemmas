@@ -21,7 +21,52 @@ public class FoodItemObject
     public List<CookingStep> tags = new List<CookingStep>();
     public SliceOperation sliceOperation;
     public bool isIntermediate;
-    public int quantity;
+    public int quantity = 1;
+    public int chopCount;   // cuts made on the cutting board so far (carries over if re-chopped)
+
+    // A separate single unit of this item, so moving one out of a stack
+    // never changes (or gets re-added as) the stack itself
+    public FoodItemObject CloneSingle()
+    {
+        return new FoodItemObject
+        {
+            foodItem = foodItem,
+            starQuality = starQuality,
+            isLookalike = isLookalike,
+            tags = new List<CookingStep>(tags),
+            sliceOperation = sliceOperation,
+            isIntermediate = isIntermediate,
+            quantity = 1,
+            chopCount = chopCount,
+        };
+    }
+
+    // Same food, quality, lookalike status and preparation (e.g. both chopped) share one stack.
+    // The exact slice shape isn't compared: the stack keeps the first item's shape.
+    public bool CanStackWith(FoodItemObject other)
+    {
+        return other != null
+            && foodItem == other.foodItem
+            && starQuality == other.starQuality
+            && isLookalike == other.isLookalike
+            && isIntermediate == other.isIntermediate
+            && SameTags(tags, other.tags);
+    }
+
+    private static bool SameTags(List<CookingStep> a, List<CookingStep> b)
+    {
+        int countA = a == null ? 0 : a.Count;
+        int countB = b == null ? 0 : b.Count;
+        if (countA != countB) return false;
+        if (countA == 0) return true;
+        var sortedA = new List<CookingStep>(a); sortedA.Sort();
+        var sortedB = new List<CookingStep>(b); sortedB.Sort();
+        for (int i = 0; i < sortedA.Count; i++)
+        {
+            if (sortedA[i] != sortedB[i]) return false;
+        }
+        return true;
+    }
 }
 
 public class InventoryManager : MonoBehaviour
@@ -32,25 +77,32 @@ public class InventoryManager : MonoBehaviour
 
     public void AddFoodItem(FoodItem item, float quality = 5, int quantity =1, bool isLookalike=false)
     {
-        foreach (FoodItemObject f in foodItems)
-        {
-            if (item == f.foodItem && f.starQuality == quality)
-            {
-                f.quantity += quantity;
-                if (AlexKitchenInventoryUI.Instance != null)
-                {
-                    AlexKitchenInventoryUI.Instance.UpdateItems();
-                }
-            return;
-            }
-        }
         FoodItemObject foodobject = new FoodItemObject();
         foodobject.foodItem = item;
         foodobject.starQuality = quality;
         foodobject.isLookalike = isLookalike;
         foodobject.quantity = quantity;
+        AddToStacks(foodobject);
+    }
 
-        foodItems.Add(foodobject);
+    // Merge into a matching stack if there is one, otherwise add a new entry
+    private void AddToStacks(FoodItemObject item)
+    {
+        if (item.quantity <= 0) item.quantity = 1;
+
+        if (!foodItems.Contains(item))
+        {
+            FoodItemObject stack = foodItems.Find(f => f.CanStackWith(item));
+            if (stack != null)
+            {
+                stack.quantity += item.quantity;
+            }
+            else
+            {
+                foodItems.Add(item);
+            }
+        }
+
         if (AlexKitchenInventoryUI.Instance != null)
         {
             AlexKitchenInventoryUI.Instance.UpdateItems();
@@ -82,11 +134,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (item == null) return;
         item.isIntermediate = isIntermediate;
-        foodItems.Add(item);
-        if (AlexKitchenInventoryUI.Instance != null)
-        {
-            AlexKitchenInventoryUI.Instance.UpdateItems();
-        }
+        AddToStacks(item);
     }
 
     public void AddItem(Item item) // remove later

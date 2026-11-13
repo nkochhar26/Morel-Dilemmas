@@ -30,6 +30,12 @@ public class TopDownMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // Ignore input while the game is paused (tutorial popup, pause menu)
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
+
         if (canMove)
         {
             float x = Input.GetAxisRaw("Horizontal");

@@ -86,18 +86,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, targetLayer);
         if (hit.collider != null)
         {
-            hit.transform.GetComponent<DragFoodInto>().AddItem(this);
-            
-            if (foodItem.quantity > 1)
-            {
-                foodItem.quantity -= 1;
+            // Take one unit off the inventory stack, and give the dragged item
+            // its own copy so the station never shares data with the stack
+            FoodItemObject stack = foodItem;
+            foodItem = stack.CloneSingle();
 
+            if (stack.quantity > 1)
+            {
+                stack.quantity -= 1;
             }
-            else {
+            else
+            {
                 // last item, remove
-                InventoryManager.foodItems.Remove(foodItem);
-            
+                InventoryManager.foodItems.Remove(stack);
             }
+
+            hit.transform.GetComponent<DragFoodInto>().AddItem(this);
             
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
@@ -138,6 +142,23 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             image.color = item.isIntermediate ? new Color(1f, 0.92f, 0.6f, 1f) : Color.white;
         }
+        ShowStepBadges(item);
+    }
+
+    // Small knife / pot / pan icons in the corner showing how this ingredient was prepared
+    private readonly List<GameObject> stepBadges = new List<GameObject>();
+
+    private void ShowStepBadges(FoodItemObject item)
+    {
+        foreach (GameObject badge in stepBadges)
+        {
+            if (badge != null) Destroy(badge);
+        }
+        stepBadges.Clear();
+
+        if (item == null || item.tags == null || item.tags.Count == 0) return;
+        RectTransform tile = image != null ? image.rectTransform : transform as RectTransform;
+        stepBadges.AddRange(CookingStepIcons.AddBadges(tile, item.tags));
     }
 
     void Update()

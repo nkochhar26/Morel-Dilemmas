@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,15 +13,30 @@ public class Boiler : DragFoodInto
     public ParticleSystem boilParticles;
     public Slider timeRemaining;
 
+    [Header("Doneness")]
+    [Tooltip("Take ingredients out (Clear Ingredients) while the slider is green for full quality.")]
+    public DonenessWindow doneness = new DonenessWindow();
+    [Tooltip("Optional text that flashes 'Perfect!', 'Overcooked', etc.")]
+    public TMP_Text resultText;
+
+    // 0 = just started, 1 = timer ran out (same as the slider value)
+    private float Doneness => time > 0 ? Mathf.Clamp01(1f - tempTime / time) : 1f;
+
     void Start()
     {
         if (timeRemaining != null)
         {
             timeRemaining.value = 0;
+            CookingDoneness.ApplySliderColors(timeRemaining, doneness);
         }
         else
         {
             Debug.LogWarning($"{GetType().Name} ({name}): timeRemaining slider is not assigned.");
+        }
+        if (resultText != null)
+        {
+            resultText.raycastTarget = false; // display-only: never block the Clear button
+            resultText.gameObject.SetActive(false);
         }
 
         tempTime = time;
@@ -32,88 +48,85 @@ public class Boiler : DragFoodInto
         base.AddItem(item);
     }
 
+    // "Clear Ingredients" button: take everything out now. How well it's cooked depends on the timer.
     public void ClearBoiler()
     {
-        if (boilParticles != null)
+        TakeOut(itemsInBoiler.Count > 0 ? Doneness : 0f);
+    }
+
+    private void TakeOut(float donenessAtRemoval)
+    {
+        CookResult shown = CookResult.Raw;
+        foreach (InventoryItem item in itemsInBoiler)
         {
-            var emission = boilParticles.emission;
-            emission.rateOverTime = boilParticleRateRange.x;
-        }
-        else
-        {
-            Debug.LogWarning($"{GetType().Name} ({name}): boilParticles is not assigned; cannot reset particle emission.");
-        }
-        
-        foreach(InventoryItem item in itemsInBoiler)
-        {
-            if (item != null && item.foodItem != null)
+            if (item == null) continue;
+            if (item.foodItem != null)
             {
-                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, true);
+                shown = CookingDoneness.Cook(item.foodItem, CookingStep.Boil, donenessAtRemoval, doneness);
+                GameManager.Instance.inventoryManager.AddFoodObject(item.foodItem, item.foodItem.isIntermediate);
             }
+            item.transform.SetParent(null); // so the next physics step doesn't pick it up again
             Destroy(item.gameObject);
         }
         itemsInBoiler.Clear();
+        CookingDoneness.ShowResult(this, resultText, shown);
 
         tempTime = time;
         if (timeRemaining != null)
         {
             timeRemaining.value = 0;
         }
-        else
+        if (boilParticles != null)
         {
-            Debug.LogWarning($"{name}: timeRemaining slider is not assigned; cannot reset timer.");
+            var emission = boilParticles.emission;
+            emission.rateOverTime = boilParticleRateRange.x;
         }
+    }
 
+    // Swirl every piece of the item. A sliced item's original mesh is replaced by its
+    // slice pieces, so stir all of its rigidbodies rather than item.meshRenderer.
+    private void Stir(InventoryItem item)
+    {
+        foreach (Rigidbody2D rb in item.GetComponentsInChildren<Rigidbody2D>())
+        {
+            Vector2 pos = rb.transform.position - transform.position;
+            Vector2 tangent = new Vector2(pos.y, -pos.x);
+            rb.AddForce(tangent * stirForce);
+        }
     }
 
     void FixedUpdate()
     {
         foreach(Transform child in transform)
         {
-            if(child.GetComponent<InventoryItem>())
-            {
-                GameObject meshObject = child.GetComponent<InventoryItem>().meshRenderer.gameObject;
-                Vector2 pos = meshObject.transform.position-transform.position;
-                Vector2 tangent = new Vector2(pos.y, -pos.x);
-                meshObject.GetComponent<Rigidbody2D>().AddForce(tangent*stirForce);
+            InventoryItem item = child.GetComponent<InventoryItem>();
+            if (item == null) continue;
 
-                if(!itemsInBoiler.Contains(child.GetComponent<InventoryItem>()))
-                {
-                    itemsInBoiler.Add(child.GetComponent<InventoryItem>());
-                }
+            // register first, so a problem with the visuals can never stop the item cooking
+            if(!itemsInBoiler.Contains(item))
+            {
+                itemsInBoiler.Add(item);
             }
+            Stir(item);
         }
 
         if(itemsInBoiler.Count>0)
         {
             tempTime-=Time.deltaTime;
-            timeRemaining.value = 1 - (tempTime * 1.0f / time);
-            var emission = boilParticles.emission;
-            emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, 1-(tempTime/time));
-
-            if(tempTime<=0){                
-
-                FoodItemObject foodObject = FoodManager.Instance.IngredientsToFood(CookingStep.Boil, itemsInBoiler.ConvertAll(i=>i.foodItem));
-                if (foodObject.foodItem == null)
-                {
-                    
-                    return;
-                }
-
-                tempTime = time;
-
-                //here is a completed order - probably dont immediately set 
-                GameManager.Instance.orderManager.SetHeldOrder(foodObject);
-                
-                foreach(InventoryItem item in itemsInBoiler)
-                {
-                    Destroy(item.gameObject);
-                }
-                itemsInBoiler.Clear();
-
-                emission.rateOverTime = boilParticleRateRange.x;
+            if (timeRemaining != null)
+            {
+                timeRemaining.value = Doneness;
             }
-                
+            if (boilParticles != null)
+            {
+                var emission = boilParticles.emission;
+                emission.rateOverTime = Mathf.Lerp(boilParticleRateRange.x, boilParticleRateRange.y, Doneness);
+            }
+
+            if(tempTime<=0){
+                // Left in too long: burnt. Pulled out automatically so ingredients aren't lost.
+                TakeOut(1f);
+            }
         }else
         {
             tempTime = time;
