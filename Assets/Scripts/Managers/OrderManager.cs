@@ -84,7 +84,9 @@ public class OrderManager : MonoBehaviour
     // when you take too long and the customer leaves, called in customer
     public void OrderTooLong(int tableNum)
     {
-        ClearOrder(tableNum);
+        // free the table, but keep the dish the player is carrying (it may be for someone else)
+        RemoveOrder(tableNum);
+        GameManager.Instance.customerManager.RemoveCustomer(tableNum);
         GameManager.Instance.starManager.DecreaseStarValue(0.25f);  //TODO: figure out thsi part
         ReviewManager.Instance.HandleCustomerRemoved(1f);  //TODO: change to special 'took too long' review
     }
