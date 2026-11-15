@@ -104,24 +104,32 @@ public class FollowTed : MonoBehaviour
         return false;
     }
 
-    private void SetFollowingLayer()
+    // Whoever is following (customer or body) draws just behind Ted, then gets their own
+    // order back when let go. This used to be a single on/off toggle shared by guiding and
+    // dragging: if one flip was ever missed, every later customer got "lowered" when seated
+    // instead of restored, and drew on top of the tables. Now we remember exactly which
+    // renderer we changed and what it was, so restoring can't go out of sync.
+    private SpriteRenderer loweredRenderer;
+
+    private void PutBehindTed(GameObject follower)
     {
-        SpriteRenderer spriteRenderer = currentFollow.GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
+        RestoreFollowingLayer(); // never leave a previous follower lowered
+        if (follower == null) return;
+        SpriteRenderer spriteRenderer = follower.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) return;
+        loweredRenderer = spriteRenderer;
+        oldSortingOrder = spriteRenderer.sortingOrder;
+        spriteRenderer.sortingOrder = tedSortingOrder - 1;
+    }
+
+    private void RestoreFollowingLayer()
+    {
+        if (loweredRenderer != null)
         {
-            return;
+            loweredRenderer.sortingOrder = oldSortingOrder;
         }
-        //toggles
-        if (oldSortingOrder == -1)
-        {
-            oldSortingOrder = spriteRenderer.sortingOrder;
-            spriteRenderer.sortingOrder = tedSortingOrder - 1;
-        }
-        else
-        {
-            spriteRenderer.sortingOrder = oldSortingOrder;
-            oldSortingOrder = -1;
-        }
+        loweredRenderer = null;
+        oldSortingOrder = -1;
     }
 
 
@@ -135,12 +143,13 @@ public class FollowTed : MonoBehaviour
         isGuiding = true;
         currentFollow = customer;
         customer.GetComponent<BoxCollider2D>().enabled = false;  // set back to true once guided
-        SetFollowingLayer();
+        PutBehindTed(customer);
     }
 
     void StartDragging()
     {
         isDragging = true;
+        PutBehindTed(currentFollow); // first, so an error below can't skip it
 
         // Slow down player while dragging
         if (topDownMovement != null)
@@ -149,14 +158,15 @@ public class FollowTed : MonoBehaviour
         }
 
         // Notify vision cone system that player is now suspicious
-        MusicManager.instance.SceneMusic(4);  //hardcoded oops
-        VisionConeManager.Instance?.SetPlayerDragging(true);
-        SetFollowingLayer();
+        if (MusicManager.instance != null) MusicManager.instance.SceneMusic(4);  //hardcoded oops
+        if (VisionConeManager.Instance != null) VisionConeManager.Instance.SetPlayerDragging(true);
     }
 
     void StopDragging()
     {
         isDragging = false;
+        RestoreFollowingLayer(); // first, so an error below can't skip it
+        currentFollow = null;
 
         // Restore player speed
         if (topDownMovement != null)
@@ -165,10 +175,8 @@ public class FollowTed : MonoBehaviour
         }
 
         // Notify vision cone system
-        MusicManager.instance.SceneMusic(2);  //hardcoded oops
-        VisionConeManager.Instance?.SetPlayerDragging(false);
-        SetFollowingLayer();
-        currentFollow = null;
+        if (MusicManager.instance != null) MusicManager.instance.SceneMusic(2);  //hardcoded oops
+        if (VisionConeManager.Instance != null) VisionConeManager.Instance.SetPlayerDragging(false);
     }
 
     void UpdateFollowPosition()
@@ -217,18 +225,22 @@ public class FollowTed : MonoBehaviour
     public void ReleaseIfFollowing(GameObject customer)
     {
         if (!isGuiding || currentFollow != customer) return;
-        SetFollowingLayer();
+        RestoreFollowingLayer();
         currentFollow = null;
         isGuiding = false;
     }
 
     public void StopFollow()
     {
-        currentFollow.GetComponent<BoxCollider2D>().enabled = true; 
-        SetFollowingLayer();
-        currentFollow.GetComponent<Customer>().WalkAnimToggle(false);
+        RestoreFollowingLayer();
+        if (currentFollow != null)
+        {
+            currentFollow.GetComponent<BoxCollider2D>().enabled = true;
+            Customer customer = currentFollow.GetComponent<Customer>();
+            if (customer != null) customer.WalkAnimToggle(false);
+        }
         currentFollow = null;
-        isGuiding=false;
+        isGuiding = false;
     }
 
     // void UpdateBodyPosition()
