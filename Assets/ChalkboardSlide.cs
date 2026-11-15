@@ -16,6 +16,12 @@ public class ChalkboardSlide : MonoBehaviour,
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+    }
+
+    // Start (unlike Awake) doesn't run while the component is unchecked,
+    // so a disabled ChalkboardSlide leaves the chalkboard where it was placed.
+    private void Start()
+    {
         rectTransform.anchoredPosition = hiddenPosition;
     }
 
