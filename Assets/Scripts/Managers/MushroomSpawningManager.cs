@@ -7,6 +7,9 @@ public class MushroomSpawningManager : MonoBehaviour
     private List<MushroomItem> collectibleMushrooms;
     [SerializeField] private List<ForagingProp> foragingProps = new List<ForagingProp>();
     [SerializeField] private List<ForagingProp> ground = new List<ForagingProp>();
+    [Tooltip("Chance (0-1) that a mushroom with a lookalike spawns as the poisonous lookalike. " +
+             "Higher = poison is the easy option and safe mushrooms are rarer.")]
+    [Range(0f, 1f)] [SerializeField] private float lookalikeChance = 0.6f;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class MushroomSpawningManager : MonoBehaviour
 
             if (mushroomData.lookalikeName != "")
             {
-                if (Random.value >= 0.4)   // hardcoded atm, can be adjusted idk help T_T
+                if (Random.value >= lookalikeChance)
                 {
                     //regualr
                     mushroom = new Mushroom(mushroomData, false);

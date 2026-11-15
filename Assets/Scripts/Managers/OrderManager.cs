@@ -112,21 +112,23 @@ public class OrderManager : MonoBehaviour
             float quality = Mathf.Clamp(heldDish.starQuality, 0f, 5f);
             float starChange = Mathf.Lerp(-0.25f, 0.25f, Mathf.InverseLerp(1f, 5f, quality));
 
-            GameManager.Instance.currencyManager.AddCurrency(heldDish.foodItem.price);
+            int mealPrice = heldDish.foodItem.price;
             ClearOrder(tableNum);
-            ReviewManager.Instance.HandleCustomerRemoved(Mathf.Clamp(Mathf.Round(quality), 1f, 5f));
 
-            if (starChange >= 0f) GameManager.Instance.starManager.IncreaseStarValue(starChange);
-            else GameManager.Instance.starManager.DecreaseStarValue(-starChange);
-            if (isPoisonous == false)
+            if (isPoisonous)
             {
-                return OrderResult.Success;
-            }
-            else
-            {
+                // Dead customers don't write reviews: however badly the dish was cooked,
+                // it can't hurt the rating. They don't pay either; their wallet is on
+                // the body, collected by hiding it in a BodyDropZone.
                 isPoisonous = false;
                 return OrderResult.Poisoned;
             }
+
+            GameManager.Instance.currencyManager.AddCurrency(mealPrice);
+            ReviewManager.Instance.HandleCustomerRemoved(Mathf.Clamp(Mathf.Round(quality), 1f, 5f));
+            if (starChange >= 0f) GameManager.Instance.starManager.IncreaseStarValue(starChange);
+            else GameManager.Instance.starManager.DecreaseStarValue(-starChange);
+            return OrderResult.Success;
         }
         else
         {

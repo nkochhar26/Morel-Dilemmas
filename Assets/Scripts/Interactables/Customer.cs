@@ -134,6 +134,19 @@ public class Customer : MonoBehaviour, IInteractable
 
     public bool IsDead => state == CustomerState.Dead;
 
+    // Money on the body, taken once when it's hidden (BodyDisposal).
+    // Worth more than the meal would have paid, to reward dealing with the body.
+    private bool walletTaken;
+    public int TakeWallet()
+    {
+        if (walletTaken) return 0;
+        walletTaken = true;
+        int meal = orderedDish != null ? orderedDish.price : 0;
+        float multiplier = customerType != null ? customerType.walletMultiplier : 2f;
+        int bonus = customerType != null ? customerType.walletBonus : 0;
+        return Mathf.Max(0, Mathf.RoundToInt(meal * multiplier) + bonus);
+    }
+
     public void SetState(CustomerState state)
     {
         this.state = state;

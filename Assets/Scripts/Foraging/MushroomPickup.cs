@@ -4,6 +4,9 @@ public class MushroomPickup : ItemPickup
 {
     private bool isLookalike;
 
+    [Tooltip("Lookalikes grow in clusters: picking one up gives this many. Real mushrooms always give 1.")]
+    [SerializeField] private int lookalikeYield = 2;
+
     void Start()
     {
         if (isLookalike)
@@ -18,7 +21,8 @@ public class MushroomPickup : ItemPickup
 
     public override void OnInteract(GameObject player)
     {
-        GameManager.Instance.inventoryManager.AddFoodItem(pickupItem, 5, 1, isLookalike);
+        int quantity = isLookalike ? Mathf.Max(1, lookalikeYield) : 1;
+        GameManager.Instance.inventoryManager.AddFoodItem(pickupItem, 5, quantity, isLookalike);
         Destroy(this.gameObject);
     }
 
