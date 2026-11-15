@@ -132,6 +132,8 @@ public class Customer : MonoBehaviour, IInteractable
         Destroy(visionCone);
     }
 
+    public bool IsDead => state == CustomerState.Dead;
+
     public void SetState(CustomerState state)
     {
         this.state = state;
@@ -139,8 +141,21 @@ public class Customer : MonoBehaviour, IInteractable
 
     private void LeaveRestaurant()
     {
-        //remove from customer manager
-        GameManager.Instance.orderManager.OrderTooLong(tableNum); // needs to be able to trigger end of day
+        if (state == CustomerState.IsWaiting)
+        {
+            // Never seated (still at the door, or being walked to a table). They have no
+            // table, so don't clear one (tableNum would be 0 and wipe table 0's real customer).
+            FollowTed ted = FindFirstObjectByType<FollowTed>();
+            if (ted != null) ted.ReleaseIfFollowing(gameObject);
+            GameManager.Instance.customerManager.SetWaitingCustomer(null);
+            if (CustomerSpawner.Instance != null) CustomerSpawner.Instance.SetIsOccupied(false); // let the next customer in
+            GameManager.Instance.orderManager.CustomerGaveUp();
+        }
+        else
+        {
+            //remove from customer manager
+            GameManager.Instance.orderManager.OrderTooLong(tableNum);
+        }
         GameManager.Instance.customerManager.OnDespawnCustomer();
         SoundManager.PlaySound(SoundType.UI, 2, 0.2f);
         Destroy(this.gameObject);

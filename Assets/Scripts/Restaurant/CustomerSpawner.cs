@@ -40,6 +40,52 @@ public class CustomerSpawner : MonoBehaviour
             SpawnCustomer();
             time = 0;
         }
+
+        safetyTimer += Time.deltaTime;
+        if (safetyTimer >= 1f)
+        {
+            safetyTimer = 0f;
+            CheckForSoftlock();
+        }
+    }
+
+    [Header("Softlock safety net")]
+    [Tooltip("If every customer for the day has spawned and none are left in the restaurant, end the day after this many seconds.")]
+    public float endDayIfEmptyAfter = 3f;
+    private float safetyTimer;
+    private float emptyFor;
+    private Customer waitingCustomerObj;   // the one at the door (or being walked to a table)
+
+    // Backup in case the customer count ever gets out of sync: the player must never be
+    // left in an empty restaurant with nothing to do.
+    private void CheckForSoftlock()
+    {
+        // "someone is waiting" but that customer no longer exists -> let the next one in
+        if (isOccupied && waitingCustomerObj == null)
+        {
+            isOccupied = false;
+            GameManager.Instance.customerManager.SetWaitingCustomer(null);
+        }
+
+        CustomerManager cm = GameManager.Instance.customerManager;
+        if (!cm.IsMaxDayCustomer())
+        {
+            emptyFor = 0f;
+            return;
+        }
+
+        bool anyoneLeft = false;
+        foreach (Customer c in FindObjectsByType<Customer>(FindObjectsSortMode.None))
+        {
+            if (!c.IsDead) { anyoneLeft = true; break; }
+        }
+        emptyFor = anyoneLeft ? 0f : emptyFor + 1f;
+        if (emptyFor >= endDayIfEmptyAfter)
+        {
+            Debug.LogWarning($"[CustomerSpawner] All {cm.numDayCustomers} customers are gone but only {cm.completedDayCustomers} were counted; ending the day so the player isn't stuck.");
+            emptyFor = 0f;
+            cm.EndDay();
+        }
     }
 
     //randomized, updates gameobject and customerManager
@@ -83,7 +129,8 @@ public class CustomerSpawner : MonoBehaviour
         GameObject toSpawnCustomer = GameManager.Instance.customerManager.GetGameObjectFromCustomerType(customerType);
         GameObject spawnedCustomer = Instantiate(toSpawnCustomer, this.gameObject.transform.position, Quaternion.identity);
 
-        spawnedCustomer.GetComponent<Customer>().SetState(CustomerState.IsWaiting);
+        waitingCustomerObj = spawnedCustomer.GetComponent<Customer>();
+        waitingCustomerObj.SetState(CustomerState.IsWaiting);
         GameManager.Instance.customerManager.SetWaitingCustomer(customerType);
         isOccupied = true;
     }
@@ -91,5 +138,6 @@ public class CustomerSpawner : MonoBehaviour
     public void SetIsOccupied(bool value)
     {
         isOccupied = value;
+        if (!value) waitingCustomerObj = null;
     }
 }

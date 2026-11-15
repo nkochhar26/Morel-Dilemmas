@@ -213,6 +213,15 @@ public class FollowTed : MonoBehaviour
         );
     }
 
+    // A customer Ted is walking to a table left (ran out of patience): stop guiding them
+    public void ReleaseIfFollowing(GameObject customer)
+    {
+        if (!isGuiding || currentFollow != customer) return;
+        SetFollowingLayer();
+        currentFollow = null;
+        isGuiding = false;
+    }
+
     public void StopFollow()
     {
         currentFollow.GetComponent<BoxCollider2D>().enabled = true; 

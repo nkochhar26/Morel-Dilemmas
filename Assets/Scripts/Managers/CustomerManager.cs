@@ -128,8 +128,13 @@ public class CustomerManager : MonoBehaviour
 
     public void NewDay()
     {
-        numDayCustomers = numDayCustomers = GameManager.Instance.dayManager.GetDay() * 3;  //TODO: adjust based on design documents
+        // at least day 1: if DayManager.Start hasn't run yet, GetDay() is 0 and no one would ever come
+        numDayCustomers = Mathf.Max(1, GameManager.Instance.dayManager.GetDay()) * 3;  //TODO: adjust based on design documents
         currDayCustomers = 0;
+        completedDayCustomers = 0;
+        // the restaurant scene just loaded, so nobody is seated or waiting yet
+        for (int i = 0; i < activeCustomers.Length; i++) activeCustomers[i] = null;
+        waitingCustomer = null;
     }
 
     public bool IsMaxDayCustomer()
@@ -149,16 +154,21 @@ public class CustomerManager : MonoBehaviour
     public void OnDespawnCustomer()
     {
         completedDayCustomers += 1;
-        if (numDayCustomers == completedDayCustomers)
+        if (completedDayCustomers >= numDayCustomers)
         {
-            numDayCustomers = 0;
-            currDayCustomers = 0;
-            completedDayCustomers = 0;
-            GameManager.Instance.dayManager.IncrementDay();
-
-            //TODO: check if this is good code or not
-            SceneManager.LoadScene("Storage Room");
+            EndDay();
         }
+    }
+
+    public void EndDay()
+    {
+        numDayCustomers = 0;
+        currDayCustomers = 0;
+        completedDayCustomers = 0;
+        GameManager.Instance.dayManager.IncrementDay();
+
+        //TODO: check if this is good code or not
+        SceneManager.LoadScene("Storage Room");
     }
 
     public bool CheckTableFull(int tableNum)

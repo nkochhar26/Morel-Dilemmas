@@ -87,6 +87,12 @@ public class OrderManager : MonoBehaviour
         // free the table, but keep the dish the player is carrying (it may be for someone else)
         RemoveOrder(tableNum);
         GameManager.Instance.customerManager.RemoveCustomer(tableNum);
+        CustomerGaveUp();
+    }
+
+    // rating hit for a customer leaving unserved
+    public void CustomerGaveUp()
+    {
         GameManager.Instance.starManager.DecreaseStarValue(0.25f);  //TODO: figure out thsi part
         ReviewManager.Instance.HandleCustomerRemoved(1f);  //TODO: change to special 'took too long' review
     }
